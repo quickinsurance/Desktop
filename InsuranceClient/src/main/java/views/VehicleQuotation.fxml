@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fx:id="scrollPane" prefHeight="1192.0" prefWidth="1009.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.VehicleQuotationController">
+   <content>
+      <AnchorPane fx:id="anchorParent" prefHeight="1217.0" prefWidth="1009.0" style="-fx-background-color: white;" stylesheets="@../viewStyle/VehicleQuotation.css">
+         <children>
+            <JFXRadioButton fx:id="RtarifActuel" layoutX="359.0" layoutY="282.0" prefWidth="277.0" selected="true" text="A vehicle that you currently own">
+               <toggleGroup>
+                  <ToggleGroup fx:id="propVehicleGroup" />
+               </toggleGroup>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="RtarifFutur" layoutX="360.0" layoutY="314.0" prefHeight="17.0" prefWidth="265.0" text="A future Purchase" toggleGroup="$propVehicleGroup" />
+            <Label layoutX="63.0" layoutY="273.0" prefHeight="29.0" prefWidth="189.0" text="The tarif request concerns :" />
+            <Label layoutX="63.0" layoutY="360.0" prefHeight="17.0" prefWidth="143.0" text="This vehicle is bought :" />
+            <Label layoutX="60.0" layoutY="410.0" text="Choose your Vehicle :" />
+            <Label layoutX="63.0" layoutY="476.0" prefHeight="17.0" prefWidth="225.0" text="Has this vehicle been modified ?" />
+            <Label layoutX="62.0" layoutY="545.0" prefHeight="17.0" prefWidth="212.0" text="Vehicle use:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <JFXRadioButton fx:id="RUsageTous" layoutX="386.0" layoutY="545.0" selected="true" text="Private and working road">
+               <toggleGroup>
+                  <ToggleGroup fx:id="UsingGroup" />
+               </toggleGroup>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="RusagePrivé" layoutX="386.0" layoutY="572.0" prefHeight="17.0" prefWidth="150.0" text="Private Only" toggleGroup="$UsingGroup" />
+            <Label layoutX="58.0" layoutY="612.0" prefHeight="17.0" prefWidth="281.0" text="How many kilometers do you travel per year ?" />
+            <Label layoutX="60.0" layoutY="665.0" prefHeight="17.0" prefWidth="258.0" text="At what frequency do you use your Vehicle ?" />
+            <JFXRadioButton fx:id="RfréquenceTous" layoutX="408.0" layoutY="668.0" prefHeight="17.0" prefWidth="118.0" selected="true" text="All days">
+               <toggleGroup>
+                  <ToggleGroup fx:id="FrequenceGroup" />
+               </toggleGroup>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="RfréquenceQuelques" layoutX="410.0" layoutY="702.0" text="Some days of the week" toggleGroup="$FrequenceGroup" />
+            <Label layoutX="62.0" layoutY="735.0" prefHeight="17.0" prefWidth="243.0" text="Parking Mode at night :" />
+            <ComboBox fx:id="comboModeParking" layoutX="421.0" layoutY="742.0" prefHeight="27.0" prefWidth="175.0" promptText="         Mode of Parking" style="-fx-background-color: white; -fx-border-color: #0b1743;" />
+            <Label layoutX="566.0" layoutY="417.0" prefHeight="17.0" prefWidth="58.0" text="Power" />
+            <Label layoutX="61.0" layoutY="853.0" prefHeight="17.0" prefWidth="280.0" text="In the last two years, have you lost any points" />
+            <Label layoutX="107.0" layoutY="876.0" prefHeight="17.0" prefWidth="143.0" text="on your Driving Licence ?" />
+            <ComboBox fx:id="comboLostP" layoutX="429.0" layoutY="849.0" prefHeight="27.0" prefWidth="176.0" promptText="            Points Losted" style="-fx-background-color: white; -fx-border-color: #0b1743;" />
+            <Label layoutX="65.0" layoutY="916.0" prefHeight="17.0" prefWidth="248.0" text="Your Driving Licence has been suspended or " />
+            <Label layoutX="67.0" layoutY="976.0" prefHeight="17.0" prefWidth="269.0" text="Number of sinisters in the last 3 years :" />
+            <ComboBox fx:id="comboSinistersNumber" layoutX="436.0" layoutY="974.0" prefHeight="27.0" prefWidth="149.0" promptText="Number of Sinisters" style="-fx-background-color: white; -fx-border-color: #0b1743;" />
+            <Label layoutX="66.0" layoutY="998.0" prefHeight="47.0" prefWidth="237.0" text="How do you want to be covered for your" />
+            <Label layoutX="153.0" layoutY="1037.0" prefHeight="17.0" prefWidth="124.0" text="Vehicle ?" />
+            <JFXTextField fx:id="marqueText" layoutX="374.0" layoutY="405.0" />
+            <HBox fx:id="suspendedNo" layoutX="541.0" layoutY="911.0" onMouseClicked="#SuspendedNo" prefHeight="34.0" prefWidth="110.0" style="-fx-border-color: gray;">
+               <children>
+                  <Label alignment="TOP_LEFT" prefHeight="27.0" prefWidth="116.0" text="No, never">
+                     <padding>
+                        <Insets left="20.0" right="25.0" top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="suspendedYes" layoutX="431.0" layoutY="911.0" onMouseClicked="#SuspendedYes" prefHeight="34.0" prefWidth="98.0" style="-fx-border-color: gray;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="91.0" text="Yes">
+                     <padding>
+                        <Insets left="20.0" right="25.0" top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="EditNo" layoutX="499.0" layoutY="476.0" onMouseClicked="#EditNoAction" prefHeight="34.0" prefWidth="72.0" style="-fx-border-color: gray;">
+               <children>
+                  <Label alignment="TOP_LEFT" prefHeight="27.0" prefWidth="77.0" text="No">
+                     <padding>
+                        <Insets left="20.0" right="25.0" top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="EditYes" layoutX="379.0" layoutY="476.0" onMouseClicked="#EditYesAction" prefHeight="34.0" prefWidth="71.0" style="-fx-border-color: gray;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="70.0" text="Yes">
+                     <padding>
+                        <Insets left="20.0" right="25.0" top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="StateOld" layoutX="504.0" layoutY="355.0" onMouseClicked="#StateOldAction" prefHeight="34.0" prefWidth="119.0" style="-fx-border-color: gray;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <children>
+                  <Label alignment="TOP_LEFT" prefHeight="27.0" prefWidth="119.0" text="Second Hand">
+                     <padding>
+                        <Insets left="20.0" right="25.0" top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="StateNew" layoutX="380.0" layoutY="355.0" onMouseClicked="#StateNewAction" prefHeight="34.0" prefWidth="101.0" style="-fx-border-color: gray;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="82.0" text="  New">
+                     <padding>
+                        <Insets left="20.0" right="25.0" top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <JFXSlider fx:id="kmSlider" layoutX="404.0" layoutY="616.0" majorTickUnit="5000.0" max="50000.0" min="1000.0" minorTickCount="1" onMouseReleased="#updateKmSlider" prefHeight="33.0" prefWidth="237.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" style="-fx-background-color: white;" value="3000.0" />
+            <Label fx:id="kmLabel" layoutX="703.0" layoutY="612.0" prefHeight="23.0" prefWidth="125.0" text="1000 Km">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <ImageView fx:id="addPictureBtn" fitHeight="32.0" fitWidth="34.0" layoutX="510.0" layoutY="409.0" onMouseClicked="#choosePictureAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/AddIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="660.0" layoutY="610.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/CarIcon.png" />
+               </image>
+            </ImageView>
+            <JFXSlider fx:id="PuissanceSlider" blockIncrement="1.0" layoutX="614.0" layoutY="419.0" majorTickUnit="6.0" max="6.0" min="1.0" minorTickCount="6" onMouseReleased="#updatePuissanceValue" showTickMarks="true" snapToTicks="true" style="-fx-border-color: black;" value="2.0">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+            </JFXSlider>
+            <Label fx:id="PuissanceLabel" layoutX="762.0" layoutY="416.0" prefHeight="29.0" prefWidth="91.0" text="1 CV">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <JFXDatePicker fx:id="picker" layoutX="424.0" layoutY="797.0" />
+            <Label layoutX="58.0" layoutY="798.0" prefHeight="17.0" prefWidth="254.0" text="Date of the first circulation of the Vehicle : " />
+            <HBox fx:id="hboxBtnDevis" layoutX="828.0" layoutY="1113.0" onMouseClicked="#obetnirDevisAction" prefHeight="41.0" prefWidth="150.0">
+               <children>
+                  <Label prefHeight="38.0" prefWidth="149.0" style="-fx-background-radius: 30;" styleClass="searchButton" text="  Obtain your Quotation " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Pane layoutX="-4.0" layoutY="-2.0" opacity="0.81" prefHeight="67.0" prefWidth="999.0" style="-fx-background-color: #e74c3c; -fx-border-color: black;">
+               <children>
+                  <Label layoutX="85.0" layoutY="3.0" prefHeight="61.0" prefWidth="993.0" text="                                                          VEHICLE Quotation" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="352.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../pictures/VehiclePaneIcon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <JFXTextField fx:id="txtBonusMalus" alignment="TOP_LEFT" layoutX="589.0" layoutY="1078.0" prefHeight="25.0" prefWidth="103.0" promptText="Coefficient" visible="false" />
+            <Label fx:id="bonusOuMalusLabel" layoutX="674.0" layoutY="797.0" prefHeight="22.0" prefWidth="57.0" />
+            <JFXTextField fx:id="primeTxtField" layoutX="577.0" layoutY="690.0" visible="false" />
+            <JFXCheckBox fx:id="tiersCheckBox" checkedColor="#318a5a" layoutX="432.0" layoutY="1025.0" onAction="#tiersAction" prefHeight="18.0" prefWidth="265.0" selected="true" text="Tiers: The minimun of Mandatory Protection" />
+            <JFXCheckBox fx:id="tiersEtenduCheckBox" checkedColor="#da6f1d" layoutX="432.0" layoutY="1048.0" onAction="#tiersEtenduAction" prefHeight="18.0" prefWidth="234.0" text="Tiers etendu: Tiers + Vol +Fire" />
+            <JFXCheckBox fx:id="tousRisquesCheckBox" checkedColor="#c31442" layoutX="432.0" layoutY="1073.0" onAction="#tousRisqueAction" prefHeight="18.0" prefWidth="189.0" text="All Risks" />
+            <JFXButton fx:id="checkBonusBtn" layoutX="666.0" layoutY="1115.0" onAction="#checkBonusAction" prefHeight="38.0" prefWidth="143.0" style="-fx-background-color: #e74c3c; -fx-border-color: #e74c3c; -fx-background-radius: 30; -fx-border-radius: 30;" text="Check Bonus/Malus" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXCheckBox fx:id="maleBox" layoutX="371.0" layoutY="200.0" onAction="#checkMaleBox" prefHeight="18.0" prefWidth="72.0" text="Male" />
+            <JFXCheckBox fx:id="femaleBox" layoutX="474.0" layoutY="200.0" onAction="#checkFemaleBox" prefHeight="18.0" prefWidth="79.0" selected="true" text="Female" />
+            <Label layoutX="61.0" layoutY="201.0" prefHeight="17.0" prefWidth="133.0" text=" Gender :" />
+            <JFXDatePicker fx:id="birthDatePicker" layoutX="372.0" layoutY="145.0" />
+            <Label layoutX="63.0" layoutY="154.0" prefHeight="17.0" prefWidth="107.0" text="Birth Date :">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <JFXTextField fx:id="cinTxt" alignment="CENTER" focusColor="#3e4b72" layoutX="374.0" layoutY="232.0" promptText="CIN" />
+            <JFXTextField fx:id="firstNametxt" alignment="CENTER" focusColor="#3e4b72" layoutX="370.0" layoutY="97.0" prefHeight="25.0" prefWidth="136.0" promptText="First Name" />
+            <JFXTextField fx:id="lastNametxt" alignment="CENTER" focusColor="#3e4b72" layoutX="532.0" layoutY="97.0" prefHeight="25.0" prefWidth="147.0" promptText="Last Name" />
+            <Label layoutX="62.0" layoutY="107.0" prefHeight="17.0" prefWidth="113.0" text="First/Last Name :">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="66.0" layoutY="249.0" prefHeight="17.0" prefWidth="102.0" text="CIN Number :" />
+            <ImageView fx:id="redCartImg" fitHeight="34.0" fitWidth="38.0" layoutX="662.0" layoutY="908.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../pictures/RedCartIcon.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="157.0" layoutY="934.0" prefHeight="17.0" prefWidth="67.0" text="canceled ?" />
+            <ImageView fitHeight="39.0" fitWidth="47.0" layoutX="14.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/MaleIcone.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="labelPointsLosted" layoutX="436.0" layoutY="885.0" prefHeight="17.0" prefWidth="81.0" text="Label" textFill="#ee0909" visible="false" />
+            <Label fx:id="numberOfSinistersLabel" layoutX="436.0" layoutY="1001.0" prefHeight="17.0" prefWidth="86.0" text="Label" textFill="#ee0909" visible="false" />
+            <Label fx:id="modeOfParkingLabel" layoutX="424.0" layoutY="769.0" prefHeight="17.0" prefWidth="86.0" text="Label" textFill="#ee0909" visible="false" />
+            <Label fx:id="cinLabel" layoutX="380.0" layoutY="258.0" prefHeight="17.0" prefWidth="86.0" text="Label" textFill="#eb0a0a" visible="false" />
+            <Label fx:id="firstNameLabel" layoutX="379.0" layoutY="127.0" prefHeight="17.0" prefWidth="71.0" text="Label" textFill="#ee1515" visible="false" />
+            <Label fx:id="lastNameLabel" layoutX="535.0" layoutY="127.0" text="Label" textFill="#eb1a1a" visible="false" />
+            <Label fx:id="vehicleLabel" layoutX="379.0" layoutY="437.0" prefHeight="17.0" prefWidth="138.0" text="Label" textFill="#e81111" visible="false" />
+            <Label fx:id="birthDateLabel" layoutX="379.0" layoutY="171.0" text="Label" textFill="#ee1414" visible="false" />
+            <Label fx:id="circulationDateLabel" layoutX="428.0" layoutY="822.0" text="Label" textFill="#ee1313" visible="false" />
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

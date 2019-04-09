@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="581.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EmployeeInscriptionController">
+   <children>
+      <Pane prefHeight="73.0" prefWidth="769.0" />
+      <JFXTextField fx:id="txt_FirstName" alignment="CENTER" layoutX="86.0" layoutY="112.0" prefHeight="25.0" prefWidth="158.0" promptText="First Name" unFocusColor="#4e14c2" />
+      <JFXTextField fx:id="txt_LastName" alignment="CENTER" layoutX="86.0" layoutY="196.0" prefHeight="25.0" prefWidth="158.0" promptText="Last Name" unFocusColor="#4e14c2" />
+      <JFXTextField fx:id="txt_Email" alignment="CENTER" layoutX="86.0" layoutY="278.0" prefHeight="25.0" prefWidth="158.0" promptText="Email" unFocusColor="#4e14c2" />
+      <JFXTextField fx:id="txt_Phone" alignment="CENTER" layoutX="86.0" layoutY="362.0" prefHeight="25.0" prefWidth="158.0" promptText="Phone Number" unFocusColor="#4e14c2" />
+      <JFXComboBox fx:id="comboRole" layoutX="483.0" layoutY="112.0" prefHeight="25.0" prefWidth="200.0" promptText="                        Role" unFocusColor="#4e14c2">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </JFXComboBox>
+      <JFXDatePicker fx:id="birthPicker" layoutX="490.0" layoutY="291.0" prefHeight="25.0" prefWidth="209.0" promptText="                     Birth Date" />
+      <JFXRadioButton fx:id="Rmale" layoutX="471.0" layoutY="213.0" prefHeight="17.0" prefWidth="98.0" text="Male">
+         <toggleGroup>
+            <ToggleGroup fx:id="genderGroup" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="Rfemale" layoutX="604.0" layoutY="213.0" prefHeight="17.0" prefWidth="98.0" selected="true" text="Female" toggleGroup="$genderGroup" />
+      <Button fx:id="btnPicture" layoutX="653.0" layoutY="407.0" mnemonicParsing="false" onAction="#importPicture" text="Import Picture" />
+      <Button fx:id="btnAdd" layoutX="639.0" layoutY="514.0" mnemonicParsing="false" onAction="#addUser" prefHeight="25.0" prefWidth="71.0" text="Add" />
+      <Button fx:id="btnReset" layoutX="506.0" layoutY="515.0" mnemonicParsing="false" onAction="#Reset" prefHeight="25.0" prefWidth="63.0" text="Reset" />
+      <ImageView fx:id="imageView" fitHeight="114.0" fitWidth="119.0" layoutX="506.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true" />
+      <TextArea fx:id="textArea" layoutX="338.0" layoutY="486.0" prefHeight="59.0" prefWidth="133.0" visible="false" />
+      <Label fx:id="labelFirstName" layoutX="104.0" layoutY="155.0" prefHeight="25.0" prefWidth="146.0" text="Label" textFill="#ff1111" visible="false" />
+      <Label fx:id="labelCode" layoutX="104.0" layoutY="474.0" prefHeight="25.0" prefWidth="146.0" text="Label" textFill="#ff1111" visible="false" />
+      <Label fx:id="labelPhone" layoutX="104.0" layoutY="407.0" prefHeight="25.0" prefWidth="146.0" text="Label" textFill="#ff1111" visible="false" />
+      <Label fx:id="labelEmail" layoutX="104.0" layoutY="324.0" prefHeight="25.0" prefWidth="146.0" text="Label" textFill="#ff1111" visible="false" />
+      <Label fx:id="labelLastName" layoutX="104.0" layoutY="238.0" prefHeight="25.0" prefWidth="146.0" text="Label" textFill="#ff1111" visible="false" />
+      <Label fx:id="labelRcode" layoutX="104.0" layoutY="540.0" prefHeight="25.0" prefWidth="146.0" text="Label" textFill="#ff1111" visible="false" />
+      <Label fx:id="labelRole" layoutX="493.0" layoutY="155.0" prefHeight="25.0" prefWidth="146.0" text="Label" textFill="#ff1111" visible="false" />
+      <Label fx:id="labelBirth" layoutX="493.0" layoutY="337.0" prefHeight="25.0" prefWidth="146.0" text="Label" textFill="#ff1111" visible="false" />
+      <Button fx:id="returnBtn" layoutX="398.0" layoutY="515.0" mnemonicParsing="false" onAction="#returnAction" text="Return" />
+      <JFXPasswordField fx:id="txt_Code" alignment="CENTER" layoutX="98.0" layoutY="432.0" promptText="Code" unFocusColor="#4e14c2" />
+      <JFXPasswordField fx:id="txt_Rcode" alignment="CENTER" layoutX="98.0" layoutY="502.0" promptText="Retype Code" unFocusColor="#4e14c2" />
+   </children>
+</AnchorPane>
