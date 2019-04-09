@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GuaranteeCheckHousingController">
+   <children>
+      <ScrollPane layoutX="-1.0" layoutY="-3.0" prefHeight="200.0" prefWidth="902.0">
+         <content>
+            <AnchorPane prefHeight="168.0" prefWidth="900.0">
+               <children>
+                  <Label layoutX="343.0" layoutY="21.0" prefHeight="17.0" prefWidth="99.0" text="Refund Claims" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <AnchorPane layoutX="49.0" layoutY="198.0" prefHeight="296.0" prefWidth="480.0">
+         <children>
+            <ScrollPane prefHeight="296.0" prefWidth="480.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <TableView fx:id="tab" prefHeight="285.0" prefWidth="484.0">
+                    <columns>
+                      <TableColumn fx:id="Guarantee" prefWidth="215.0" text="Guarantee" />
+                      <TableColumn fx:id="Limited_Amount" prefWidth="106.0" text="Limited Amount" />
+                        <TableColumn fx:id="Amount_Franchise" prefWidth="172.0" text="Amount Franchise" />
+                    </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="Contract" layoutX="593.0" layoutY="384.0" promptText="Reserch by User" />
+      <ScrollPane layoutY="10.0" prefHeight="186.0" prefWidth="786.0">
+         <content>
+            <HBox fx:id="claim1box" maxHeight="200.0" maxWidth="774.0" prefHeight="200.0" prefWidth="774.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
