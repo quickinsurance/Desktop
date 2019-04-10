@@ -4,8 +4,10 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -400,14 +402,14 @@ public class EmployeInscriptionController implements Initializable {
 			agent.setNote(0);
 			agent.setBirthDate(java.sql.Date.valueOf(birthPicker.getValue()));
 			agent.setCode(txt_Code.getText());
-			agent.setAssignment_date(java.sql.Date.valueOf(birthPicker.getValue())); //à changer...
+			agent.setAssignment_date(java.sql.Date.valueOf(LocalDate.now())); //à changer...
 			agent.setAgence(AgentAgenceCombo.getValue()); 
 			agent.setRole("Agent");
 			ServiceAddAgent(agent);}		
 	
 		System.out.print("User added");
 		ResetAction(event);
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "New " + user.getRole()+ " added successfully !", ButtonType.OK);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "New " + "Employee" + " added successfully !", ButtonType.OK);
         alert.show();
 	}
 

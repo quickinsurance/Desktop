@@ -82,14 +82,11 @@
 .lbl3{
     -fx-text-fill: #00a1ff;
 }
-
-
 .card-white{
     -fx-background-color: rgb(255.0, 255.0, 255.0);
     -fx-background-radius: 4.0;
     -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);
 }
-
 .compose{
 	-fx-background-color: transparent;
     -fx-border-radius: 60; 

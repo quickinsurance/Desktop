@@ -15,8 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1009.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ConsultEquipmentContractController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1009.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SinisterEquipmentConsultController">
    <children>
       <VBox fx:id="content_area" prefHeight="580.0" prefWidth="1009.0" style="-fx-background-color: WHITE;" stylesheets="@../../../../../../../Documents/NetBeansProjects/Flat%20Dashboard/src/app/css/stylehseet.css">
          <children>
@@ -24,11 +23,11 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <AnchorPane prefHeight="287.0" prefWidth="476.0" styleClass="card">
+                        <AnchorPane prefHeight="479.0" prefWidth="476.0" styleClass="card">
                            <children>
                               <Pane layoutY="-2.0" prefHeight="53.0" prefWidth="476.0" style="-fx-background-color: #008F82; -fx-background-radius: 5 5 0 0;">
                                  <children>
-                                    <Text fill="WHITE" layoutX="34.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Untreated contract">
+                                    <Text fill="WHITE" layoutX="34.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Untreated sinisters">
                                        <font>
                                           <Font name="Roboto Medium" size="14.0" />
                                        </font>
@@ -41,25 +40,6 @@
                                     <VBox fx:id="ConsultNon" prefHeight="205.0" prefWidth="472.0" style="-fx-background-color: white;" />
                                  </content>
                               </ScrollPane>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="287.0" prefWidth="476.0" styleClass="card">
-                           <children>
-                              <ScrollPane fx:id="scrollPane1" layoutY="51.0" prefHeight="174.0" prefWidth="476.0" style="-fx-border-color: white; -fx-background-color: white;">
-                                 <content>
-                                    <VBox fx:id="ConsultCours" prefHeight="169.0" prefWidth="471.0" style="-fx-background-color: white;" />
-                                 </content>
-                              </ScrollPane>
-                              <Pane layoutY="-2.0" prefHeight="53.0" prefWidth="476.0" style="-fx-background-color: #008F82; -fx-background-radius: 5 5 0 0;">
-                                 <children>
-                                    <Text fill="WHITE" layoutX="34.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Being processed Contracts">
-                                       <font>
-                                          <Font name="Roboto Medium" size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <FontAwesomeIcon fill="WHITE" iconName="EXCLAMATION" layoutX="14.0" layoutY="30.0" />
-                                 </children>
-                              </Pane>
                            </children>
                         </AnchorPane>
                      </children>

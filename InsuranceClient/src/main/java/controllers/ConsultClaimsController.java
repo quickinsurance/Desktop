@@ -60,9 +60,12 @@ public class ConsultClaimsController implements Initializable {
 
     @FXML
     private JFXTextField filter;
-
+    private ClaimsContainerController containerParent;
+    public void setContainer(ClaimsContainerController ClaimsContainerController) {
+		this.containerParent = ClaimsContainerController;}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		// TODO Auto-generated method stub
 		String jndiName = "Insurance-ear/Insurance-ejb/ServiceClaims!services.interf.IClaimsServiceRemote";
 		Context context;
@@ -104,10 +107,10 @@ public class ConsultClaimsController implements Initializable {
 					gd.setOnMouseClicked((MouseEvent event1) -> {
 						System.out.println(l.get(k).getClaim_id());
 						Label label3 = new Label(l.get(k).getReference_police() + " ");
-						FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/claim.fxml")); 
+						//FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/claim.fxml")); 
 				        Scene scene;
 				        GridPane grid1 = new GridPane();
-						try {
+						/*try {
 							scene = new Scene(loader.load());
 							 Stage stage = new Stage();
 						        ((ClaimController)loader.getController()).setClaim(l.get(k));
@@ -128,8 +131,22 @@ public class ConsultClaimsController implements Initializable {
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
-						}
-				       
+						}*/
+				        
+				        
+				        FXMLLoader loader = containerParent.switchViewTo("/views/claim.fxml");
+				        ((ClaimController) loader.getController()).setContainer(containerParent);
+				        ((ClaimController)loader.getController()).setClaim(l.get(k));
+				        ((ClaimController)loader.getController()).getLabelSubject().setText((l.get(k).getType_subject().toString()));
+				        ((ClaimController)loader.getController()).getDateLabel().setText((l.get(k).getClaim_date().toString()));
+				        ((ClaimController)loader.getController()).getLabelRef().setText(Integer.toString(l.get(k).getReference_police()));
+				        ((ClaimController)loader.getController()).getScrollPane().setVbarPolicy(ScrollBarPolicy.ALWAYS);
+						((ClaimController)loader.getController()).getScrollPane().setHbarPolicy(ScrollBarPolicy.NEVER);
+						grid1.alignmentProperty();
+						//grid1.setHgap(50);
+						//grid1.setPadding(new Insets(5, 5, 5, 5));
+						((ClaimController)loader.getController()).getTextarea().getChildren().add(grid1);
+						
 							String values = l.get(k).getDescription();
 							String[] array = values.split("\\s", -1);
 							Label string=new Label();
@@ -325,4 +342,5 @@ public class ConsultClaimsController implements Initializable {
 //			System.out.println(x);
 //		}
 	}
+	   
 }

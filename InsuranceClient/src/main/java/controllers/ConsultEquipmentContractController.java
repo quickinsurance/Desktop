@@ -1,5 +1,14 @@
 package controllers;
-
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
+import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -108,6 +117,8 @@ public class ConsultEquipmentContractController implements Initializable{
 	   Client cl;
 	   Equipment equip;
 	   List<ContractProperty> pro=new ArrayList<ContractProperty>();
+		private EquipmentContractContainerController containerParent;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -414,5 +425,9 @@ public class ConsultEquipmentContractController implements Initializable{
         // Listing 10. Addition of a chapter to the main document
         document.add(chapter1);
         document.close();
+	}
+	public void setContainer(EquipmentContractContainerController equipmentContractContainerController) {
+		this.containerParent = equipmentContractContainerController;
+		
 	}
 }

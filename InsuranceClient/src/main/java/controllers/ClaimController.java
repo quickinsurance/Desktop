@@ -224,4 +224,8 @@ public class ClaimController implements Initializable {
 		this.textarea = textarea;
 	}
 
+	private ClaimsContainerController containerParent;
+    public void setContainer(ClaimsContainerController ClaimsContainerController) {
+		this.containerParent = ClaimsContainerController;}
+
 }

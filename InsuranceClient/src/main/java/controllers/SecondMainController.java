@@ -311,11 +311,26 @@ public class SecondMainController implements Initializable {
 		setContentAnchor("/views/RetreatManageContainerView.fxml", anchorPane);
 	}
 	
-	
-
+    
     @FXML
     void showEquipmentContractAction(ActionEvent event) throws IOException {
-		setContentAnchor("/views/EquipmentQuotContainer.fxml", anchorPane);
+		setContentAnchor("/views/EquipmentContractContainerView.fxml", anchorPane);
+
+    }
+    
+    @FXML
+    void QuotationEquipmentView(ActionEvent event) throws IOException {
+    	setContentAnchor("/views/EquipmentQuotContainer.fxml", anchorPane);
+    }
+    @FXML
+    void ConsultClaims(ActionEvent event) throws IOException {
+    	setContentAnchor("/views/ClaimsContainer.fxml", anchorPane);
+
+    }
+    
+    @FXML
+    void ShowEquipmentSinister(ActionEvent event) throws IOException {
+    	setContentAnchor("/views/SinisterEquipmentContainer.fxml", anchorPane);
 
     }
 }
