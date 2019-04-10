@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.itextpdf.text.Document;
@@ -15,6 +16,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -104,7 +108,32 @@ public class ContractdetailController implements Initializable{
 
 	    @FXML
 	    private ImageView image1;
+	    @FXML
+	    private Label fname;
 
+	    @FXML
+	    private Label lname;
+
+	    @FXML
+	    private Label cin;
+
+	    @FXML
+	    private Label rib1;
+
+	    @FXML
+	    private Label clientphone;
+
+	    @FXML
+	    private Label clientadress;
+
+
+	    @FXML
+	    private Label refundAmount;
+
+	    @FXML
+	    private Label refund1;
+	    @FXML
+	    private Label resi;
 
 
 	    
@@ -160,7 +189,12 @@ public class ContractdetailController implements Initializable{
 
 			 house =t.ServicefindContracthouse(id1);
 			
-			
+			 fname.setText(house.getClient().getFirstName());
+			lname.setText(house.getClient().getLastName());
+			clientadress.setText(house.getClient().getAddress());
+			clientphone.setText(String.valueOf(house.getClient().getPhone()));
+			cin.setText(String.valueOf(house.getClient().getCin()));
+			rib1.setText(house.getClient().getRIB_Number());
 			Address1.setText(String.valueOf(house.getAddress()));
 			HouseType1.setText(String.valueOf(house.getType_housing()));
 			Area1.setText(String.valueOf(house.getArea()));
@@ -184,6 +218,26 @@ floor.setVisible(true);
 		    	AccepteButton.setVisible(true);
 				refuseButton.setVisible(true);
 			}
+			
+			
+			java.sql.Date today =java.sql.Date.valueOf(java.time.LocalDate.now());
+			String datt = today.toString();
+			LocalDate dateBefore = LocalDate.parse(datt);
+			LocalDate datenext = LocalDate.parse(house.getDate_end().toString());
+			long noOfDaysBetween = ChronoUnit.DAYS.between(dateBefore,datenext);
+			float s= (house.getPrime()*(365-noOfDaysBetween))/365;
+			if (house.getEtatdemande().equals("resiliated")){
+				
+		
+				
+				
+			refundAmount.setText(String.valueOf(s));
+				refund1.setVisible(true);
+				refundAmount.setVisible(true);
+				resi.setVisible(true);
+				
+			}
+			
 			
 			ApparF.setText(String.valueOf(house.getFloorapartment()));
 			sinister.setText(String.valueOf(house.getSinisternmbr()));

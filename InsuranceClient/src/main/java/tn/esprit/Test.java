@@ -11,9 +11,11 @@ import entities.Guarantee;
 import entities.Housing;
 import entities.Sinister;
 import entities.User;
+import entities.Vehicle;
 import services.interf.IContracthomeServiceRemote;
 import services.interf.IgarantieServiceRemote;
 import services.interf.IhousingServiceRemote;
+import services.interf.VehicleContractServiceRemote;
 
 public class Test {
 
@@ -33,6 +35,7 @@ public class Test {
 		gu.setAmount_limit(2000);
 		gu.setDescription(s.getGuarantee());
         gu.setCode_guarantee(2);
+        gu.setType("housing");
         gu.setContract(s);
 			System.out.println();
 		System.out.println(t.findguranteesbyid(s.getContract_id()));
@@ -43,6 +46,31 @@ public class Test {
 				}
 			}
 		}
+	
+	
+	public void addoptionif() throws Exception{
+		Test t = new Test();
+		List<Guarantee> guarantees = findgurantees();
+		List<Vehicle> Vehicles =findvehiculeContracts();
+		Guarantee gu = new Guarantee();
+	for(Vehicle s :Vehicles){
+			
+		gu.setAmount_franchise(150);
+		gu.setAmount_limit(2000);
+		gu.setDescription(s.getVehicleOption());
+        gu.setCode_guarantee(2);
+        gu.setType("vehicle");
+        gu.setContract(s);
+			System.out.println();
+		System.out.println(t.findguranteesbyid(s.getContract_id()));
+				if ((t.findguranteebyContract((s.getContract_id())).size()==0)){
+					System.out.println(t.findguranteebyContract(s.getContract_id()));
+					
+                    ServiceAddGuarantee(gu);
+				}
+			}
+		}
+	
 	
 	
 
@@ -321,5 +349,20 @@ findAllContracthous
 
 
 	}
+	
+	public List<Vehicle> findvehiculeContracts() throws Exception
+	{
+		String jndiName = "Insurance-ear/Insurance-ejb/VehicleContractServiceImpl!services.interf.VehicleContractServiceRemote";
+		Context context = new InitialContext();
+		VehicleContractServiceRemote proxy = (VehicleContractServiceRemote) context.lookup(jndiName);
+		System.out.println("one");
+		List<Vehicle> Vehicles  = proxy.findAllVehicleContracts();
+		return Vehicles;
+
+	}
+	
+	
+	
+	
 	
 }

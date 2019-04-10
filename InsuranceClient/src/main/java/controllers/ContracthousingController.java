@@ -248,8 +248,10 @@ public Housing house ;
     @FXML
     void go(ActionEvent event) throws Exception {
 SwitchScreen ss = new SwitchScreen();
+
 Test t = new Test();
 t.addGuaranteeif();
+t.addoptionif();
     	//ss.switchScreen("HousingGuranteeview.fxml", go);
 ss.switchScreen("/views/GuaranteeCheckHousingView.fxml", go);
     }

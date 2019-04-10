@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -169,12 +170,32 @@ String s4="An HO-8 policy form is designed for older homes that have a replaceme
     	
     	if (s.getReport().getAccident().getHousing().getGuarantee().equals("HO-1")){
     		
+    		 Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    	        alert.setTitle("Guarantee details");
+    	        alert.setHeaderText("Type HO-2");
+    	        alert.setContentText(s1);
+    	        alert.showAndWait();
+    		
     	}else if(s.getReport().getAccident().getHousing().getGuarantee().equals("HO-3")) {
+    		 Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    	        alert.setTitle("Guarantee details");
+    	        alert.setHeaderText("Type HO-3");
+    	        alert.setContentText(s2);
+    	        alert.showAndWait();
     	
     	}else if (s.getReport().getAccident().getHousing().getGuarantee().equals("HO-5")){
+    	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Guarantee details");
+            alert.setHeaderText("Type HO-5");
+            alert.setContentText(s3);
+            alert.showAndWait();
     		
     	}else if (s.getReport().getAccident().getHousing().getGuarantee().equals("HO-8"))
-    	{
+    	{  Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Guarantee details");
+        alert.setHeaderText("Type HO-8");
+        alert.setContentText(s4);
+        alert.showAndWait();
     		
     	}
    

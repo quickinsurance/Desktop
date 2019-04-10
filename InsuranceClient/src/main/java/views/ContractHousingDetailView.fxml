@@ -358,42 +358,42 @@
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="553.0" layoutY="97.0" text="Label">
+                        <Label layoutX="553.0" layoutY="97.0" text="Phone">
                            <font>
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="397.0" layoutY="46.0" text="Label">
+                        <Label fx:id="fname" layoutX="397.0" layoutY="46.0" text="Label">
                            <font>
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="397.0" layoutY="109.0" text="Label">
+                        <Label fx:id="lname" layoutX="397.0" layoutY="109.0" text="Label">
                            <font>
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="397.0" layoutY="161.0" text="Label">
+                        <Label fx:id="cin" layoutX="397.0" layoutY="161.0" text="Label">
                            <font>
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="651.0" layoutY="43.0" text="Label">
+                        <Label fx:id="rib1" layoutX="651.0" layoutY="43.0" text="Label">
                            <font>
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="657.0" layoutY="97.0" text="Label">
+                        <Label fx:id="clientphone" layoutX="657.0" layoutY="97.0" text="Label">
                            <font>
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="553.0" layoutY="158.0" text="Label">
+                        <Label layoutX="553.0" layoutY="158.0" text="Address">
                            <font>
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="651.0" layoutY="158.0" text="Label">
+                        <Label fx:id="clientadress" layoutX="651.0" layoutY="158.0" text="Label">
                            <font>
                               <Font name="System Bold Italic" size="14.0" />
                            </font>
@@ -403,25 +403,11 @@
                         <Separator layoutX="1.0" layoutY="18.0" prefHeight="0.0" prefWidth="744.0" />
                      </children>
                   </AnchorPane>
-                  <Label layoutX="172.0" layoutY="28.0" prefHeight="35.0" prefWidth="324.0" text="Contract Demande Detail" textFill="#3e0fda">
+                  <Label layoutX="219.0" layoutY="14.0" prefHeight="35.0" prefWidth="324.0" text="Contract Demande Detail" textFill="#3e0fda">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <HBox layoutX="133.0" layoutY="907.0" prefHeight="120.0" prefWidth="669.0">
-                     <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="115.0" prefWidth="366.0">
-                           <children>
-                              <Button fx:id="AccepteButton" mnemonicParsing="false" onAction="#Accepte" prefHeight="57.0" prefWidth="147.0" styleClass="nav_bar_button" text="Accepte Demande" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="240.0">
-                           <children>
-                              <Button fx:id="refuseButton" mnemonicParsing="false" onAction="#Refuse" prefHeight="48.0" prefWidth="166.0" styleClass="nav_bar_button" text="Refuse Demande" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
                   <Separator layoutX="370.0" layoutY="348.0" orientation="VERTICAL" prefHeight="571.0" prefWidth="11.0" />
                   <Separator layoutX="-4.0" layoutY="921.0" prefHeight="5.0" prefWidth="741.0" />
                   <Button layoutX="624.0" layoutY="88.0" mnemonicParsing="false" onAction="#printPdfContract" text="Get Contract " textFill="#3e0fda">
@@ -429,6 +415,23 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
+                  <Label fx:id="resi" layoutX="315.0" layoutY="64.0" prefHeight="30.0" prefWidth="111.0" text="Resiliated" visible="false">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="refuseButton" layoutX="128.0" layoutY="926.0" mnemonicParsing="false" onAction="#Refuse" prefHeight="48.0" prefWidth="166.0" styleClass="nav_bar_button" text="Refuse Demande" />
+                  <Label fx:id="refundAmount" layoutX="480.0" layoutY="939.0" prefHeight="38.0" prefWidth="127.0" text="760" visible="false">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="refund1" layoutX="148.0" layoutY="931.0" prefHeight="38.0" prefWidth="127.0" text="Refund Amount" visible="false">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="AccepteButton" layoutX="453.0" layoutY="930.0" mnemonicParsing="false" onAction="#Accepte" prefHeight="57.0" prefWidth="147.0" styleClass="nav_bar_button" text="Accepte Demande" />
                </children>
             </AnchorPane>
          </content>
