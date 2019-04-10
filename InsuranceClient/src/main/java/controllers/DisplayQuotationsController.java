@@ -27,6 +27,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -67,10 +68,94 @@ public class DisplayQuotationsController implements Initializable{
 
 	@FXML
 	private Button btnaddContract;
-    @FXML
+    
+	@FXML
     private Button consultContractsBtn;
+   
     @FXML
     private ImageView iconBmwImage;
+   
+    @FXML
+    private Label contractsNumberLabel;
+
+    @FXML
+    private Label tiersEtenduLabel;
+
+    @FXML
+    private Label tiersNumberlabel;
+
+    @FXML
+    private Label allrisksNumber;
+
+    @FXML
+    private Label BmwLabel;
+
+    @FXML
+    private Label kiaLabel;
+
+    @FXML
+    private Label FiatLabel;
+
+    @FXML
+    private Label minicooperLabel;
+
+    @FXML
+    private Label nissanLabel;
+
+    @FXML
+    private Label volswagenLabel;
+
+    @FXML
+    private Label toyotaLabel;
+
+    @FXML
+    private Label renaultLabel;
+
+    @FXML
+    private Label citroenLabel;
+
+    @FXML
+    private Label audiLabel;
+
+    @FXML
+    private Label daciaLabel;
+
+    @FXML
+    private Label peugoetLabel;
+    
+    @FXML
+    private Label group1Label;
+
+    @FXML
+    private Label group2Label;
+
+    @FXML
+    private Label group3Label;
+
+    @FXML
+    private Label group4label;
+
+    @FXML
+    private Label group5Label;
+
+    @FXML
+    private Label group6Label;
+
+    @FXML
+    private Label group7label;
+
+    @FXML
+    private Label group8label;
+
+    @FXML
+    private Label group9label;
+
+    @FXML
+    private Label group10label;
+
+    @FXML
+    private Label group11label;
+
 
 	private ObservableList<VehicleQuotation> data;
 	List<VehicleQuotation> vehicleQuotationsList;
@@ -114,6 +199,108 @@ public class DisplayQuotationsController implements Initializable{
 		tblView.setItems(data);
 		ActionEvent event =null;
 		OnsearchMarkAction(event);
+		
+		ObservableList<VehicleQuotation> oblist=FXCollections.observableArrayList(vehicleQuotationsList);
+		int a =0;
+		int b =0;
+		int c=0;
+		int d=0;
+		int e=0;
+		int f=0;
+		int g=0;
+		int h=0;
+		int j=0;
+		int k=0;
+		int m=0;
+		int n=0;
+		int x=0;
+		int y=0;
+		int z=0;
+		int w=0;
+				
+		for (int i=0; i<oblist.size(); i++){
+		
+		if (oblist.get(i).getMark().equals("BMW"))
+			{
+				a++;
+				}else if(oblist.get(i).getMark().equals("FIAT")){
+					b++;
+				}
+				else if(oblist.get(i).getMark().equals("KIA")){
+					c++;
+		}
+				else if(oblist.get(i).getMark().equals("NISSAN")){
+					d++;
+		}
+				else if(oblist.get(i).getMark().equals("TOYOTA")){
+					e++;
+		}
+				else if(oblist.get(i).getMark().equals("MINI COOPER")){
+					f++;
+		}
+				else if(oblist.get(i).getMark().equals("VOLKSWAGEN")){
+					g++;
+		}
+				else if(oblist.get(i).getMark().equals("RENAULT")){
+					h++;
+		}
+				else if(oblist.get(i).getMark().equals("CITROEN")){
+					j++;
+		}
+				else if(oblist.get(i).getMark().equals("AUDI")){
+					k++;
+		}
+				else if(oblist.get(i).getMark().equals("DACIA")){
+					m++;
+		}
+				else if(oblist.get(i).getMark().equals("PEUGEOT")){
+					n++;
+		}
+			   if(oblist.get(i).getOption_vehicle().equals("All Risks")){
+					y++;
+		}
+				else if(oblist.get(i).getOption_vehicle().equals("Tiers")){
+					z++;
+		}
+				else if(oblist.get(i).getOption_vehicle().equals("Tiers Etendu")){
+					w++;
+		}
+		
+		    BmwLabel.setText(String.valueOf(a));
+		    FiatLabel.setText(String.valueOf(b));
+		    kiaLabel.setText(String.valueOf(c));
+		    nissanLabel.setText(String.valueOf(d));
+		    toyotaLabel.setText(String.valueOf(e));
+		    minicooperLabel.setText(String.valueOf(f));
+		    volswagenLabel.setText(String.valueOf(g));
+		    renaultLabel.setText(String.valueOf(h));
+		    citroenLabel.setText(String.valueOf(j));
+		    audiLabel.setText(String.valueOf(k));
+		    daciaLabel.setText(String.valueOf(m));
+		    peugoetLabel.setText(String.valueOf(n));
+		    contractsNumberLabel.setText(String.valueOf(oblist.size()));
+		    allrisksNumber.setText(String.valueOf(y));
+		    tiersNumberlabel.setText(String.valueOf(z));
+		    tiersEtenduLabel.setText(String.valueOf(w));
+		    
+		    
+		    
+		    int g1 =0;
+		    int g2=0;
+		    int g3=0;
+		    int g4=0;
+		    int g5=0;
+		    int g6=0;
+		    int g7=0;
+		    int g8=0;
+		    int g9=0;
+		    int g10=0;
+		    int g11=0;
+		    
+		    
+		    
+		    
+	} 
 	}
 
     @FXML

@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane fx:id="anchorParent" prefHeight="750.0" prefWidth="1009.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ManageEmployeesController">
+<AnchorPane fx:id="anchorParent" prefHeight="793.0" prefWidth="1009.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ManageEmployeesController">
    <children>
       <Pane opacity="0.79" prefHeight="69.0" prefWidth="1009.0" style="-fx-background-color: #e74c3c;">
          <children>
@@ -29,7 +29,7 @@
             </ImageView>
          </children>
       </Pane>
-      <TableView fx:id="tblView" layoutX="317.0" layoutY="150.0" onMouseClicked="#Supp_click" prefHeight="506.0" prefWidth="679.0" style="-fx-background-color: white; -fx-border-color: black;">
+      <TableView fx:id="tblView" layoutX="322.0" layoutY="237.0" onMouseClicked="#Supp_click" prefHeight="506.0" prefWidth="679.0" style="-fx-background-color: white; -fx-border-color: black;">
         <columns>
             <TableColumn fx:id="column_FirstName" prefWidth="116.0" text="First Name" />
             <TableColumn fx:id="column_LastName" prefWidth="114.0" text="Last Name" />
@@ -39,74 +39,119 @@
             <TableColumn fx:id="ColumnNote" prefWidth="90.0" text="Rating" />
         </columns>
       </TableView>
-      <JFXTextField fx:id="txtFirstName" alignment="CENTER" focusColor="#3a4461" layoutX="131.0" layoutY="202.0" promptText="First Name" />
-      <JFXTextField fx:id="txtLastName" alignment="CENTER" focusColor="#3a4461" layoutX="132.0" layoutY="273.0" promptText="Last Name" />
-      <JFXTextField fx:id="txtEmail" alignment="CENTER" focusColor="#3a4461" layoutX="131.0" layoutY="336.0" promptText="Email" />
-      <JFXTextField fx:id="txtcin" alignment="CENTER" focusColor="#3a4461" layoutX="132.0" layoutY="398.0" promptText="Phone Number" text="CIN Number" />
-      <ImageView fx:id="EmployeeImageView" fitHeight="96.0" fitWidth="112.0" layoutX="12.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="updateBtn" layoutX="116.0" layoutY="656.0" mnemonicParsing="false" onAction="#updateEmployeeAction" opacity="0.94" prefHeight="31.0" prefWidth="94.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #4a4f78; -fx-background-color: #4a4f78;" text="  Update" textFill="#f8f8f8">
+      <JFXTextField fx:id="txtFirstName" alignment="CENTER" focusColor="#3a4461" layoutX="134.0" layoutY="260.0" promptText="First Name" />
+      <JFXTextField fx:id="txtLastName" alignment="CENTER" focusColor="#3a4461" layoutX="135.0" layoutY="331.0" promptText="Last Name" />
+      <JFXTextField fx:id="txtEmail" alignment="CENTER" focusColor="#3a4461" layoutX="134.0" layoutY="394.0" promptText="Email" />
+      <JFXTextField fx:id="txtcin" alignment="CENTER" focusColor="#3a4461" layoutX="135.0" layoutY="456.0" promptText="Phone Number" text="CIN Number" />
+      <ImageView fx:id="EmployeeImageView" fitHeight="96.0" fitWidth="112.0" layoutX="12.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="updateBtn" layoutX="112.0" layoutY="712.0" mnemonicParsing="false" onAction="#updateEmployeeAction" opacity="0.94" prefHeight="31.0" prefWidth="94.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: #4a4f78; -fx-background-color: #4a4f78;" text="  Update" textFill="#f8f8f8">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="saveBtn" layoutX="217.0" layoutY="656.0" mnemonicParsing="false" onAction="#SaveEmployeeAction" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: #49c18c; -fx-border-color: #49c18c; -fx-background-radius: 30; -fx-border-radius: 30;" text="   Save" textFill="WHITE">
+      <Button fx:id="saveBtn" layoutX="213.0" layoutY="712.0" mnemonicParsing="false" onAction="#SaveEmployeeAction" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: #49c18c; -fx-border-color: #49c18c; -fx-background-radius: 30; -fx-border-radius: 30;" text="   Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="btnDelete" layoutX="18.0" layoutY="656.0" mnemonicParsing="false" onAction="#DeleteEmployeeAction" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: #e74c3c; -fx-border-color: #e74c3c; -fx-border-radius: 30; -fx-background-radius: 30;" text="  Delete" textFill="WHITE">
+      <Button fx:id="btnDelete" layoutX="14.0" layoutY="712.0" mnemonicParsing="false" onAction="#DeleteEmployeeAction" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: #e74c3c; -fx-border-color: #e74c3c; -fx-border-radius: 30; -fx-background-radius: 30;" text="  Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Label fx:id="firstNameLabel" alignment="CENTER" layoutX="29.0" layoutY="302.0" prefHeight="17.0" prefWidth="85.0">
+      <Label fx:id="firstNameLabel" alignment="CENTER" layoutX="29.0" layoutY="337.0" prefHeight="17.0" prefWidth="85.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lastNameLabel" alignment="CENTER" layoutX="29.0" layoutY="319.0" prefHeight="17.0" prefWidth="85.0">
+      <Label fx:id="lastNameLabel" alignment="CENTER" layoutX="29.0" layoutY="354.0" prefHeight="17.0" prefWidth="85.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="searchText" focusColor="#444e6f" layoutX="663.0" layoutY="112.0" onAction="#SearchEmployeeAction" prefHeight="25.0" prefWidth="104.0" />
-      <ImageView fx:id="searchIcone" fitHeight="25.0" fitWidth="32.0" layoutX="622.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+      <JFXTextField fx:id="searchText" focusColor="#444e6f" layoutX="668.0" layoutY="199.0" onAction="#SearchEmployeeAction" prefHeight="25.0" prefWidth="104.0" />
+      <ImageView fx:id="searchIcone" fitHeight="25.0" fitWidth="32.0" layoutX="627.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../pictures/searchIcon.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="refreshImageView" fitHeight="17.0" fitWidth="25.0" layoutX="311.0" layoutY="129.0" onMouseClicked="#refreshAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="refreshImageView" fitHeight="17.0" fitWidth="25.0" layoutX="316.0" layoutY="216.0" onMouseClicked="#refreshAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../pictures/refreshIcone.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="17.0" fitWidth="25.0" layoutX="32.0" layoutY="663.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="17.0" fitWidth="25.0" layoutX="28.0" layoutY="719.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../pictures/deleteIcon.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="17.0" fitWidth="25.0" layoutX="123.0" layoutY="663.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="17.0" fitWidth="25.0" layoutX="119.0" layoutY="719.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../pictures/UpdateIcone.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="226.0" layoutY="659.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="222.0" layoutY="715.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../pictures/saveIcon.png" />
          </image>
       </ImageView>
       <TextField fx:id="txtfieldDelete" layoutX="43.0" layoutY="386.0" prefHeight="25.0" prefWidth="50.0" visible="false" />
-      <ImageView fx:id="addEmployeeImage" fitHeight="31.0" fitWidth="35.0" layoutX="956.0" layoutY="109.0" onMouseClicked="#moveToAddEmloyeeAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="addEmployeeImage" fitHeight="31.0" fitWidth="35.0" layoutX="961.0" layoutY="196.0" onMouseClicked="#moveToAddEmloyeeAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../pictures/addEmployeeIcone.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="34.0" fitWidth="37.0" layoutX="65.0" layoutY="531.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="34.0" fitWidth="37.0" layoutX="68.0" layoutY="589.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../pictures/EmployeRateIcon.png" />
          </image>
       </ImageView>
-      <Rating fx:id="ratingId" layoutX="119.0" layoutY="532.0" prefHeight="34.0" prefWidth="171.0" rating="1.0" />
-      <JFXTextField fx:id="phonetxt" alignment="CENTER" focusColor="#424b68" layoutX="132.0" layoutY="469.0" promptText="Phone Number" />
+      <Rating fx:id="ratingId" layoutX="122.0" layoutY="590.0" prefHeight="34.0" prefWidth="171.0" rating="1.0" />
+      <JFXTextField fx:id="phonetxt" alignment="CENTER" focusColor="#424b68" layoutX="135.0" layoutY="527.0" promptText="Phone Number" />
+      <Label fx:id="nombreAgentLabel" layoutX="410.0" layoutY="127.0" prefHeight="31.0" prefWidth="31.0" text="0">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="59.0" fitWidth="77.0" layoutX="340.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/Agent.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="59.0" fitWidth="77.0" layoutX="568.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/employee.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="59.0" fitWidth="77.0" layoutX="772.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/businessman.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="446.0" layoutY="127.0" text="Agents">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="662.0" layoutY="127.0" text="Experts">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="nombreExpertsLabel" layoutX="633.0" layoutY="128.0" prefHeight="31.0" prefWidth="31.0" text="0">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="nbreFinanciersLabel" layoutX="834.0" layoutY="127.0" prefHeight="31.0" prefWidth="25.0" text="0">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="862.0" layoutY="127.0" text="Financiers">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

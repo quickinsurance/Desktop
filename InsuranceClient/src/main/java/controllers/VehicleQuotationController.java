@@ -531,7 +531,7 @@ public class VehicleQuotationController implements Initializable {
 			vQuotation.setOption_vehicle("Tiers Etendu");
 		}
 		else if(tousRisquesCheckBox.isSelected()){
-			vQuotation.setOption_vehicle("Tous Risques");
+			vQuotation.setOption_vehicle("All Risks");
 		}
 		user.setFirstName(firstNametxt.getText());
 		user.setLastName(lastNametxt.getText());

@@ -18,6 +18,7 @@ import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXTextField;
 
 import entities.User;
+import entities.Vehicle;
 import entities.VehicleQuotation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -115,12 +116,27 @@ public class ManageEmployeesController implements Initializable{
     
     @FXML
     private JFXTextField phonetxt;
+    
+    @FXML
+    private Label nombreAgentLabel;
+
+    @FXML
+    private Label nombreExpertsLabel;
+
+    @FXML
+    private Label nbreFinanciersLabel;
 	
 	@FXML
 	private ImageView searchIcone;
 	User user = new User();
 	private ObservableList<User> data;
+	private ObservableList<User> dataA;
+	private ObservableList<User> dataE;
+	private ObservableList<User> dataF;
 	List<User> usersList;
+	List<User> usersListA;
+	List<User> usersListE;
+	List<User> usersListF;
 	
 	private ManageEmployeesDisplaysController containerParent;
 	
@@ -144,6 +160,29 @@ public class ManageEmployeesController implements Initializable{
 		UserServiceRemote proxy = (UserServiceRemote) context.lookup(jndiName);
 		return proxy.findAllUsers();
 	}
+	public Object ServicefindAllExperts() throws Exception
+	{
+		String jndiName = "Insurance-ear/Insurance-ejb/UserServiceImpl!services.interf.UserServiceRemote";
+		Context context = new InitialContext();
+		UserServiceRemote proxy = (UserServiceRemote) context.lookup(jndiName);
+		return proxy.findAllExperts();
+	}
+	public Object ServicefindAllAgents() throws Exception
+	{
+		String jndiName = "Insurance-ear/Insurance-ejb/UserServiceImpl!services.interf.UserServiceRemote";
+		Context context = new InitialContext();
+		UserServiceRemote proxy = (UserServiceRemote) context.lookup(jndiName);
+		return proxy.findAllAgents();
+	}
+	public Object ServicefindAllFinanciers() throws Exception
+	{
+		String jndiName = "Insurance-ear/Insurance-ejb/UserServiceImpl!services.interf.UserServiceRemote";
+		Context context = new InitialContext();
+		UserServiceRemote proxy = (UserServiceRemote) context.lookup(jndiName);
+		return proxy.findAllFinanciers();
+	}
+	
+	
 
 	public void ServiceRemoveUser(int id) throws Exception
 	{
@@ -182,7 +221,17 @@ public class ManageEmployeesController implements Initializable{
 	
 	public void afficher() throws Exception{
 		usersList = (List<User>) ServicefindAllUsers();
-		data = FXCollections.observableArrayList(usersList);
+		data= FXCollections.observableArrayList(usersList);
+		usersListE= (List<User>) ServicefindAllExperts();
+		usersListA=(List<User>) ServicefindAllAgents();
+		usersListF=(List<User>) ServicefindAllFinanciers();
+		
+		dataA = FXCollections.observableArrayList(usersListA);
+		dataE = FXCollections.observableArrayList(usersListE);
+		dataF = FXCollections.observableArrayList(usersListF);
+		
+		data=FXCollections.concat(dataA, dataE, dataF);
+		
 		column_FirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 		column_LastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 		columnEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
@@ -193,6 +242,28 @@ public class ManageEmployeesController implements Initializable{
 		tblView.setItems(data);
 		ActionEvent event = null;
 		SearchEmployeeAction(event);
+	
+		ObservableList<User> oblist=FXCollections.observableArrayList(usersList);
+		int a =0;
+		int b =0;
+		int c=0;
+		
+		for (int i=0; i<oblist.size(); i++){
+			
+			if (oblist.get(i).getRole().equals("Financier"))
+				{
+					a++;
+					}else if(oblist.get(i).getRole().equals("Expert")){
+						b++;
+					}
+					else if(oblist.get(i).getRole().equals("Agent")){
+						c++;
+			}
+			
+		    nbreFinanciersLabel.setText(String.valueOf(a));
+		    nombreExpertsLabel.setText(String.valueOf(b));
+		    nombreAgentLabel.setText(String.valueOf(c));}
+		
 	}
     @FXML
     void refreshAction(MouseEvent event) throws Exception {
