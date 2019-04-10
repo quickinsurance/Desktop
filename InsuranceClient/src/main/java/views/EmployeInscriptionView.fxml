@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorParent" prefHeight="750.0" prefWidth="1009.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EmployeInscriptionController">
+   <children>
+      <Pane opacity="0.77" prefHeight="64.0" prefWidth="1009.0" style="-fx-background-color: #e74c3c;">
+         <children>
+            <Label layoutX="404.0" layoutY="20.0" prefHeight="26.0" prefWidth="230.0" text="Employee Registration" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="376.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/RegisterEmployeeIcone.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="returnImage" fitHeight="31.0" fitWidth="32.0" layoutX="964.0" layoutY="1.0" onMouseClicked="#returnToManage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/returnToManage.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <JFXTextField fx:id="txt_FirstName" alignment="CENTER" layoutX="218.0" layoutY="98.0" prefHeight="25.0" prefWidth="150.0" promptText="First Name" />
+      <JFXTextField fx:id="txt_LastName" alignment="CENTER" layoutX="218.0" layoutY="169.0" prefHeight="25.0" prefWidth="154.0" promptText="Last Name" />
+      <JFXTextField fx:id="cinTxt" alignment="CENTER" layoutX="225.0" layoutY="309.0" prefHeight="25.0" prefWidth="150.0" promptText="CIN" />
+      <JFXTextField fx:id="txt_Phone" alignment="CENTER" layoutX="605.0" layoutY="177.0" promptText="Phone Number" />
+      <JFXRadioButton fx:id="Rmale" layoutX="212.0" layoutY="253.0" prefHeight="17.0" prefWidth="85.0" text="Male">
+         <toggleGroup>
+            <ToggleGroup fx:id="genderGroup" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="Rfemale" layoutX="297.0" layoutY="253.0" prefHeight="17.0" prefWidth="85.0" selected="true" text="Female" toggleGroup="$genderGroup" />
+      <JFXDatePicker fx:id="birthPicker" layoutX="599.0" layoutY="106.0" promptText="          Birth Date" />
+      <JFXComboBox fx:id="comboRole" layoutX="605.0" layoutY="391.0" onAction="#changeCombo" prefHeight="25.0" prefWidth="146.0" promptText="                 Role" />
+      <Label layoutX="102.0" layoutY="115.0" prefHeight="17.0" prefWidth="95.0" text="First Name:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="102.0" layoutY="186.0" prefHeight="17.0" prefWidth="95.0" text="Last Name:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="102.0" layoutY="579.0" prefHeight="17.0" prefWidth="95.0" text=" Retype Code:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="102.0" layoutY="479.0" prefHeight="17.0" prefWidth="95.0" text=" Code:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="102.0" layoutY="326.0" prefHeight="17.0" prefWidth="95.0" text=" CIN Number:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="102.0" layoutY="253.0" prefHeight="17.0" prefWidth="95.0" text=" Gender:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Button fx:id="btnRegister" layoutX="845.0" layoutY="698.0" mnemonicParsing="false" onAction="#RegisterEmployee" prefHeight="38.0" prefWidth="154.0" style="-fx-background-color: #e74c3c; -fx-border-color: #e74c3c; -fx-border-radius: 30; -fx-background-radius: 30;" text=" Register Employee" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <ImageView fx:id="EmployeeImageView" fitHeight="104.0" fitWidth="95.0" layoutX="637.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="btnReset" layoutX="733.0" layoutY="699.0" mnemonicParsing="false" onAction="#ResetAction" prefHeight="38.0" prefWidth="95.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #49c18c; -fx-border-color: #49c18c;" text="   Reset" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <JFXPasswordField fx:id="txt_Code" alignment="CENTER" layoutX="225.0" layoutY="470.0" prefHeight="25.0" prefWidth="150.0" promptText="Code" />
+      <JFXPasswordField fx:id="txt_Rcode" alignment="CENTER" layoutX="225.0" layoutY="567.0" prefHeight="25.0" prefWidth="154.0" promptText="Retype Code" />
+      <TextArea fx:id="textArea" layoutX="171.0" layoutY="576.0" prefHeight="38.0" prefWidth="102.0" visible="false" />
+      <Label layoutX="102.0" layoutY="400.0" prefHeight="17.0" prefWidth="95.0" text=" Email:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <JFXTextField fx:id="txt_Email" alignment="CENTER" layoutX="219.0" layoutY="388.0" prefHeight="25.0" prefWidth="154.0" promptText="   Email" />
+      <JFXComboBox fx:id="FinancierServiceCombo" layoutX="602.0" layoutY="436.0" prefHeight="25.0" prefWidth="150.0" promptText="                 Service" visible="false" />
+      <JFXCheckBox fx:id="FinancierAdditionalDataBox" layoutX="613.0" layoutY="517.0" onAction="#CheckFinancierAdditionalDataAction" selected="true" text="Manage Additional Data" visible="false" />
+      <JFXCheckBox fx:id="FinancierTransactionsBox" layoutX="613.0" layoutY="549.0" onAction="#CheckFinancierTransactionsAction" text="Manage Financial transactions" visible="false" />
+      <JFXCheckBox fx:id="FinancierManagementBox" layoutX="613.0" layoutY="578.0" onAction="#checkFinancierManagementAction" prefHeight="18.0" prefWidth="185.0" text="Manage Financial Emlpoyees" visible="false" />
+      <JFXComboBox fx:id="AgentAgenceCombo" layoutX="610.0" layoutY="454.0" prefHeight="25.0" prefWidth="146.0" promptText="              Agence" visible="false" />
+      <JFXComboBox fx:id="ExpertSpecialityCombo" layoutX="600.0" layoutY="462.0" prefHeight="25.0" prefWidth="150.0" promptText="               Speciality" visible="false" />
+      <ImageView fx:id="btnPicture" fitHeight="28.0" fitWidth="31.0" layoutX="623.0" layoutY="239.0" onMouseClicked="#importPicture" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/TakePictureIcon.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="660.0" layoutY="244.0" prefHeight="17.0" prefWidth="123.0" text="Import a Picture">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelFirstName" layoutX="225.0" layoutY="134.0" prefHeight="17.0" prefWidth="95.0" text="Label" textFill="#f42b2b" visible="false" />
+      <Label fx:id="labelLastName" layoutX="222.0" layoutY="205.0" prefHeight="17.0" prefWidth="95.0" text="Label" textFill="#f42b2b" visible="false" />
+      <Label fx:id="labelCin" layoutX="225.0" layoutY="345.0" prefHeight="17.0" prefWidth="110.0" text="Label" textFill="#f42b2b" visible="false" />
+      <Label fx:id="labelEmail" layoutX="225.0" layoutY="420.0" prefHeight="17.0" prefWidth="123.0" text="Label" textFill="#f42b2b" visible="false" />
+      <Label fx:id="labelCode" layoutX="222.0" layoutY="508.0" prefHeight="17.0" prefWidth="123.0" text="Label" textFill="#f42b2b" visible="false" />
+      <Label fx:id="labelRcode" layoutX="219.0" layoutY="597.0" prefHeight="17.0" prefWidth="162.0" text="Label" textFill="#f42b2b" visible="false" />
+      <Label fx:id="labelBirth" layoutX="598.0" layoutY="134.0" prefHeight="17.0" prefWidth="95.0" text="Label" textFill="#f42b2b" visible="false" />
+      <Label fx:id="labelPhone" layoutX="598.0" layoutY="205.0" prefHeight="17.0" prefWidth="146.0" text="Label" textFill="#f42b2b" visible="false" />
+      <Label fx:id="labelRole" layoutX="610.0" layoutY="415.0" prefHeight="17.0" prefWidth="95.0" text="Label" textFill="#f42b2b" visible="false" />
+      <ImageView fitHeight="18.0" fitWidth="25.0" layoutX="747.0" layoutY="708.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/UpdateIcone.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="845.0" layoutY="708.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/SignatureIcone.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

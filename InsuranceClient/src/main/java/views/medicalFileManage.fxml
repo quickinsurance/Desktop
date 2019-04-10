@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="567.0" prefWidth="1009.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MedicalFileManageController">
+   <children>
+      <TableView fx:id="tbViewMedicalFile" layoutX="129.0" layoutY="175.0" onMouseClicked="#getListMedicalFile" prefHeight="310.0" prefWidth="680.0">
+        <columns>
+          <TableColumn fx:id="id_medicaleFile" prefWidth="75.0" text="Medical File" />
+          <TableColumn fx:id="consultationDate" prefWidth="121.0" text="Consultation Date" />
+            <TableColumn fx:id="insuredName" prefWidth="97.0" text="Insured Name " />
+            <TableColumn fx:id="formulas" prefWidth="162.0" text="Formulas" />
+            <TableColumn fx:id="bill" prefWidth="73.0" text="Bill" />
+            <TableColumn fx:id="type" prefWidth="151.0" text="Type" />
+        </columns>
+      </TableView>
+      <Pane layoutX="-1.0" opacity="0.8" prefHeight="67.0" prefWidth="1009.0" style="-fx-background-color: #e74c3c;">
+         <children>
+            <Label layoutX="441.0" layoutY="18.0" prefHeight="17.0" prefWidth="258.0" text="Care Bulletins" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
