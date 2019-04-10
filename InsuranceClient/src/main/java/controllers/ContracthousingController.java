@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import entities.Contract;
 import entities.Housing;
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,6 +38,12 @@ public class ContracthousingController implements Initializable{
 
     @FXML
     private Button add;
+
+    @FXML
+    private TableColumn<Housing,String> prime1;
+    @FXML
+    private TableColumn<Housing,String> Area1;
+    
     
     @FXML
     private Pane pnlCustomer;
@@ -164,7 +171,9 @@ public Housing house ;
 			Area.setCellValueFactory(cellData->new SimpleStringProperty(cellData.getValue().getClient().getFirstName()+
 					cellData.getValue().getClient().getFirstName()));
 			type.setCellValueFactory(new PropertyValueFactory<>("guarantee"));
-			link=status.getText();
+			prime1.setCellValueFactory(cellData->new SimpleStringProperty(String.valueOf(cellData.getValue().getPrime())));
+			Area1.setCellValueFactory(cellData->new SimpleStringProperty(cellData.getValue().getArea()));
+					link=status.getText();
 			System.out.println(oblist.size());
 			
 			
@@ -198,13 +207,15 @@ public Housing house ;
 			if (oblist.get(i).getEtatdemande().equals("on hold"))
 				{
 					a++;
-					}else if(oblist.get(i).getEtatdemande().equals("accepted")){
+					}else if(oblist.get(i).getEtatdemande().equals("Accepted")){
 						b++;
 						
 					}else{
 						c++;
 					}
-			if(oblist.get(i).getEtatdemande().equals("accepted")||oblist.get(i).getEtatdemande().equals("refused")){
+			
+			
+			if(oblist.get(i).getEtatdemande().equals("Refused")||oblist.get(i).getEtatdemande().equals("Accepted")){
 				to++;
 			}
 				}  
@@ -214,7 +225,7 @@ public Housing house ;
 			    onhold.setText(String.valueOf(a));
 			    AcceptedContra.setText(String.valueOf(b));
 			    refusedcontra.setText(String.valueOf(c));
-			    total.setText(String.valueOf(to));
+			    total.setText(String.valueOf(oblist.size()));
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

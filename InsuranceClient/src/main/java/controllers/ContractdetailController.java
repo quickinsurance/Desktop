@@ -2,10 +2,17 @@ package controllers;
 
 import java.util.ResourceBundle;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.codec.Base64.OutputStream;
+
 import entities.Contract;
 import entities.Housing;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 
@@ -128,6 +135,8 @@ public class ContractdetailController implements Initializable{
 		
 
 	}
+	
+	Housing house;
 	 
 
 
@@ -149,7 +158,7 @@ public class ContractdetailController implements Initializable{
 
     		
 
-			Housing house =t.ServicefindContracthouse(id1);
+			 house =t.ServicefindContracthouse(id1);
 			
 			
 			Address1.setText(String.valueOf(house.getAddress()));
@@ -215,12 +224,21 @@ floor.setVisible(true);
 		 house.setEtatdemande("Accepted");
 		 t.ServiceUpdateContracthouse(house);
 		System.out.println(house.getEtatdemande());
+	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Operation Successful !");
+        alert.setHeaderText("A new Contract saved correctly.");
+        alert.setContentText("A new Contract has been saved inside the folder QuickInsuranceContracts");
+        alert.showAndWait();
     }
 
     @FXML
     void Refuse(ActionEvent event) throws Exception {
        
-  	
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Operation Successful !");
+        alert.setHeaderText("A new Contract saved correctly.");
+        alert.setContentText("A new Contract has been saved inside the folder QuickInsuranceContracts");
+        alert.showAndWait();
     		
 
     	Test t = new Test();
@@ -328,6 +346,43 @@ SwitchScreen ss = new SwitchScreen();
     
 }*/
     
+	
+	  @FXML
+	    void printPdfContract(ActionEvent event) throws DocumentException, IOException {	
+	    	String f= house.getClient().getFirstName();
+	    	String l =house.getClient().getLastName();    	
+	    	FileOutputStream file = new FileOutputStream(new File("C:\\Users\\haythem\\Desktop\\Contract\\"+l+f+"Contract.pdf"));
+	    	Document document = new Document();
+	    	PdfWriter.getInstance(document, file);
+	    	document.open();
+	   
+	    	document.add(new Paragraph(""));
+	    	document.add(new Paragraph(""));
+	    	document.add(new Paragraph("                                                    House Insurance Contract"));
+	    	document.add(new Paragraph("."));
+	    	document.add(new Paragraph("."));
+	    	document.add(new Paragraph("First Name:    "+house.getClient().getFirstName()));
+	    	document.add(new Paragraph("Last Name:     "+house.getClient().getLastName()));
+	    	document.add(new Paragraph("CIN number:    "+ house.getClient().getCin()));
+	    	document.add(new Paragraph("Adresse:       "+ Address1.getText()));
+	    	document.add(new Paragraph("RIB Number:    "+ house.getClient().getRIB_Number()));
+	    	
+	    	document.add(new Paragraph("Prime value"+Prime.getText()));
+	    	document.add(new Paragraph("House value: " + vlaue.getText()));
+	    	document.add(new Paragraph("secured objects value: "+ objectV.getText()));
+	    	document.add(new Paragraph("Gurantee option: " + Gurantee1.getText()));
+	    	document.add(new Paragraph("                          /n"));
+	    	document.add(new Paragraph("Signature"));
+	    	document.add(new Paragraph("."));
+	    	document.close();
+	        file.close();
+	        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	        alert.setTitle("Operation Successful !");
+	        alert.setHeaderText("A new Contract saved correctly.");
+	        alert.setContentText("A new Contract has been saved inside the folder QuickInsuranceContracts");
+	        alert.showAndWait();
+	    }
+	
 
 }
     

@@ -17,6 +17,7 @@ import com.jfoenix.controls.JFXTextField;
 
 import entities.Agent;
 import entities.Client;
+import entities.Contract.type_contract;
 import entities.Housing;
 import entities.User;
 import javafx.collections.FXCollections;
@@ -174,6 +175,7 @@ public class AddContractHousingController implements Initializable {
     private JFXTextField code;
     
     Housing h = new Housing();
+    type_contract tc ;
     
    public  Client cl ;
     
@@ -333,6 +335,7 @@ public class AddContractHousingController implements Initializable {
                 h.setCommission(Integer.parseInt(commission.getText()));
                 h.setDate_end(java.sql.Date.valueOf(date.getValue()));
                 h.setEtatdemande("on hold");
+                h.setType_contract(tc.housing);
                 
                 System.out.println(java.sql.Date.valueOf(date.getValue()).toString());
                 h.setDate_creation(java.sql.Date.valueOf(java.time.LocalDate.now()));
@@ -416,6 +419,8 @@ h.setPrime(prime);
   {sinistercoff=(float) (housevaluee*0.2+objectsvalue*0.02);
 	  
   }
+  
+  
   
   if (h.getHouseProtection()=="none")
   {
