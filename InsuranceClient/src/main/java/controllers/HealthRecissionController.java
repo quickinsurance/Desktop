@@ -150,7 +150,7 @@ public class HealthRecissionController  implements Initializable {
 
 				IHealthInterfaceRemote proxy = (IHealthInterfaceRemote) context.lookup(jndiName);
 				Agent agent = new Agent();
-				agent.setId(1);
+				agent.setId(13);
 				List<Health> healths = proxy.getRecissionByAgent(agent);
 
 				ObservableList<Health> listm = FXCollections.observableArrayList();

@@ -390,6 +390,8 @@ public class SecondMainController implements Initializable {
     	setContentAnchor("/views/ContractHousingContainerView.fxml", anchorPane);
 
     }
+    
+
 
 	
 
@@ -404,9 +406,14 @@ public class SecondMainController implements Initializable {
 		AgenceAgenT.setText(agentConnected.getAgence());
 		Image image = new Image("file:"+agentConnected.getPhoto());
 		agent.setImage(image);
-		
 				
 	}
+    @FXML
+    void showVehicleGuarantee(ActionEvent event) throws IOException {
+    	setContentAnchor("/views/GuaranteeCheckVehicleView.fxml", anchorPane);
+    }
+	
+	
 	
 	 @FXML
 	    void deconnexion(ActionEvent event) throws IOException {

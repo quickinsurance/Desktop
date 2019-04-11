@@ -95,11 +95,11 @@ public class ClaimController implements Initializable {
 	    void getFileattached(MouseEvent event) throws IOException {
 		   byte[] b = claim.getDocument();
 			// download it
-			OutputStream out = new FileOutputStream("E:\\doc.pdf");
+			OutputStream out = new FileOutputStream("D:\\doc.pdf");
 			out.write(b);
 			out.close();
 			// open file
-			File myFile = new File("E:\\doc.pdf");
+			File myFile = new File("D:\\doc.pdf");
 			Desktop.getDesktop().open(myFile);
 			// delete it
 			// if (myFile.exists()) {

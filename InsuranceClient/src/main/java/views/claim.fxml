@@ -17,13 +17,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="content_area" prefHeight="580.0" prefWidth="1009.0" style="-fx-background-color: WHITE;" styleClass="white-card" stylesheets="@../../../../../../../Documents/NetBeansProjects/Flat%20Dashboard/src/app/css/stylehseet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClaimController">
+<VBox fx:id="content_area" prefHeight="580.0" prefWidth="1009.0" style="-fx-background-color: WHITE;" styleClass="white-card" stylesheets="@../viewStyle/stylehseet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClaimController">
    <children>
       <HBox prefHeight="580.0" prefWidth="874.0">
          <children>
             <VBox maxWidth="-Infinity" prefHeight="580.0" prefWidth="435.0">
                <children>
-                  <AnchorPane prefHeight="400.0" prefWidth="200.0" styleClass="card-white" stylesheets="@../css/stylehseet.css">
+                  <AnchorPane prefHeight="400.0" prefWidth="200.0" styleClass="card-white" stylesheets="@../viewStyle/stylehseet.css">
                      <children>
                         <GridPane layoutX="14.0" layoutY="44.0" prefHeight="443.0" prefWidth="384.0">
                            <columnConstraints>

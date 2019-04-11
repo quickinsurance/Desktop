@@ -795,7 +795,7 @@ public class AddHealthContractController implements Initializable {
 								health.setHealthcare(healthCare);
 								health.setDate_creation(Date.valueOf(LocalDate.now()));
 								health.setDate_end(Date.valueOf(LocalDate.now().plusYears(1)));
-								agent.setId(1);
+								agent.setId(13);
 								health.setAgent(agent);
 
 								proxyHealth.addHealth(health);
@@ -866,7 +866,7 @@ public class AddHealthContractController implements Initializable {
 								health.setHealthcare(healthCare);
 								health.setDate_creation(Date.valueOf(LocalDate.now()));
 								health.setDate_end(Date.valueOf(LocalDate.now().plusYears(1)));
-								agent.setId(1);
+								agent.setId(13);
 								health.setAgent(agent);
 
 								proxyHealth.addHealth(health);

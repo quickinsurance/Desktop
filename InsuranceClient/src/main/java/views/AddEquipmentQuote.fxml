@@ -37,7 +37,7 @@
                      <children>
                         <VBox maxWidth="-Infinity" prefHeight="543.0" prefWidth="446.0">
                            <children>
-                              <AnchorPane prefHeight="488.0" prefWidth="349.0" styleClass="card-white" stylesheets="@../css/stylehseet.css">
+                              <AnchorPane prefHeight="488.0" prefWidth="349.0" styleClass="card-white" stylesheets="@../viewStyle/stylehseet.css">
                                  <children>
                                     <GridPane fx:id="gridQuote" layoutX="14.0" layoutY="8.0" prefHeight="519.0" prefWidth="330.0">
                                        <columnConstraints>
@@ -116,7 +116,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                            <children>
-                              <AnchorPane prefHeight="525.0" prefWidth="406.0" styleClass="card-white" stylesheets="@../css/stylehseet.css">
+                              <AnchorPane prefHeight="525.0" prefWidth="406.0" styleClass="card-white" stylesheets="@../viewStyle/stylehseet.css">
                                  <children>
                                     <GridPane fx:id="gridPerson" layoutX="14.0" layoutY="38.0" prefHeight="444.0" prefWidth="313.0">
                                        <columnConstraints>

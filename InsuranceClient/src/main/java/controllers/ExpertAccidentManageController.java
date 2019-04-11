@@ -91,7 +91,7 @@ public class ExpertAccidentManageController implements Initializable {
 			String jndiName = "Insurance-ear/Insurance-ejb/AccidentServiceImplem!services.interf.IAccidentInterfaceRemote";
 			Context context;
 			Expert expert = new Expert();
-			expert.setId(29);
+			expert.setId(15);
 			try {
 			
 				context = new InitialContext();

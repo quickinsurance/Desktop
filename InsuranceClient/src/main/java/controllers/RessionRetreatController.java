@@ -70,7 +70,7 @@ public class RessionRetreatController  implements Initializable {
 
 			IRetreatInterfaceRemote proxy = (IRetreatInterfaceRemote) context.lookup(jndiName);
 			Agent agent = new Agent();
-			agent.setId(1);
+			agent.setId(13);
 			List<Retreat> retreats = proxy.listRescissionRetreat(agent);
 
 			ObservableList<Retreat> listm = FXCollections.observableArrayList();

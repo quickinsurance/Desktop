@@ -49,6 +49,12 @@ public class GuaranteeCheckVehicleController implements Initializable{
     @FXML
     private TextField user;
     type_contract tc ;
+    
+	private GuaranteeCheckVehicleContainerController containerParent;
+	
+    public void setContainer(GuaranteeCheckVehicleContainerController container){
+        this.containerParent = container;
+    }
 
 
     Test t = new Test();

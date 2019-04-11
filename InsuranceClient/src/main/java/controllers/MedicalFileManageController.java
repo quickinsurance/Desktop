@@ -115,7 +115,7 @@ public class MedicalFileManageController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		 agent = new Agent();
-		  agent.setId(1);
+		  agent.setId(13);
 		  String jndiName = "Insurance-ear/Insurance-ejb/MedicalFileImplem!services.interf.IMedicalFileRemote";
 			Context context;
 			try {

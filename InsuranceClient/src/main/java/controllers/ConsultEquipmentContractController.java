@@ -198,7 +198,7 @@ public class ConsultEquipmentContractController implements Initializable{
 			String jndiName1 = "Insurance-ear/Insurance-ejb/UserServiceImpl!services.interf.UserServiceRemote";
 			Context context1 = new InitialContext();
 			UserServiceRemote proxy1 = (UserServiceRemote) context1.lookup(jndiName1);
-			Agent agent=proxy1.findAgentById(1);
+			Agent agent=proxy1.findAgentById(19);
 			
 			ConsultNon.getChildren().clear();
 			GridPane grid = new GridPane();
@@ -322,7 +322,7 @@ public class ConsultEquipmentContractController implements Initializable{
 	public void generatePdf(Contract c) throws MalformedURLException, IOException, DocumentException, NamingException
 	{
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
-        PdfWriter writer = PdfWriter.getInstance(document,new FileOutputStream("E:\\contract.pdf"));
+        PdfWriter writer = PdfWriter.getInstance(document,new FileOutputStream("D:\\contract.pdf"));
         document.open();
 
         Paragraph paragraph1 = new Paragraph();
@@ -359,7 +359,7 @@ public class ConsultEquipmentContractController implements Initializable{
 "by both parties.";
 
     	document.add(new Paragraph(x));
-    	 Image image2 = Image.getInstance("E:\\cont.jpg");
+    	 Image image2 = Image.getInstance("D:\\cont.jpg");
          image2.scaleAbsolute(500f, 500f);
          document.add(image2);
     	document.add(new Paragraph("First Name: "+c.getClient().getFirstName()));
@@ -395,7 +395,7 @@ public class ConsultEquipmentContractController implements Initializable{
         document.add(t);
        
         document.close();
-        File myFile = new File("E:\\contract.pdf");
+        File myFile = new File("D:\\contract.pdf");
 		Desktop.getDesktop().open(myFile);
 	}
 	public void setContainer(EquipmentContractContainerController equipmentContractContainerController) {

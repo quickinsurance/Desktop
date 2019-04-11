@@ -353,7 +353,7 @@ public class SinisterEquipmentConsultController implements Initializable{
 "by both parties.";
 
     	document.add(new Paragraph(x));
-    	 Image image2 = Image.getInstance("E:\\cont.jpg");
+    	 Image image2 = Image.getInstance("D:\\cont.jpg");
          image2.scaleAbsolute(500f, 500f);
          document.add(image2);
     	document.add(new Paragraph("First Name: "+c.getClient().getFirstName()));
@@ -389,7 +389,7 @@ public class SinisterEquipmentConsultController implements Initializable{
         document.add(t);
        
         document.close();
-        File myFile = new File("E:\\contract.pdf");
+        File myFile = new File("D:\\contract.pdf");
 		Desktop.getDesktop().open(myFile);
 	}
 }

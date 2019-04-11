@@ -135,7 +135,7 @@
                         </JFXButton>
                         <VBox fx:id="vbox41" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Vehicle">
+                              <JFXButton contentDisplay="RIGHT" onAction="#showVehicleGuarantee" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Vehicle">
                                  <font>
                                     <Font name="Calibri" size="14.0" />
                                  </font>
