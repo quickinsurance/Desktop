@@ -6,8 +6,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 import com.jfoenix.controls.JFXButton;
 
+import entities.Agent;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.event.ActionEvent;
@@ -16,17 +21,32 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import services.interf.IAccidentInterfaceRemote;
+import services.interf.UserServiceRemote;
 import util.Test;
 
 public class SecondMainController implements Initializable {
+    @FXML
+    private JFXButton deconnect;
+	
+    @FXML
+    private ImageView logo;
+    
+	String jndiName = "Insurance-ear/Insurance-ejb/AccidentServiceImplem!services.interf.IAccidentInterfaceRemote";
+	
 	@FXML
 	private VBox sidebar;
 
@@ -52,6 +72,12 @@ public class SecondMainController implements Initializable {
 
 	@FXML
 	private VBox vbox31;
+	
+    @FXML
+    private Label AgentName;
+
+    @FXML
+    private Label AgenceAgenT;
 
 	@FXML
 	private JFXButton vehicleQuotationBtn;
@@ -109,6 +135,8 @@ public class SecondMainController implements Initializable {
 	private JFXButton healthSinisterBtn;
 	@FXML
     private JFXButton equipmentContractbtn;
+	
+	Agent agentConnected;
 
 
 	@FXML
@@ -119,6 +147,8 @@ public class SecondMainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		
+		//logo.setImage(new Image("Users\\asus\\Desktop\\photoshop\\logo.PNG"));
 		addMenusToMap();
 		vbox2.setPrefHeight(40);
 		vbox3.setPrefHeight(40);
@@ -360,4 +390,34 @@ public class SecondMainController implements Initializable {
     	setContentAnchor("/views/ContractHousingContainerView.fxml", anchorPane);
 
     }
+
+	
+
+	public void setIdUser(int id) throws NamingException {
+		String jndiName = "Insurance-ear/Insurance-ejb/UserServiceImpl!services.interf.UserServiceRemote";
+		Context context = new InitialContext();
+		UserServiceRemote proxy = (UserServiceRemote)context.lookup(jndiName);
+		
+		agentConnected=proxy.findAgentById(id);
+		AgentName.setText(agentConnected.getFirstName()+" "+agentConnected.getLastName());
+		
+		AgenceAgenT.setText(agentConnected.getAgence());
+		Image image = new Image("file:"+agentConnected.getPhoto());
+		agent.setImage(image);
+		
+				
+	}
+	
+	 @FXML
+	    void deconnexion(ActionEvent event) throws IOException {
+			Stage primaryStage = new Stage();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/LoginView.fxml"));
+			Parent root1 = (Parent) loader.load();
+			Scene scene = new Scene(root1);
+			primaryStage.setScene(scene);
+			Stage stage = (Stage) deconnect.getScene().getWindow();
+			stage.close();
+			primaryStage.show();
+	    }
+
 }

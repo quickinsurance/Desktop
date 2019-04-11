@@ -4,13 +4,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import jfxtras.scene.layout.HBox?>
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1340.0" prefWidth="1270.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ExpertMainController">
    <content>
@@ -23,12 +23,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </ImageView>
-                  <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn">
-                     <font>
-                        <Font name="Calibri" size="14.0" />
-                     </font>
-                  </JFXButton>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" text="Clients" textFill="#b8b1b1">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="145.0" text="      Clients" textFill="#b8b1b1">
                      <font>
                         <Font name="Calibri Bold" size="14.0" />
                      </font>
@@ -39,6 +34,9 @@
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </Label>
+                  <HBox />
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <ImageView fitHeight="19.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
                   <VBox fx:id="vbox6" prefHeight="89.0" prefWidth="250.0" styleClass="sidebar-btn">
                      <children>
                         <JFXButton fx:id="sinisters" text="Sinisters" textFill="#b8b1b1">
@@ -70,7 +68,7 @@
                   </VBox>
                   <VBox prefHeight="179.0" prefWidth="248.0" styleClass="sidebar-btn">
                      <children>
-                        <JFXButton text="Disconnect" textFill="#b8b1b1">
+                        <JFXButton fx:id="deconnect" onAction="#deconnexion" text="Disconnect" textFill="#b8b1b1">
                            <VBox.margin>
                               <Insets left="20.0" />
                            </VBox.margin>
@@ -85,13 +83,6 @@
                      <children>
                         <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#open_sidebar" prefHeight="50.0" prefWidth="50.0" ripplerFill="WHITE" styleClass="menu-bar-btns" />
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" styleClass="menu-bar-search-field-box" HBox.hgrow="ALWAYS">
-                           <children>
-                              <TextField maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Search for a job, task or resume" style="-fx-background-color: transparent;" styleClass="menu-bar-search-field" HBox.hgrow="ALWAYS">
-                                 <font>
-                                    <Font name="Calibri" size="16.0" />
-                                 </font>
-                              </TextField>
-                           </children>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -118,20 +109,12 @@
                               <Insets left="10.0" />
                            </HBox.margin>
                            <children>
-                              <Label styleClass="lbl2" text="ROLE" textFill="#757373">
+                              <Label fx:id="expertName" prefHeight="32.0" prefWidth="490.0" styleClass="lbl2" text="ROLE" textFill="#757373">
                                  <font>
                                     <Font name="Calibri Bold" size="28.0" />
                                  </font>
                               </Label>
-                              <HBox>
-                                 <children>
-                                    <Label styleClass="lbl2" text="AGENCE" textFill="#757373">
-                                       <font>
-                                          <Font name="Calibri Bold" size="16.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
+                              <HBox />
                            </children>
                         </VBox>
                         <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
@@ -202,6 +185,11 @@
                   </HBox>
                </children>
             </VBox>
+            <ImageView fitHeight="111.0" fitWidth="121.0" layoutX="59.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/logo.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </content>

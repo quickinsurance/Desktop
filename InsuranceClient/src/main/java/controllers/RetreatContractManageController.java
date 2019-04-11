@@ -75,6 +75,10 @@ public class RetreatContractManageController implements Initializable {
 	    @FXML
 	    void getListRecission(ActionEvent event) {
 
+	    	 FXMLLoader loader = containerParent.switchViewTo("/views/RessionRetreatView.fxml");
+			    ((RessionRetreatController) loader.getController()).setContainer(containerParent);
+
+
 	    }
 
 		@Override
