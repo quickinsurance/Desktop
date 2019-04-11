@@ -2,10 +2,8 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
-import entities.Contract;
 import entities.Guarantee;
 import entities.Sinister;
 import entities.Contract.type_contract;
@@ -16,21 +14,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import tn.esprit.Test;
 
-
-public class GuaranteeCheckHousingController implements Initializable{
+public class GuaranteeCheckVehicleController implements Initializable{
 	
     @FXML
     private Pane pane1;
@@ -52,13 +44,7 @@ public class GuaranteeCheckHousingController implements Initializable{
     @FXML
     private TableColumn<Guarantee, String> prime;
     @FXML
-    private TableColumn<Guarantee, String>  name;
-
-    @FXML
-    private TableColumn<Guarantee, String> housevalue;
-
-    @FXML
-    private TableColumn<Guarantee, String> ojectsvalue;
+    private TableColumn<Guarantee, String> name;
 
     @FXML
     private TextField Contract;
@@ -83,8 +69,7 @@ public class GuaranteeCheckHousingController implements Initializable{
             for (Guarantee e : tab.getItems()) {
 
                 String filtertitre= String.valueOf(e.getContract().getClient().getCin());
-               String filtre2 = String.valueOf(e.getContract().getClient().getFirstName()+e.getContract().getClient().getLastName());
-               
+                String filtre2 = String.valueOf(e.getContract().getClient().getFirstName()+e.getContract().getClient().getLastName());
                System.out.println(e.getContract().getClient().getFirstName());
 
 
@@ -109,7 +94,6 @@ public class GuaranteeCheckHousingController implements Initializable{
 		
             try {
             	ObservableList<Sinister> oblist1=FXCollections.observableArrayList(t.findsinisters());
-            	
             	Node[] nodes = new Node[10];
                 for (int i = 0; i < oblist1.size(); i++) {
                 final int j = i;
@@ -171,16 +155,17 @@ public class GuaranteeCheckHousingController implements Initializable{
 				
 				ObservableList<Guarantee> oblist=FXCollections.observableArrayList(t.findgurantees());
 				for (Guarantee g  : oblist)
-					if(g.getContract().getType_contract().toString().equals("housing"))
+					if(g.getContract().getType_contract().toString()!="housing")
 					{
-						System.out.println("Element "+g.getContract()+"   type  "+g.getContract().getType_contract().toString());
+						System.out.println("Element "+g.getContract()+"   type  "+g.getAmount_franchise());
 
 						Guarantee.setCellValueFactory(new PropertyValueFactory<>("description"));
 						Amount_Franchise.setCellValueFactory(new PropertyValueFactory<>("amount_franchise"));
 						Limited_Amount.setCellValueFactory(new PropertyValueFactory<>("amount_limit"));
-						prime.setCellValueFactory(cellData->new SimpleStringProperty(String.valueOf(cellData.getValue().getContract().getPrime())));
+prime.setCellValueFactory(cellData->new SimpleStringProperty(String.valueOf(cellData.getValue().getContract().getPrime())));
 						
-						name.setCellValueFactory(cellData->new SimpleStringProperty(String.valueOf(cellData.getValue().getContract().getClient().getLastName()+"  "+cellData.getValue().getContract().getClient().getFirstName())));
+name.setCellValueFactory(cellData->new SimpleStringProperty(String.valueOf(cellData.getValue().getContract().getClient().getLastName()+"  "+cellData.getValue().getContract().getClient().getFirstName())));
+		
 
 		
 				
@@ -221,5 +206,3 @@ public class GuaranteeCheckHousingController implements Initializable{
 
 
 }
-
-

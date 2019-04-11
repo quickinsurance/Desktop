@@ -202,6 +202,7 @@ public Housing house ;
 			int b =0;
 			int c=0;
 			int to=0;
+			int oo=0;
 			for (int i=0; i<oblist.size(); i++){
 			
 			if (oblist.get(i).getEtatdemande().equals("on hold"))
@@ -210,7 +211,11 @@ public Housing house ;
 					}else if(oblist.get(i).getEtatdemande().equals("Accepted")){
 						b++;
 						
-					}else{
+					}else if(oblist.get(i).getEtatdemande().equals("resiliated")){
+						oo++;
+						
+					}
+					else{
 						c++;
 					}
 			
@@ -252,8 +257,8 @@ SwitchScreen ss = new SwitchScreen();
 Test t = new Test();
 t.addGuaranteeif();
 t.addoptionif();
-    	//ss.switchScreen("HousingGuranteeview.fxml", go);
-ss.switchScreen("/views/GuaranteeCheckHousingView.fxml", go);
+    	ss.switchScreen("/views/GuaranteeCheckVehicleView.fxml", go);
+//ss.switchScreen("/views/GuaranteeCheckHousingView.fxml", go);
     }
 
 
@@ -304,12 +309,21 @@ cd.startstage();
 
     }
     
+    
+    
   
 	public int gethouse() {
 		System.out.println(house.getContract_id());
 		return house.getContract_id();
 		
 
+	}
+
+	ContractHousingContainerController parentContainer;
+
+	public void setContainer(ContractHousingContainerController contractHousingContainerController) {
+		this.parentContainer=contractHousingContainerController;
+		
 	}
 
 }

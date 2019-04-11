@@ -3,6 +3,10 @@ package controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.hibernate.jpa.criteria.expression.function.AggregationFunction.MAX;
+
+import com.jfoenix.controls.JFXTextField;
+
 import entities.Guarantee;
 import entities.Sinister;
 import javafx.beans.property.SimpleStringProperty;
@@ -10,16 +14,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 import tn.esprit.Test;
 
 public class GuaranteeclaimController implements Initializable{
@@ -30,10 +39,35 @@ public class GuaranteeclaimController implements Initializable{
     private Button refund;
 	
     @FXML
+    private JFXTextField expertestim;
+    @FXML
     private TableView<Guarantee> tab;
     @FXML
     private TextFlow description1;
-    
+    @FXML
+    private Label clothing1;
+
+    @FXML
+    private Label jewwe;
+
+    @FXML
+    private Label electro1;
+
+    @FXML
+    private Label electrolife;
+
+    @FXML
+    private TextField clothing;
+
+    @FXML
+    private TextField jewwe1;
+
+    @FXML
+    private TextField electro2;
+
+    @FXML
+    private TextField electrolife2;
+
 
     @FXML
     private TableColumn<?, ?> Guarantee;
@@ -84,13 +118,25 @@ public class GuaranteeclaimController implements Initializable{
 		Test t = new Test();
 		System.out.println(s.getSinister_id()+"aaaa");
 		date.setText(s.getReport().getDate_report().toString());
+		adate.setText(s.getReport().getAccident().getDate_of_Accident().toString());
 	name.setText(s.getReport().getAccident().getExpert_opinion());
 		description.setText(s.getDescription());
 		Relatedgua.setText(t.findguranteebyContract(s.getReport().getAccident().getHousing().getContract_id()).get(0).getDescription());
 		refund1.setText(String.valueOf(t.findguranteebyContract(s.getReport().getAccident().getHousing().getContract_id()).get(0).getRefund()));
-		if (s.getRefund()==0){
+		if (t.findguranteebyContract(s.getReport().getAccident().getHousing().getContract_id()).get(0).getRefund()!=0){
 			tab.setVisible(false);
 			listg.setVisible(false);
+			electro2.setVisible(false);
+			expertestim.setVisible(false);
+			electro1.setVisible(false);
+			electrolife.setVisible(false);
+			electrolife2.setVisible(false);
+			jewwe.setVisible(false);
+			jewwe1.setVisible(false);
+			 clothing1.setVisible(false);
+			   clothing.setVisible(false);
+			
+			
 			Relatedgua1.setVisible(true);
 			Relatedgua.setVisible(true);
 			refund2.setVisible(true);
@@ -113,8 +159,34 @@ public class GuaranteeclaimController implements Initializable{
 		}
 				
 				
-				
-				
+				String[] array = s.getReport().getAccident().getHousing().getObjectsinsured().split("\\s", -1);
+			String obj=	s.getReport().getAccident().getHousing().getObjectsinsured();
+				for (int i=0; i<array.length+1; i++)
+				{
+					if (t.findguranteebyContract(s.getReport().getAccident().getHousing().getContract_id()).get(0).getRefund()==0){
+
+if (array[i].equals("clothing")){
+	
+
+ clothing1.setVisible(true);
+
+   clothing.setVisible(true);
+
+}if(array[i].equals("jewellery")){
+	jewwe.setVisible(true);
+
+	jewwe1.setVisible(true);
+}if(array[i].equals("electronics")){
+	electro2.setVisible(true);
+
+	electro1.setVisible(true);
+	electrolife.setVisible(true);
+	electrolife2.setVisible(true);
+}
+
+
+}
+				}
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -153,8 +225,126 @@ public class GuaranteeclaimController implements Initializable{
     	Test t = new Test();
     Guarantee gu =	tab.getSelectionModel().getSelectedItem();
     gu.setSinister(s);
-    gu.setRefund(1500);
+    
+    float fren = gu.getAmount_franchise();
+    float limit = gu.getAmount_limit();
+    float expertvalue=0;
+     expertvalue =Integer.parseInt(expertestim.getText());
+    float expertvalue1 = 50000;
+   String gua= s.getReport().getAccident().getHousing().getGuarantee();
+   float housevalue= s.getReport().getAccident().getHousing().getHousevalue();
+    float   objectvalue = s.getReport().getAccident().getHousing().getObjectsvalue();
+    
+    if (expertvalue!=0){
+    	
+    
+    if (gua.equals("HO-8")){
+    	
+    	if (expertvalue>limit){
+    		 gu.setRefund(expertvalue);
+  	}else {
+  		 gu.setRefund(expertvalue);
+  	}
+       
+    	
+    }else if (gua.equals("HO-5")){
+    	
+    	float refu =expertvalue;
+    	
+    	if (refu>limit){
+    		  gu.setRefund(limit-fren);
+    	}else {
+    		gu.setRefund(refu);
+    	}
+    	
+    }else if (gua.equals("HO-3")){
+    	float refu =expertvalue;
+
+    	if (refu>limit){
+    		  gu.setRefund(limit-fren);
+    	}else {
+    		gu.setRefund(refu);
+    	}
+    	
+    }else{
+    	float refu =expertvalue;
+
+    	if (refu>limit){
+    		  gu.setRefund(limit-fren);
+    	}else {
+    		gu.setRefund(refu-fren);
+    	}
+    	
+    }}else{
+    	 float cloth =Integer.parseInt(clothing.getText())*0.8f;
+    	 float jowl =Integer.parseInt(jewwe1.getText());	
+    	 	 
+    	 float electrolif =Integer.parseInt(electrolife2.getText());	
+    	 float electro =Integer.parseInt(electro2.getText())/electrolif;
+        if (gua.equals("HO-8")){
+        	float refu =cloth+jowl+electro;
+        	
+        	if (refu>limit){
+      		  gu.setRefund(limit-fren*0.9f);
+      	}else {
+      		 gu.setRefund(refu);
+      	}
+           
+        	
+        }else if (gua.equals("HO-5")){
+        	
+        	float refu =cloth+jowl+electro;
+        	
+        	if (refu>limit){
+        		  gu.setRefund(limit-fren*0.9f);
+        	}else {
+        		gu.setRefund(refu);
+        	}
+        	
+        }else if (gua.equals("HO-3")){
+        	float refu =cloth+jowl+electro;
+
+        	if (refu>limit){
+        		  gu.setRefund(limit-fren);
+        	}else {
+        		gu.setRefund(refu);
+        	}
+        	
+        }else{
+        	float refu =cloth+jowl+electro;
+
+        	if (refu>limit){
+        		  gu.setRefund(limit-fren);
+        	}else {
+        		gu.setRefund(refu-fren*0.9f);
+        	}
+    	
+        }
+    }
+    
+
+    
+    
+   
+ 
+   
+  
+    
+  
     t.updateGrantie(gu);
+    
+    
+    
+    
+	  FXMLLoader loader=new FXMLLoader(getClass().getResource("/views/Guaranteeclaimview.fxml"));
+	  System.out.println(s.getSinister_id());
+	  Parent root = (Parent) loader.load();
+	  GuaranteeclaimController cd = loader.getController();
+	  cd.setSinister(s);
+
+	  Stage stage=new Stage();
+	  stage.setScene(new Scene(root));
+	  stage.show();
 
     }
     

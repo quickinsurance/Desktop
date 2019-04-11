@@ -20,6 +20,8 @@ import entities.Client;
 import entities.Contract.type_contract;
 import entities.Housing;
 import entities.User;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,10 +31,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -41,6 +45,21 @@ import tn.esprit.SwitchScreen;
 import tn.esprit.Test;
 
 public class AddContractHousingController implements Initializable {
+	
+    @FXML
+    private CheckBox electro;
+
+    @FXML
+    private CheckBox other1;
+
+    @FXML
+    private CheckBox fourniture;
+	
+    @FXML
+    private CheckBox jollery;
+
+    @FXML
+    private CheckBox clothing;
 
     @FXML
     private AnchorPane anchor;
@@ -131,13 +150,17 @@ public class AddContractHousingController implements Initializable {
     private Label appartment;
     
     @FXML
+    private Label housevalue1;
+    
+    @FXML
     private JFXTextField housetype;
     @FXML
     private ComboBox<String> housetypebox;
     ObservableList<String> housetypelist = FXCollections.observableArrayList();
     
+
     @FXML
-    private ComboBox<String> objectsBox;
+    private ComboBox<String> ownerbox1;
     ObservableList<String> objectsList = FXCollections.observableArrayList();
 
     @FXML
@@ -156,7 +179,7 @@ public class AddContractHousingController implements Initializable {
     ObservableList<String> floorList = FXCollections.observableArrayList();
 
     @FXML
-    private ComboBox<String> guaranteebox;
+    private ComboBox<String> guaranteebox1;
     ObservableList<String> guaranteeList = FXCollections.observableArrayList();
 
 
@@ -176,6 +199,7 @@ public class AddContractHousingController implements Initializable {
     
     Housing h = new Housing();
     type_contract tc ;
+   private String object ="";
     
    public  Client cl ;
     
@@ -244,7 +268,7 @@ public class AddContractHousingController implements Initializable {
                 	buildyear1.setText("");
                 }
 
-                if (guaranteebox.getValue() == null) {
+                if (guaranteebox1.getValue() == null) {
                 	gurantee1.setText("Field is empty !");
                     gurantee1.setVisible(true);
                     valid = false;
@@ -252,14 +276,7 @@ public class AddContractHousingController implements Initializable {
                 	gurantee1.setText("");
                 }
                 
-                if (objectsBox.getValue() == null) {
-                	secured1.setText("Field is empty !");
-                	secured1.setVisible(true);
-                    valid = false;
-                } else {
-                	secured1.setText("");
-                }
-                
+        
                 
                 if (houseprotectBox.getValue() == null) {
                 	protect1.setText("Field is empty !");
@@ -275,12 +292,40 @@ public class AddContractHousingController implements Initializable {
                 } else {
                 	value2.setText("");
                 }
+                if (jollery.isSelected())
+                {
+                	object=object+" "+"jollery";
+                }
+                if (clothing.isSelected())
+                {
+                	object=object+" "+"clothing";
+                }if (fourniture.isSelected())
+                {
+                	object=object+" "+"fourniture";
+                }if (other1.isSelected())
+                {
+                	object=object+" "+"other";
+                }if (electro.isSelected())
+                {
+                	object=object+" "+"electronics";
+                }
+                
+                
+                if (ownerbox1.getValue() == null) {
+                	protect1.setText("Field is empty !");
+                	protect1.setVisible(true);
+                    valid = false;
+                } else {
+                	protect1.setText("");
+                }
+                
+                
                 
 //            
                 if (!valid) {
                     return;
                 }
-                
+              
                 
                 
               
@@ -301,12 +346,9 @@ public class AddContractHousingController implements Initializable {
                 }
                 
                 
-                if (owneryes.isSelected())
-                {
-                	h.setHouseownertype("yes");
-                }else{
-                	h.setHouseownertype("no");
-                }
+              
+                	
+               
                 
                 if (housetypebox.getValue().equals("")) {
                 	type.setText("Field is empty !");
@@ -316,8 +358,8 @@ public class AddContractHousingController implements Initializable {
                 	type.setText("");
                 }
  
-                
-                h.setGuarantee(guaranteebox.getValue());
+                h.setHouseownertype(ownerbox1.getValue());
+                h.setGuarantee(guaranteebox1.getValue());
                 h.setHomemainsec("homemainsec");
                 h.setHouseduration(buildbox.getValue());
                 h.setType_housing(housetypebox.getValue());
@@ -325,7 +367,7 @@ public class AddContractHousingController implements Initializable {
                 h.setHouseProtection(houseprotectBox.getValue());
                 h.setHousevalue(Integer.parseInt(housevalue.getText()));
                 h.setImage("image");
-                h.setObjectsinsured(objectsBox.getValue());
+                h.setObjectsinsured(object);//objectsBox.getValue()
                 h.setObjectsvalue(Integer.parseInt(objectvalue.getText()));
                 h.setSinisternmbr(Integer.parseInt(sinisterbox.getValue()));
                 h.setUninhabited(Integer.parseInt(unhabiteddays.getText()));
@@ -350,13 +392,12 @@ public class AddContractHousingController implements Initializable {
                 
                 System.out.println(h.getPrime());
                
-                
 
 
 float prime =calculerprime(h);
 h.setPrime(prime);
                 t.ServiceAddHousingContract(h);
-              
+                System.out.println(object+"33");
 
         FXMLLoader loader=new FXMLLoader(getClass().getResource("/views/Contracthousingview.fxml"));
         
@@ -474,9 +515,25 @@ h.setPrime(prime);
         	appartment.setVisible(false);
 			floorbox.setVisible(false);
         }
+        System.out.println(object);
+        
+ 
     }
 
+    @FXML
+    void show1(ActionEvent event) {
+        if (ownerbox1.getValue().equals("owner") ){
+         	 
+        	housevalue1.setVisible(true);
+        	housevalue.setVisible(true);
+            }else {
+            	housevalue1.setVisible(false);
+            	housevalue.setVisible(false);
+            }
+            System.out.println(object);
 
+    }
+   
 
 
     @FXML
@@ -502,12 +559,12 @@ h.setPrime(prime);
 			floorList.addAll("ground floor","Frist","other");
 			floorbox.setItems(floorList);
 			guaranteeList.addAll("HO-8","HO-5","HO-3","HO-2");
-			guaranteebox.setItems(guaranteeList);
-			objectsList.addAll("car","fridge","TV","doors","windows","other");
-			objectsBox.setItems(objectsList);
+			guaranteebox1.setItems(guaranteeList);
+		objectsList.addAll("owner","no");
+			ownerbox1.setItems(objectsList);
 			houseprotectList.addAll("alarme","armored door","video surveillance","smoke detector","none");
 			houseprotectBox.setItems(houseprotectList);
-			sinisterList.addAll("none","1","2","3","3+");
+			sinisterList.addAll("0","1","2","3");
 			sinisterbox.setItems(sinisterList);
 			System.out.println(cl.getCin());
 			

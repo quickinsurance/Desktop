@@ -100,6 +100,7 @@ public class ContractdetailController implements Initializable{
 	    @FXML
 	    private Label lastname;
 
+
 	    @FXML
 	    private Label cinnumber;
 
@@ -203,6 +204,12 @@ public class ContractdetailController implements Initializable{
 			vlaue.setText(String.valueOf(house.getHousevalue()));
 			protection.setText(String.valueOf(house.getHouseProtection()));
 			objectV.setText(String.valueOf(house.getObjectsvalue()));
+			String[] array = house.getObjectsinsured().split("\\s", -1);
+			for (int i=0; i<array.length+1; i++)
+			{
+			objectS.setText(array[i]+"  "+array[i+1]+" ");//*********************************
+    }
+	
 			unhabited.setText(String.valueOf(house.getHouseempty()));
 			yearnmbr.setText(String.valueOf(house.getHouseduration()));
 			yearnmbr.setText(String.valueOf(house.getHouseduration()));

@@ -1,20 +1,34 @@
 package controllers;
 
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.jfoenix.controls.JFXTextField;
 
 import entities.Client;
+import entities.Contract;
+import entities.Housing;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import tn.esprit.Test;
 
-	public class AddUserforHousingController {
+	public class AddUserforHousingController implements Initializable {
 	    @FXML
 	    private Button Adduser;
 
@@ -63,6 +77,46 @@ import tn.esprit.Test;
 	    private Label firstname1;
 	    @FXML
 	    private Label cin1;
+	    @FXML
+	    private TableView<Client> tab;
+
+	    @FXML
+	    private TableColumn<?, ?> fname;
+
+	    @FXML
+	    private TableColumn<?, ?> lname;
+
+	    @FXML
+	    private TableColumn<?, ?> job2;
+
+	    @FXML
+	    private TableColumn<?, ?> cin2;
+
+	    @FXML
+	    private TextField rechercheclient;
+	    
+	    void filterContract(String oldValue, String newValue) throws Exception {
+	    	Test t = new Test();
+	    	ObservableList<Client> filteredList = FXCollections.observableArrayList();
+	        if (rechercheclient.getText() == null || (newValue.length() < oldValue.length()) || newValue == null) {
+	            ObservableList<Client> oblist=FXCollections.observableArrayList(t.allclient());
+	            tab.setItems(oblist) ;
+	        } else {
+
+	            newValue = newValue.toUpperCase();
+
+	            for (Client e : tab.getItems()) {
+
+	                String filtertitre= e.getFirstName().toString();
+	                String filtre2 = String.valueOf(e.getCin());
+
+	                if (filtertitre.toUpperCase().contains(newValue)||filtre2.toUpperCase().contains(newValue)) {
+	                    filteredList.add(e);
+	                }
+	            }
+	            tab.setItems(filteredList);
+	        }
+	    }
 
 	    @FXML
 	    void adduser(ActionEvent event) throws Exception {
@@ -173,6 +227,55 @@ import tn.esprit.Test;
              
 
 	    }
+
+		@Override
+		public void initialize(URL location, ResourceBundle resources) {
+		Test t = new Test();
+	try {
+			
+			
+			ObservableList<Client> oblist=FXCollections.observableArrayList(t.allclient());
+		String link ;
+		
+		fname.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+			lname.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+			job2.setCellValueFactory(new PropertyValueFactory<>("job"));
+			cin2.setCellValueFactory(new PropertyValueFactory<>("cin"));
+			tab.setItems(oblist);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	rechercheclient.textProperty().addListener((observable, oldValue, newValue) -> {
+		
+		try {
+			filterContract(oldValue, newValue);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    System.out.println("textfield changed from " + oldValue + " to " + newValue);
+	});
+			
+		}
+		
+	    @FXML
+	    void gohousing(MouseEvent event) throws IOException {
+	        Client c1 = (Client) tab.getSelectionModel().getSelectedItem();
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/views/AddContractHousingView.fxml"));
+            
+            Parent root = (Parent) loader.load();
+            AddContractHousingController cd = loader.getController();
+            
+            cd.setclient(c1);
+            Stage stage=new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            cd.startstage();
+	        
+	    }
+		
+
 
 	
 }

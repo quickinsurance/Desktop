@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 
+import entities.Contract.type_contract;
 import entities.Sinister;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -52,11 +53,12 @@ public class ClaimboxController implements Initializable {
 		LocalDate datenext = LocalDate.parse(s.getReport().getDate_report().toString());
 		long noOfDaysBetween = ChronoUnit.DAYS.between(dateBefore,datenext);
 		if (noOfDaysBetween>15)
-		{
-			case1.setVisible(true);
+		{case1.setText("Denied");
+			
 		}
     	
     this.s=s;
+    type.setText(s.getReport().getAccident().getType_contract().toString());
 	name.setText(s.getReport().getAccident().getExpert().getFirstName()+s.getReport().getAccident().getExpert().getLastName());
 	date.setText(s.getReport().getAccident().getDate_of_Accident().toString());
 	date1.setText(s.getReport().getDate_report().toString());
@@ -81,6 +83,11 @@ public class ClaimboxController implements Initializable {
 
     @FXML
     void show(MouseEvent event) throws Exception {
+if (case1.getText().equals("Denied"))
+{
+	
+}else{
+	
 
   	  FXMLLoader loader=new FXMLLoader(getClass().getResource("/views/Guaranteeclaimview.fxml"));
 	  System.out.println(s.getSinister_id());
@@ -94,7 +101,7 @@ public class ClaimboxController implements Initializable {
   	  Stage stage=new Stage();
   	  stage.setScene(new Scene(root));
   	  stage.show();
-
+}
     }
 
 }

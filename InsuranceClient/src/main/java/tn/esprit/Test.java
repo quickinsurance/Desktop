@@ -30,20 +30,73 @@ public class Test {
 		List<Housing> housing =findContractsHousing();
 		Guarantee gu = new Guarantee();
 	for(Housing s :housing){
+		
+		if (s.getGuarantee().equals("HO-8"))
 			
-		gu.setAmount_franchise(150);
-		gu.setAmount_limit(2000);
-		gu.setDescription(s.getGuarantee());
-        gu.setCode_guarantee(2);
-        gu.setType("housing");
-        gu.setContract(s);
-			System.out.println();
-		System.out.println(t.findguranteesbyid(s.getContract_id()));
-				if ((t.findguranteebyContract((s.getContract_id())).size()==0)){
-					System.out.println(t.findguranteebyContract(s.getContract_id()));
-					
-                    ServiceAddGuarantee(gu);
-				}
+		{
+			gu.setAmount_limit(s.getHousevalue()+s.getObjectsvalue());
+			gu.setAmount_franchise(0);
+			gu.setDescription(s.getGuarantee());
+	        gu.setCode_guarantee(2);
+	        gu.setType("housing");
+	        gu.setContract(s);
+				System.out.println();
+			System.out.println(t.findguranteesbyid(s.getContract_id()));
+					if ((t.findguranteebyContract((s.getContract_id())).size()==0)){
+						System.out.println(t.findguranteebyContract(s.getContract_id()));
+						
+	                    ServiceAddGuarantee(gu);
+					}
+		}else if (s.getGuarantee().equals("HO-2"))
+		{
+			gu.setAmount_limit((s.getHousevalue()*0.4f)+(s.getObjectsvalue()*0.2f));
+			gu.setAmount_franchise((s.getHousevalue()*0.05f)+(s.getObjectsvalue()*0.3f));
+			gu.setDescription(s.getGuarantee());
+	        gu.setCode_guarantee(2);
+	        gu.setType("housing");
+	        gu.setContract(s);
+				System.out.println();
+			System.out.println(t.findguranteesbyid(s.getContract_id()));
+					if ((t.findguranteebyContract((s.getContract_id())).size()==0)){
+						System.out.println(t.findguranteebyContract(s.getContract_id()));
+						
+	                    ServiceAddGuarantee(gu);
+					}
+		}else if (s.getGuarantee().equals("HO-5"))
+		{
+			gu.setAmount_limit((s.getHousevalue()*0.7f)+(s.getObjectsvalue()*0.7f));
+			gu.setAmount_franchise((s.getHousevalue()*0.03f)+(s.getObjectsvalue()*0.1f));
+			gu.setDescription(s.getGuarantee());
+	        gu.setCode_guarantee(2);
+	        gu.setType("housing");
+	        gu.setContract(s);
+				System.out.println();
+			System.out.println(t.findguranteesbyid(s.getContract_id()));
+					if ((t.findguranteebyContract((s.getContract_id())).size()==0)){
+						System.out.println(t.findguranteebyContract(s.getContract_id()));
+						
+	                    ServiceAddGuarantee(gu);
+					}
+		}else if (s.getGuarantee().equals("HO-3"))
+		{
+			gu.setAmount_limit((s.getHousevalue()*0.7f)+(s.getObjectsvalue()*0.5f));
+			gu.setAmount_franchise((s.getHousevalue()*0.05f)+(s.getObjectsvalue()*0.2f));
+			gu.setDescription(s.getGuarantee());
+	        gu.setCode_guarantee(2);
+	        gu.setType("housing");
+	        gu.setContract(s);
+				System.out.println();
+			System.out.println(t.findguranteesbyid(s.getContract_id()));
+					if ((t.findguranteebyContract((s.getContract_id())).size()==0)){
+						System.out.println(t.findguranteebyContract(s.getContract_id()));
+						
+	                    ServiceAddGuarantee(gu);
+					}
+		}
+			
+		
+		
+	
 			}
 		}
 	
@@ -54,13 +107,48 @@ public class Test {
 		List<Vehicle> Vehicles =findvehiculeContracts();
 		Guarantee gu = new Guarantee();
 	for(Vehicle s :Vehicles){
+if (s.getVehicleOption().equals("All Risks"))
+{
+	gu.setAmount_franchise(0);
+	gu.setAmount_limit(50000);
+	gu.setDescription(s.getVehicleOption());
+    gu.setCode_guarantee(2);
+    gu.setType("vehicle");
+    gu.setContract(s);
+
+	System.out.println();
+System.out.println(t.findguranteesbyid(s.getContract_id()));
+		if ((t.findguranteebyContract((s.getContract_id())).size()==0)){
+			System.out.println(t.findguranteebyContract(s.getContract_id()));
 			
-		gu.setAmount_franchise(150);
-		gu.setAmount_limit(2000);
+            ServiceAddGuarantee(gu);
+		}
+	
+		}else if (s.getVehicleOption().equals("Tiers"))
+		{	gu.setAmount_franchise(200);
+		gu.setAmount_limit(4000);
 		gu.setDescription(s.getVehicleOption());
         gu.setCode_guarantee(2);
         gu.setType("vehicle");
         gu.setContract(s);
+
+		System.out.println();
+	System.out.println(t.findguranteesbyid(s.getContract_id()));
+			if ((t.findguranteebyContract((s.getContract_id())).size()==0)){
+				System.out.println(t.findguranteebyContract(s.getContract_id()));
+				
+                ServiceAddGuarantee(gu);
+			}
+		
+		}else if (s.getVehicleOption().equals("Tiers Etendu"))
+		{
+			gu.setAmount_franchise(100);
+			gu.setAmount_limit(10000);
+			gu.setDescription(s.getVehicleOption());
+	        gu.setCode_guarantee(2);
+	        gu.setType("vehicle");
+	        gu.setContract(s);
+
 			System.out.println();
 		System.out.println(t.findguranteesbyid(s.getContract_id()));
 				if ((t.findguranteebyContract((s.getContract_id())).size()==0)){
@@ -68,6 +156,9 @@ public class Test {
 					
                     ServiceAddGuarantee(gu);
 				}
+		}
+
+
 			}
 		}
 	
@@ -360,7 +451,20 @@ findAllContracthous
 		return Vehicles;
 
 	}
+
+	public  List<Client> allclient( ) throws Exception
+	{
+		String jndiName = "Insurance-ear/Insurance-ejb/GuranteeService!services.interf.IgarantieServiceRemote";
+		Context context = new InitialContext();
+		IgarantieServiceRemote proxy = (IgarantieServiceRemote) context.lookup(jndiName);
 	
+		List<Client> clients =proxy.findallclient();
+		return clients;
+		
+		
+
+
+	}
 	
 	
 	
