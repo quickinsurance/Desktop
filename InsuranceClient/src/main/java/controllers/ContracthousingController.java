@@ -96,6 +96,7 @@ public class ContracthousingController implements Initializable{
 public Housing house ;
     @FXML
     private Button go;
+    private ContractHousingContainerController containerParent;
     
 
 
@@ -267,7 +268,10 @@ t.addoptionif();
 SwitchScreen ss = new SwitchScreen();
     	
     	//ss.switchScreen("HousingGuranteeview.fxml", go);
-ss.switchScreen("/views/AddUserforHousingView.fxml", add);
+//ss.switchScreen("/views/AddUserforHousingView.fxml", add);
+
+FXMLLoader loader = containerParent.switchViewTo("/views/AddUserforHousingView.fxml");
+((AddUserforHousingController) loader.getController()).setContainer(containerParent);
 
     }
     

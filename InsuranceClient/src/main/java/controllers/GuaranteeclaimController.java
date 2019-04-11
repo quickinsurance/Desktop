@@ -25,6 +25,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextFlow;
@@ -34,6 +35,17 @@ import tn.esprit.Test;
 public class GuaranteeclaimController implements Initializable{
 
 
+    @FXML
+    private ImageView moneyimg;
+
+    @FXML
+    private ImageView electroimg;
+
+    @FXML
+    private ImageView clothimg;
+
+    @FXML
+    private ImageView jojoimg;
 	
 	@FXML
     private Button refund;
@@ -135,6 +147,10 @@ public class GuaranteeclaimController implements Initializable{
 			jewwe1.setVisible(false);
 			 clothing1.setVisible(false);
 			   clothing.setVisible(false);
+			   electroimg.setVisible(false);
+			   clothimg.setVisible(false);
+			   jojoimg.setVisible(false);
+			   moneyimg.setVisible(false);
 			
 			
 			Relatedgua1.setVisible(true);
@@ -169,16 +185,17 @@ if (array[i].equals("clothing")){
 	
 
  clothing1.setVisible(true);
-
+clothimg.setVisible(true);
    clothing.setVisible(true);
 
 }if(array[i].equals("jewellery")){
 	jewwe.setVisible(true);
+	jojoimg.setVisible(true);
 
 	jewwe1.setVisible(true);
 }if(array[i].equals("electronics")){
 	electro2.setVisible(true);
-
+	   electroimg.setVisible(true);
 	electro1.setVisible(true);
 	electrolife.setVisible(true);
 	electrolife2.setVisible(true);
@@ -345,6 +362,7 @@ if (array[i].equals("clothing")){
 	  Stage stage=new Stage();
 	  stage.setScene(new Scene(root));
 	  stage.show();
+	 
 
     }
     

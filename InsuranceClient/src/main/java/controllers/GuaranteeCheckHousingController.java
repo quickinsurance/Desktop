@@ -83,13 +83,14 @@ public class GuaranteeCheckHousingController implements Initializable{
             for (Guarantee e : tab.getItems()) {
 
                 String filtertitre= String.valueOf(e.getContract().getClient().getCin());
+                String filtertitre1= String.valueOf(e.getContract().getType_contract().toString());
                String filtre2 = String.valueOf(e.getContract().getClient().getFirstName()+e.getContract().getClient().getLastName());
                
                System.out.println(e.getContract().getClient().getFirstName());
 
 
              //  String filtre3 = String.valueOf(e.getContract().getClient().getLastName());
-                if (filtertitre.toUpperCase().contains(newValue)||filtre2.toUpperCase().contains(newValue)) {
+                if (filtertitre.toUpperCase().contains(newValue)||filtre2.toUpperCase().contains(newValue)||filtertitre1.toUpperCase().contains(newValue)) {
                     filteredList.add(e);
                     System.out.println(filtre2);
                 }
@@ -214,6 +215,13 @@ public class GuaranteeCheckHousingController implements Initializable{
 				}
 			    System.out.println("textfield changed from " + oldValue + " to " + newValue);
 			});}
+
+	GuaranteeCheckHousingContainerController  Parentcontainer;
+	public void setContainer(GuaranteeCheckHousingContainerController guaranteeCheckHousingContainerController) {
+
+		this.Parentcontainer=guaranteeCheckHousingContainerController;
+		
+	}
 
 		
 

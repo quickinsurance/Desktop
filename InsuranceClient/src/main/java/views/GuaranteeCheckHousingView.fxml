@@ -7,10 +7,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1009.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GuaranteeCheckHousingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="1009.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GuaranteeCheckHousingController">
    <children>
-      <AnchorPane layoutX="38.0" layoutY="190.0" prefHeight="296.0" prefWidth="780.0">
+      <AnchorPane layoutX="43.0" layoutY="259.0" prefHeight="296.0" prefWidth="780.0">
          <children>
             <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
@@ -27,12 +29,21 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <TextField fx:id="Contract" layoutX="837.0" layoutY="276.0" promptText="Reserch by User" />
-      <ScrollPane>
+      <TextField fx:id="Contract" layoutX="842.0" layoutY="345.0" promptText="Reserch by User" />
+      <ScrollPane layoutX="5.0" layoutY="69.0">
          <content>
             <HBox fx:id="claim1box" maxHeight="200.0" maxWidth="1004.0" prefHeight="176.0" prefWidth="998.0" />
          </content>
       </ScrollPane>
-      <Label layoutX="848.0" layoutY="233.0" prefHeight="17.0" prefWidth="128.0" text="Search by client or cin" />
+      <Label layoutX="853.0" layoutY="302.0" prefHeight="17.0" prefWidth="128.0" text="Search by client or cin" />
+      <Pane layoutX="-1.0" opacity="0.67" prefHeight="67.0" prefWidth="1009.0" style="-fx-background-color: red;">
+         <children>
+            <Label layoutX="386.0" layoutY="28.0" prefHeight="17.0" prefWidth="421.0" text="Guarantee and sinister List" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

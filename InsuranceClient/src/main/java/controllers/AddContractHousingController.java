@@ -52,8 +52,7 @@ public class AddContractHousingController implements Initializable {
     @FXML
     private CheckBox other1;
 
-    @FXML
-    private CheckBox fourniture;
+
 	
     @FXML
     private CheckBox jollery;
@@ -199,7 +198,7 @@ public class AddContractHousingController implements Initializable {
     
     Housing h = new Housing();
     type_contract tc ;
-   private String object ="";
+   private String object =" ";
     
    public  Client cl ;
     
@@ -299,9 +298,6 @@ public class AddContractHousingController implements Initializable {
                 if (clothing.isSelected())
                 {
                 	object=object+" "+"clothing";
-                }if (fourniture.isSelected())
-                {
-                	object=object+" "+"fourniture";
                 }if (other1.isSelected())
                 {
                 	object=object+" "+"other";

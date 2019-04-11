@@ -12,9 +12,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1009.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddContractHousingController">
+<AnchorPane id="AnchorPane" fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1009.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddContractHousingController">
    <children>
       <RadioButton fx:id="garageyes" layoutX="768.0" layoutY="100.0" mnemonicParsing="false" text="Yes">
          <toggleGroup>
@@ -39,15 +40,14 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="confirmer" layoutX="521.0" layoutY="680.0" mnemonicParsing="false" onAction="#addContract" prefHeight="27.0" prefWidth="98.0" style="-fx-background-color: white; -fx-border-color: #38388D;" text="Add">
+      <Button fx:id="back" layoutX="66.0" layoutY="665.0" mnemonicParsing="false" onAction="#returnIns" opacity="0.81" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: #191970; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: white;" text="Back" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="System Bold" size="13.0" />
          </font></Button>
-      <Button fx:id="back" layoutX="60.0" layoutY="680.0" mnemonicParsing="false" onAction="#returnIns" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: white; -fx-border-color: #38388D;" text="Back" />
       <JFXTextField fx:id="objectvalue" layoutX="750.0" layoutY="204.0" />
       <JFXTextField fx:id="unhabiteddays" layoutX="751.0" layoutY="258.0" />
       <Label fx:id="addressLabel" layoutX="85.0" layoutY="120.0" prefHeight="17.0" prefWidth="98.0" text="Label" textFill="#fb0808" visible="false" />
-      <ImageView fx:id="image" fitHeight="75.0" fitWidth="200.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="15.0">
+      <ImageView fx:id="image" fitHeight="75.0" fitWidth="200.0" layoutX="23.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="181.0">
          <image>
             <Image url="file:/C:/Users/haythem/workspace/client-ejb-cour/src/main/java/images/logo.png" />
          </image>
@@ -60,7 +60,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="housevalue1" layoutX="120.0" layoutY="579.0" prefHeight="17.0" prefWidth="89.0" text="House value">
+      <Label fx:id="housevalue1" layoutX="106.0" layoutY="582.0" prefHeight="17.0" prefWidth="89.0" text="House value">
          <padding>
             <Insets left="10.0" />
          </padding>
@@ -158,15 +158,28 @@
       <ComboBox fx:id="housetypebox" layoutX="269.0" layoutY="155.0" onAction="#show" prefHeight="27.0" prefWidth="158.0" style="-fx-background-color: white; -fx-border-color: #38388D;" />
       <JFXTextField fx:id="housevalue" layoutX="274.0" layoutY="566.0" maxWidth="113.0" minWidth="113.0" prefHeight="31.0" prefWidth="113.0" promptText="house value" />
       <CheckBox fx:id="jollery" layoutX="397.0" layoutY="489.0" mnemonicParsing="false" text="Jewellery" />
-      <CheckBox fx:id="clothing" layoutX="280.0" layoutY="476.0" mnemonicParsing="false" text="Clothing" />
-      <CheckBox fx:id="electro" layoutX="280.0" layoutY="505.0" mnemonicParsing="false" text="Electronics" />
-      <CheckBox fx:id="other1" layoutX="397.0" layoutY="517.0" mnemonicParsing="false" text="Other" />
-      <CheckBox fx:id="fourniture" layoutX="281.0" layoutY="533.0" mnemonicParsing="false" text="Fourniture" />
+      <CheckBox fx:id="clothing" layoutX="274.0" layoutY="489.0" mnemonicParsing="false" text="Clothing" />
+      <CheckBox fx:id="electro" layoutX="274.0" layoutY="525.0" mnemonicParsing="false" text="Electronics" />
+      <CheckBox fx:id="other1" layoutX="397.0" layoutY="525.0" mnemonicParsing="false" text="Other" />
       <Label layoutX="116.0" layoutY="313.0" prefHeight="17.0" prefWidth="89.0" text="House Owner">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <ComboBox fx:id="ownerbox1" layoutX="273.0" layoutY="308.0" onAction="#show1" prefHeight="27.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #38388D;" />
+      <Pane layoutX="-10.0" layoutY="-7.0" opacity="0.67" prefHeight="91.0" prefWidth="1020.0" style="-fx-background-color: red;">
+         <children>
+            <Label layoutX="386.0" layoutY="28.0" prefHeight="17.0" prefWidth="421.0" text="Contract Housing Form" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button fx:id="confirmer" layoutX="780.0" layoutY="665.0" mnemonicParsing="false" onAction="#addContract" opacity="0.81" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: #191970; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: white;" text="ADD" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -69,12 +69,13 @@ public class GuaranteeCheckVehicleController implements Initializable{
             for (Guarantee e : tab.getItems()) {
 
                 String filtertitre= String.valueOf(e.getContract().getClient().getCin());
+                String filtertitre1= String.valueOf(e.getContract().getType_contract().toString());
                 String filtre2 = String.valueOf(e.getContract().getClient().getFirstName()+e.getContract().getClient().getLastName());
                System.out.println(e.getContract().getClient().getFirstName());
 
 
              //  String filtre3 = String.valueOf(e.getContract().getClient().getLastName());
-                if (filtertitre.toUpperCase().contains(newValue)||filtre2.toUpperCase().contains(newValue)) {
+                if (filtertitre.toUpperCase().contains(newValue)||filtre2.toUpperCase().contains(newValue)||filtertitre1.toUpperCase().contains(newValue)) {
                     filteredList.add(e);
                     System.out.println(filtre2);
                 }
@@ -94,6 +95,7 @@ public class GuaranteeCheckVehicleController implements Initializable{
 		
             try {
             	ObservableList<Sinister> oblist1=FXCollections.observableArrayList(t.findsinisters());
+            	System.out.println(oblist1.toString());
             	Node[] nodes = new Node[10];
                 for (int i = 0; i < oblist1.size(); i++) {
                 final int j = i;
@@ -155,9 +157,9 @@ public class GuaranteeCheckVehicleController implements Initializable{
 				
 				ObservableList<Guarantee> oblist=FXCollections.observableArrayList(t.findgurantees());
 				for (Guarantee g  : oblist)
-					if(g.getContract().getType_contract().toString()!="housing")
+					if(g.getContract().getType_contract().toString()!=("Vehicle"))
 					{
-						System.out.println("Element "+g.getContract()+"   type  "+g.getAmount_franchise());
+						System.out.println("Element "+g.getContract().getType_contract().toString()+"   type  "+g.getAmount_franchise());
 
 						Guarantee.setCellValueFactory(new PropertyValueFactory<>("description"));
 						Amount_Franchise.setCellValueFactory(new PropertyValueFactory<>("amount_franchise"));
@@ -199,6 +201,12 @@ name.setCellValueFactory(cellData->new SimpleStringProperty(String.valueOf(cellD
 				}
 			    System.out.println("textfield changed from " + oldValue + " to " + newValue);
 			});}
+
+	GuaranteeCheckVehicleContainerController  Parentcontainer;
+	public void setContainer(GuaranteeCheckVehicleContainerController guaranteeCheckVehicleContainerController) {
+		this.Parentcontainer=guaranteeCheckVehicleContainerController;
+		
+	}
 
 		
 

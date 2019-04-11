@@ -274,8 +274,22 @@ import tn.esprit.Test;
             cd.startstage();
 	        
 	    }
-		
+	    
 
+	    @FXML
+	    void show(ActionEvent event) {
+	    	
+	    	tab.setVisible(true);
+	    	rechercheclient.setVisible(true);
+
+	    }
+	    public ContractHousingContainerController  Parentcontainer;
+		public void setContainer(ContractHousingContainerController containerParent) {
+			this.Parentcontainer=containerParent;
+			
+		}
+		
+	
 
 	
 }

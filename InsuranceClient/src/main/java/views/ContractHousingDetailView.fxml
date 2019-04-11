@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -403,24 +404,13 @@
                         <Separator layoutX="1.0" layoutY="18.0" prefHeight="6.0" prefWidth="1009.0" />
                      </children>
                   </AnchorPane>
-                  <Label layoutX="367.0" layoutY="14.0" prefHeight="35.0" prefWidth="324.0" text="Contract Demande Detail" textFill="#3e0fda">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
                   <Separator layoutX="453.0" layoutY="341.0" orientation="VERTICAL" prefHeight="571.0" prefWidth="11.0" />
                   <Separator layoutX="-4.0" layoutY="912.0" prefHeight="14.0" prefWidth="1002.0" />
-                  <Button layoutX="844.0" layoutY="80.0" mnemonicParsing="false" onAction="#printPdfContract" text="Get Contract " textFill="#3e0fda">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Button>
                   <Label fx:id="resi" layoutX="315.0" layoutY="64.0" prefHeight="30.0" prefWidth="111.0" text="Resiliated" visible="false">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="refuseButton" layoutX="255.0" layoutY="929.0" mnemonicParsing="false" onAction="#Refuse" prefHeight="59.0" prefWidth="166.0" styleClass="nav_bar_button" text="Refuse Demande" />
                   <Label fx:id="refundAmount" layoutX="480.0" layoutY="939.0" prefHeight="38.0" prefWidth="127.0" text="760" visible="false">
                      <font>
                         <Font name="System Bold" size="15.0" />
@@ -431,10 +421,33 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Button fx:id="AccepteButton" layoutX="639.0" layoutY="930.0" mnemonicParsing="false" onAction="#Accepte" prefHeight="57.0" prefWidth="147.0" styleClass="nav_bar_button" text="Accepte Demande" />
+                  <Button fx:id="confirmer" layoutX="842.0" layoutY="943.0" mnemonicParsing="false" onAction="#printPdfContract" opacity="0.81" prefHeight="31.0" prefWidth="126.0" style="-fx-background-color: #191970; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: white;" text="printPdfContract" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="AccepteButton" layoutX="670.0" layoutY="943.0" mnemonicParsing="false" onAction="#Accepte" opacity="0.81" prefHeight="31.0" prefWidth="147.0" style="-fx-background-color: #191970; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: white;" text="Accepte Demande" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="refuseButton" layoutX="262.0" layoutY="943.0" mnemonicParsing="false" onAction="#Refuse" opacity="0.81" prefHeight="31.0" prefWidth="147.0" style="-fx-background-color: #191970; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: white;" text="Refuse Demande" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </content>
       </ScrollPane>
+      <Pane layoutY="-5.0" opacity="0.67" prefHeight="99.0" prefWidth="995.0" style="-fx-background-color: red;">
+         <children>
+            <Label layoutX="386.0" layoutY="28.0" prefHeight="17.0" prefWidth="421.0" text="Contract  Detail" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

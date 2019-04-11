@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -25,6 +27,8 @@ public class ClaimboxController implements Initializable {
 
     @FXML
     private VBox claimvbox;
+    @FXML
+    private ImageView image1;
     @FXML
     private Label case1;
 
@@ -64,7 +68,17 @@ public class ClaimboxController implements Initializable {
 	date1.setText(s.getReport().getDate_report().toString());
 	etat.setText(s.getDescription());
     System.out.println(s.toString());
+    if (s.getReport().getAccident().getType_contract().toString().equals("housing")){
+        Image a1 = new Image("/pictures/icons8-home-64.png");
+		
+        image1.setImage(a1);
     	
+    }else {
+    	Image a2 = new Image("/pictures/icons8-car-64.png");
+    	image1.setImage(a2);
+    	
+    }
+  
     }
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -87,6 +101,10 @@ if (case1.getText().equals("Denied"))
 {
 	
 }else{
+
+	if (s.getReport().getAccident().getType_contract().toString().equals("housing")){
+		
+
 	
 
   	  FXMLLoader loader=new FXMLLoader(getClass().getResource("/views/Guaranteeclaimview.fxml"));
@@ -101,6 +119,21 @@ if (case1.getText().equals("Denied"))
   	  Stage stage=new Stage();
   	  stage.setScene(new Scene(root));
   	  stage.show();
+	}else {
+
+	  	  FXMLLoader loader1=new FXMLLoader(getClass().getResource("/views/Guaranteeclaimcarview.fxml"));
+		  System.out.println(s.getSinister_id());
+		  Parent root1 = (Parent) loader1.load();
+	  	  GuaranteeclaimcarController cd = loader1.getController();
+	  	  cd.setSinister(s);
+	  	  
+	  
+
+
+	  	  Stage stage1=new Stage();
+	  	  stage1.setScene(new Scene(root1));
+	  	  stage1.show();
+	}
 }
     }
 
