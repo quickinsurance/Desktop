@@ -56,7 +56,7 @@ public class ServiceEquiment implements IEquipmentServiceLocal,IEquipmentService
 			{ if (list.get(i).getEquipment().getClient().getId()==id)
 			{System.out.println("***");
 			List<Contract> q = em.createQuery(
-					"select e from Contract e where e.Client=" + id,Contract.class).getResultList();
+					"select e from Contract e where e.Client='" + id+"' and e.type_contract='"+t+"'",Contract.class).getResultList();
 			;
 			return q;}}
 			return null;
@@ -120,7 +120,7 @@ public class ServiceEquiment implements IEquipmentServiceLocal,IEquipmentService
 	@Override
 	public void updateEquipment1(Equipment q, int id) {
 		Contract c=em.find(Contract.class, id);
-		int x = em.createQuery("update Contract e set e.prime='"+q.getCommission() +"', e.commission="+q.getPrime()+" where e.contract_id="+id).executeUpdate();	
+		int x = em.createQuery("update Contract e set e.commission='"+q.getCommission() +"', e.prime="+q.getPrime()+" where e.contract_id="+id).executeUpdate();	
 	}
 
 }

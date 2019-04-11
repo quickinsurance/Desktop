@@ -34,7 +34,7 @@ public class ContractProperty implements Serializable{
 
 	@ManyToOne(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
 	Equipment Equipment;
-	@Column(name = "Condition_equipment", nullable = false)
+	@Column(name = "Condition_equipment")
 	private String condition_equipment;
 	private float prime;
 

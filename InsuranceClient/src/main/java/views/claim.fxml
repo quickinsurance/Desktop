@@ -23,7 +23,7 @@
          <children>
             <VBox maxWidth="-Infinity" prefHeight="580.0" prefWidth="435.0">
                <children>
-                  <AnchorPane prefHeight="400.0" prefWidth="200.0" styleClass="card-white" stylesheets="@../styles/stylehseet.css">
+                  <AnchorPane prefHeight="400.0" prefWidth="200.0" styleClass="card-white" stylesheets="@../css/stylehseet.css">
                      <children>
                         <GridPane layoutX="14.0" layoutY="44.0" prefHeight="443.0" prefWidth="384.0">
                            <columnConstraints>
@@ -53,7 +53,7 @@
                               </VBox>
                               <Label text="Subject" />
                               <Label text="Reference" GridPane.rowIndex="1" />
-                              <Label text="Consult document attached" GridPane.rowIndex="2" />
+                              <Label fx:id="attached" onMouseClicked="#getFileattached" style="-fx-text-fill: blue;" text="Consult document attached" GridPane.rowIndex="2" />
                               <Label fx:id="labelSubject" prefHeight="23.0" prefWidth="180.0">
                                  <GridPane.margin>
                                     <Insets left="75.0" />

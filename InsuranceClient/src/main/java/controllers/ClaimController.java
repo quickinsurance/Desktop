@@ -6,7 +6,9 @@ import javafx.geometry.Insets;
 
 import java.awt.Desktop;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
 import java.util.ArrayList;
@@ -64,7 +66,8 @@ public class ClaimController implements Initializable {
 
     @FXML
     private ScrollPane scrollPane1;
-
+    @FXML
+    private Label attached;
     @FXML
     private VBox Respond;
 	private Claim claim;
@@ -88,7 +91,21 @@ public class ClaimController implements Initializable {
 
 	}*/
 
-	
+	   @FXML
+	    void getFileattached(MouseEvent event) throws IOException {
+		   byte[] b = claim.getDocument();
+			// download it
+			OutputStream out = new FileOutputStream("E:\\doc.pdf");
+			out.write(b);
+			out.close();
+			// open file
+			File myFile = new File("E:\\doc.pdf");
+			Desktop.getDesktop().open(myFile);
+			// delete it
+			// if (myFile.exists()) {
+			// myFile.delete();}
+
+	    }
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -116,6 +133,7 @@ public class ClaimController implements Initializable {
 			}
 			if (x!=0 && x==(array.length-1))
 			{  			
+				System.out.println("haha");
 
 			CompareClaims cc = new CompareClaims();
 			cc.setC(claims.get(i));
@@ -136,6 +154,7 @@ public class ClaimController implements Initializable {
         scrollPane2.setHbarPolicy(ScrollBarPolicy.NEVER);
         
 		for (CompareClaims e : MatchOrdered) {
+			System.out.println("***");
 				HBox gd = new HBox();
 				grid2.setMargin(gd, (new Insets(5, 5, 10, 5)));
 				gd.setStyle( 
@@ -179,6 +198,14 @@ public class ClaimController implements Initializable {
 
 
 	
+
+	public Label getAttached() {
+		return attached;
+	}
+
+	public void setAttached(Label attached) {
+		this.attached = attached;
+	}
 
 	public Label getDateLabel() {
 		return dateLabel;

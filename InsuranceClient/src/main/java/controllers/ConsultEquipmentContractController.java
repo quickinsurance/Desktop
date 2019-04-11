@@ -9,6 +9,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -54,6 +56,7 @@ import javafx.event.ActionEvent;
 
 import com.itextpdf.text.Anchor;
 import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chapter;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -245,8 +248,8 @@ public class ConsultEquipmentContractController implements Initializable{
 						}
 						attached.setOnMouseClicked((MouseEvent event2) -> {
 							try {
-								this.generatePdf();
-							} catch (IOException | DocumentException e) {
+								this.generatePdf(l.get(k));
+							} catch (IOException | DocumentException | NamingException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
@@ -304,8 +307,8 @@ public class ConsultEquipmentContractController implements Initializable{
 						}
 						attached.setOnMouseClicked((MouseEvent event2) -> {
 							try {
-								this.generatePdf();
-							} catch (IOException | DocumentException e) {
+								this.generatePdf(l1.get(k));
+							} catch (IOException | DocumentException | NamingException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
@@ -316,115 +319,84 @@ public class ConsultEquipmentContractController implements Initializable{
 
 		
 	}
-	public void generatePdf() throws MalformedURLException, IOException, DocumentException
+	public void generatePdf(Contract c) throws MalformedURLException, IOException, DocumentException, NamingException
 	{
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
         PdfWriter writer = PdfWriter.getInstance(document,new FileOutputStream("E:\\contract.pdf"));
         document.open();
 
-        // Listing 3. Creation of paragraph object
-        Anchor anchorTarget = new Anchor("First page of the document.");
-        anchorTarget.setName("BackToTop");
-
         Paragraph paragraph1 = new Paragraph();
         paragraph1.setSpacingBefore(50);
-        paragraph1.add(anchorTarget);
         document.add(paragraph1);
 
-        document.add(new Paragraph("Some more text on the first page with different color and font type.",FontFactory.getFont(FontFactory.COURIER, 14, Font.BOLD,new CMYKColor(0, 255, 0, 0))));
-
-        document.add(new Paragraph("u r answers are \n a \n b \n c \n d"));
-
-        // Listing 4. Creation of chapter object
-        Paragraph title1 = new Paragraph("Chapter 1", FontFactory.getFont(
-                        FontFactory.HELVETICA, 18, Font.BOLDITALIC, new CMYKColor(0,
-                                        255, 255, 17)));
+        Paragraph title1 = new Paragraph("Quick Insurance", FontFactory.getFont(
+                        FontFactory.TIMES, 18, Font.BOLDITALIC, new CMYKColor(86,
+                                        87, 89, 17)));
 
         Chapter chapter1 = new Chapter(title1, 1);
         chapter1.setNumberDepth(0);
 
-        // Listing 5. Creation of section object
-        Paragraph title11 = new Paragraph("This is Section 1 in Chapter 1",
-                        FontFactory.getFont(FontFactory.HELVETICA, 16, Font.BOLD,
-                                        new CMYKColor(0, 255, 255, 17)));
+        Paragraph title11 = new Paragraph("Contract ref"+c.getContract_id(),
+                        FontFactory.getFont(FontFactory.TIMES, 16, Font.BOLD,
+                                        new CMYKColor(86, 87, 89, 17)));
 
         Section section1 = chapter1.addSection(title11);
-        Paragraph someSectionText = new Paragraph(
-                        "This text comes as part of section 1 of chapter 1.");
-        section1.add(someSectionText);
-        someSectionText = new Paragraph("Following is a 3 X 2 table.");
-        section1.add(someSectionText);
+        document.add(chapter1);
+      	document.add(new Paragraph(""));
+    	document.add(new Paragraph(""));
+    	document.add(new Paragraph("                                                    Equipment Insurance Contract"));
+    	document.add(new Paragraph(" "));
+    	document.add(new Paragraph(" "));
+    	String x="In application of Article L 113-15-1 of the Insurance Code, this person has become one of"+
+    			  
+    	    
+    		"	our insureds for a equipment insurance."+
 
-        // Listing 6. Creation of table object
-        PdfPTable t = new PdfPTable(2);
+"This insurance contract is the convention by which our company undertakes, in case of"+
+"realization of the risk or at the term fixed in the contract, to provide to our insured a cash "+
+"benefit in consideration for a remuneration called premium or contribution."+
+"All amendment or addition to the initial contract must be noted by anendorsement signed"+
+"by both parties.";
 
+    	document.add(new Paragraph(x));
+    	 Image image2 = Image.getInstance("E:\\cont.jpg");
+         image2.scaleAbsolute(500f, 500f);
+         document.add(image2);
+    	document.add(new Paragraph("First Name: "+c.getClient().getFirstName()));
+    	document.add(new Paragraph("Last Name: "+c.getClient().getLastName()));
+    	document.add(new Paragraph("CIN number:"+c.getClient().getCin()));
+    	document.add(new Paragraph("Adresse: "+ c.getClient().getAddress()));
+    	document.add(new Paragraph("RIB Number: "+c.getClient().getRIB_Number() ));
+    	
+    	String jndiName1 = "Insurance-ear/Insurance-ejb/ServiceEquiment!services.interf.IEquipmentServiceRemote";
+		Context context1 = new InitialContext();
+		IEquipmentServiceRemote proxy1 = (IEquipmentServiceRemote) context1.lookup(jndiName1);
+		List<ContractProperty> p =proxy1.findCProperty(c.getContract_id());
+
+    	PdfPTable t = new PdfPTable(2);
+        t.setWidthPercentage(100);
         t.setSpacingBefore(25);
         t.setSpacingAfter(25);
 
-        PdfPCell c1 = new PdfPCell(new Paragraph("First Name",FontFactory.getFont(FontFactory.COURIER, 14, Font.BOLD,new CMYKColor(0, 255, 0, 0))));
+
+    	for (int i=0;i<p.size();i++)
+    	{
+        PdfPCell c1 = new PdfPCell(new Paragraph("Option: " + p.get(i).getOption_contract()+
+    			"\n item :    "+p.get(i).getItem()+
+    			"\n make:     "+p.get(i).getMarque()+
+    			"\n model:    "+p.get(i).getModel()+
+    			"\n value of this property :    "+p.get(i).getValue()+
+    			"\n condition of this property :   "+p.get(i).getCondition_equipment()+
+    			"\n Primmium  :  "+p.get(i).getPrime(),FontFactory.getFont(FontFactory.TIMES, 14, Font.NORMAL,new BaseColor(61,62, 63))));
+       // c1.setColspan(2);
         t.addCell(c1);
-        PdfPCell c2 = new PdfPCell(new Paragraph("Last Name",FontFactory.getFont(FontFactory.COURIER, 14, Font.BOLD,new CMYKColor(0, 255, 0, 0))));
-        t.addCell(c2);
-        PdfPCell c3 = new PdfPCell(new Paragraph("Enrolment No.",FontFactory.getFont(FontFactory.COURIER, 14, Font.BOLD,new CMYKColor(0, 255, 0, 0))));
-        t.addCell(c3);
-        PdfPCell c4 = new PdfPCell(new Paragraph("Password",FontFactory.getFont(FontFactory.COURIER, 14, Font.BOLD,new CMYKColor(0, 255, 0, 0))));
-        t.addCell(c4);
 
-
-        /*try
-        {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con =DriverManager.getConnection("jdbc:mysql://localhost:3306/erp","admin","123456");
-                Statement st =con.createStatement();
-                ResultSet rs = st.executeQuery("SELECT firstname,lastname,asn,password from reg1 where branchname='IT' and sem='3'");
-
-                while(rs.next())
-                {
-                        t.addCell(rs.getString(1));
-                        t.addCell(rs.getString(2));
-                        t.addCell(rs.getString(3));
-                        t.addCell(rs.getString(4));
-                }
-        }
-        catch (Exception e) 
-        {
-                System.out.print("Parth: " +e);
-        }*/
-
-
-
-
-        //section1.add(t);
+    	}
         document.add(t);
-
-        // Listing 7. Creation of list object
-    /*    List l = new List(true, false, 10);
-        l.add(new ListItem("First item of list"));
-        l.add(new ListItem("Second item of list"));
-        section1.add((Element) l);
-*/
-        // Listing 8. Adding image to the main document
-
-        Image image2 = Image.getInstance("C:\\Users\\amalg\\Desktop\\pi1\\kk.jpg");
-        image2.scaleAbsolute(120f, 120f);
-        section1.add(image2);
-
-        // Listing 9. Adding Anchor to the main document.
-        Paragraph title2 = new Paragraph("Using Anchor", FontFactory.getFont(
-                        FontFactory.HELVETICA, 16, Font.BOLD, new CMYKColor(0, 255, 0,
-                                        0)));
-        section1.add(title2);
-
-        title2.setSpacingBefore(5000);
-        Anchor anchor2 = new Anchor("Back To Top");
-        anchor2.setReference("#BackToTop");
-
-        section1.add(anchor2);
-
-
-        // Listing 10. Addition of a chapter to the main document
-        document.add(chapter1);
+       
         document.close();
+        File myFile = new File("E:\\contract.pdf");
+		Desktop.getDesktop().open(myFile);
 	}
 	public void setContainer(EquipmentContractContainerController equipmentContractContainerController) {
 		this.containerParent = equipmentContractContainerController;

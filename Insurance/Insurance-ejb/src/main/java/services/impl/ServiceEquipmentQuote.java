@@ -78,7 +78,7 @@ public class ServiceEquipmentQuote implements IEquipmentQuoteLocal, IEquipmentQu
 			{ if (list.get(i).getEquipmentQuote().getUser().getId()==id)
 			{System.out.println("***");
 			List<Quotation> q = em.createQuery(
-					"select e from Quotation e where e.User=" + id,Quotation.class).getResultList();
+					"select e from Quotation e where e.User='" + id+"' and e.type_contract='"+type+"'",Quotation.class).getResultList();
 			;
 			return q;}}
 			return null;
