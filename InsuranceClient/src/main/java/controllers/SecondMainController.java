@@ -24,6 +24,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import util.Test;
 
 public class SecondMainController implements Initializable {
 	@FXML
@@ -257,7 +258,17 @@ public class SecondMainController implements Initializable {
 		newLoadedPane.prefHeightProperty().bind(paneAnc.heightProperty());
 		return loader;
 	}
-
+	public FXMLLoader setContent1(String path) throws IOException {
+		// paneAnc.setId("");
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+		ScrollPane newLoadedPane = loader.load();
+		anchorPane.getChildren().clear();
+		anchorPane.getChildren().add(newLoadedPane);
+		System.out.println(path);
+		newLoadedPane.prefWidthProperty().bind(anchorPane.widthProperty());
+		newLoadedPane.prefHeightProperty().bind(anchorPane.heightProperty());
+		return loader;
+	}
 	public FXMLLoader setContentAnchor(String path, AnchorPane paneAnc) throws IOException {
 		// paneAnc.setId("");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
@@ -331,6 +342,22 @@ public class SecondMainController implements Initializable {
     @FXML
     void ShowEquipmentSinister(ActionEvent event) throws IOException {
     	setContentAnchor("/views/SinisterEquipmentContainer.fxml", anchorPane);
+
+    }
+    
+    
+    @FXML
+    void showHousingGuarantee(ActionEvent event) throws Exception {
+    	Test t = new Test();
+    	t.addGuaranteeif();
+    	t.addoptionif();
+    	setContentAnchor("/views/GuaranteeCheckHousingContainerView.fxml", anchorPane);
+
+    }
+    
+    @FXML
+    void showContractsHousing(ActionEvent event) throws IOException {
+    	setContentAnchor("/views/ContractHousingContainerView.fxml", anchorPane);
 
     }
 }
