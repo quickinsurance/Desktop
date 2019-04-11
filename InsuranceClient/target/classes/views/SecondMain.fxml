@@ -64,7 +64,7 @@
                                     <Insets left="80.0" right="5.0" top="5.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Housing" textFill="#b8b1b1">
+                              <JFXButton contentDisplay="RIGHT" onAction="#showContractsHousing" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Housing" textFill="#b8b1b1">
                                  <font>
                                     <Font name="Calibri" size="14.0" />
                                  </font>
@@ -72,7 +72,7 @@
                                     <Insets left="80.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Equipments" textFill="#b8b1b1">
+                              <JFXButton fx:id="equipmentContractbtn" contentDisplay="RIGHT" onAction="#showEquipmentContractAction" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Equipments" textFill="#b8b1b1">
                                  <font>
                                     <Font name="Calibri" size="14.0" />
                                  </font>
@@ -88,7 +88,7 @@
                                     <Insets left="80.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Retirement" textFill="#b8b1b1">
+                              <JFXButton fx:id="retretementContractbtn" contentDisplay="RIGHT" onAction="#showRetreatContractAction" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Retirement" textFill="#b8b1b1">
                                  <font>
                                     <Font name="Calibri" size="14.0" />
                                  </font>
@@ -128,7 +128,7 @@
                                     <Insets left="80.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Equipments">
+                              <JFXButton contentDisplay="RIGHT" onAction="#QuotationEquipmentView" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Equipments">
                                  <font>
                                     <Font name="Calibri" size="14.0" />
                                  </font>
@@ -176,7 +176,7 @@
                                     <Insets left="80.0" right="5.0" top="5.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Housing">
+                              <JFXButton contentDisplay="RIGHT" onAction="#showHousingGuarantee" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Housing">
                                  <font>
                                     <Font name="Calibri" size="14.0" />
                                  </font>
@@ -212,9 +212,9 @@
                         </VBox>
                      </children>
                   </VBox>
-                  <VBox fx:id="vbox5" prefHeight="200.0" prefWidth="100.0" styleClass="sidebar-btn">
+                  <VBox fx:id="vbox5" prefHeight="93.0" prefWidth="250.0" styleClass="sidebar-btn">
                      <children>
-                        <JFXButton fx:id="refunds" text="Refunds" textFill="#b8b1b1">
+                        <JFXButton fx:id="refunds" text="Claims" textFill="#b8b1b1">
                            <graphic>
                               <FontAwesomeIcon fill="#b8b1b1" iconName="TASKS" size="1.5em" styleClass="sidebar-btn-icon" />
                            </graphic>
@@ -222,46 +222,14 @@
                               <Insets left="20.0" />
                            </VBox.margin>
                         </JFXButton>
-                        <VBox fx:id="vbox51" prefHeight="200.0" prefWidth="100.0">
+                        <VBox fx:id="vbox51" prefHeight="200.0" prefWidth="250.0">
                            <children>
-                              <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Vehicle">
+                              <JFXButton contentDisplay="RIGHT" onAction="#ConsultClaims" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="List claims untreated">
                                  <font>
                                     <Font name="Calibri" size="14.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets left="80.0" right="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </JFXButton>
-                              <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Housing">
-                                 <font>
-                                    <Font name="Calibri" size="14.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets left="80.0" />
-                                 </VBox.margin>
-                              </JFXButton>
-                              <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Equipments">
-                                 <font>
-                                    <Font name="Calibri" size="14.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets left="80.0" />
-                                 </VBox.margin>
-                              </JFXButton>
-                              <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Health">
-                                 <font>
-                                    <Font name="Calibri" size="14.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets left="80.0" />
-                                 </VBox.margin>
-                              </JFXButton>
-                              <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Retirement">
-                                 <font>
-                                    <Font name="Calibri" size="14.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets left="80.0" />
                                  </VBox.margin>
                               </JFXButton>
                            </children>
@@ -296,7 +264,7 @@
                                     <Insets left="80.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Equipments">
+                              <JFXButton contentDisplay="RIGHT" onAction="#ShowEquipmentSinister" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Equipments">
                                  <font>
                                     <Font name="Calibri" size="14.0" />
                                  </font>
@@ -304,7 +272,7 @@
                                     <Insets left="80.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Health">
+                              <JFXButton fx:id="healthSinisterBtn" contentDisplay="RIGHT" onAction="#showHealthSinisterAction" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Health">
                                  <font>
                                     <Font name="Calibri" size="14.0" />
                                  </font>
