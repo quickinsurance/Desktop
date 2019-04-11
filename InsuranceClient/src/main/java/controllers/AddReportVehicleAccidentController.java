@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
@@ -51,6 +52,9 @@ public class AddReportVehicleAccidentController implements Initializable{
 	    private TextField refund;
 
 
+	    String desCriptionDomage= "Domages:";
+	    
+	    
 	    @FXML
 	    private Button addrepport;
 
@@ -58,6 +62,22 @@ public class AddReportVehicleAccidentController implements Initializable{
 	    private Button cancel;
 	    @FXML
 		private ToggleGroup groupeSupported;
+	    
+	    
+	    @FXML
+	    private CheckBox Brokenglass;
+
+	    @FXML
+	    private CheckBox fire;
+
+	    @FXML
+	    private CheckBox accesoire;
+
+	    @FXML
+	    private CheckBox collision;
+
+	    @FXML
+	    private CheckBox accidentDomages;
 	    
 		private ExpertManageVehicleContainerController containerParent;
 		
@@ -176,5 +196,39 @@ public class AddReportVehicleAccidentController implements Initializable{
 		notSupported.setToggleGroup(groupeSupported);
 		
 	}
+	
+	
+	 @FXML
+	    void BrokenglassAction(ActionEvent event) {
+		 desCriptionDomage= desCriptionDomage+"\n"+Brokenglass.getText();
+	    	repportDescription.setText(desCriptionDomage);
+	    }
+
+	    @FXML
+	    void accesoirAction(ActionEvent event) {
+	    	 desCriptionDomage= desCriptionDomage+"\n"+accesoire.getText();
+		    	repportDescription.setText(desCriptionDomage);
+	    }
+
+	    @FXML
+	    void accidentDomagesAction(ActionEvent event) {
+	    	 desCriptionDomage= desCriptionDomage+"\n"+accidentDomages.getText();
+		    	repportDescription.setText(desCriptionDomage);
+	    }
+	    
+	    @FXML
+	    void collisionAction(ActionEvent event) {
+
+	    	 desCriptionDomage= desCriptionDomage+"\n"+collision.getText();
+		    	repportDescription.setText(desCriptionDomage);
+	    }
+
+	    @FXML
+	    void fireAction(ActionEvent event) {
+
+	    	 desCriptionDomage= desCriptionDomage+"\n"+fire.getText();
+		    	repportDescription.setText(desCriptionDomage);
+	    }
+
 
 }

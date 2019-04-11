@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
@@ -56,6 +57,35 @@ public class AddReportController implements Initializable{
 	    private Button cancel;
 	    @FXML
 		private ToggleGroup groupeSupported;
+	    
+	    
+	    
+	    @FXML
+	    private CheckBox fire;
+
+	    @FXML
+	    private CheckBox waterdamage;
+
+	    @FXML
+	    private CheckBox icebreak;
+
+	    @FXML
+	    private CheckBox housebreaking;
+
+	    @FXML
+	    private CheckBox Electricaldamage;
+
+	    @FXML
+	    private CheckBox property;
+
+	    @FXML
+	    private CheckBox solarpanels;
+
+	    @FXML
+	    private CheckBox motorpool;
+	    
+	    
+	    String descriptions="Domages:";
 
 	    String jndiName = "Insurance-ear/Insurance-ejb/AccidentServiceImplem!services.interf.IAccidentInterfaceRemote";
 		Context context;
@@ -178,6 +208,84 @@ public class AddReportController implements Initializable{
 		
 	    public void setContainer(HousingExpertManageContainerController container){
 	        this.containerParent = container;
+	    }
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+
+
+	    @FXML
+	    void alacticAction(ActionEvent event) {
+	    	
+	    	descriptions= descriptions+"\n"+Electricaldamage.getText();
+	    	repportDescription.setText(descriptions);
+
+	    }
+
+	
+
+	    @FXML
+	    void fireAction(ActionEvent event) {
+	    	
+	    	descriptions= descriptions+"\n"+fire.getText();
+	    	repportDescription.setText(descriptions);
+
+
+	    }
+
+	    @FXML
+	    void housbreakingAction(ActionEvent event) {
+	    	descriptions= descriptions+"\n"+housebreaking.getText();
+	    	repportDescription.setText(descriptions);
+
+
+	    }
+
+	    @FXML
+	    void iceAction(ActionEvent event) {
+	    	
+	    	descriptions= descriptions+"\n"+icebreak.getText();
+	    	repportDescription.setText(descriptions);
+
+
+	    }
+
+	    @FXML
+	    void poolAction(ActionEvent event) {
+	    	descriptions= descriptions+"\n"+motorpool.getText();
+	    	repportDescription.setText(descriptions);
+
+
+	    }
+
+	    @FXML
+	    void propertyAction(ActionEvent event) {
+	    	descriptions= descriptions+"\n"+property.getText();
+	    	repportDescription.setText(descriptions);
+
+
+	    }
+
+	    @FXML
+	    void solarpanelAcyion(ActionEvent event) {
+
+	    	descriptions= descriptions+"\n"+solarpanels.getText();
+	    	repportDescription.setText(descriptions);
+
+	    }
+
+	    @FXML
+	    void waterAction(ActionEvent event) {
+	    	
+	    	descriptions= descriptions+"\n"+waterdamage.getText();
+	    	repportDescription.setText(descriptions);
+
+
 	    }
 
 }

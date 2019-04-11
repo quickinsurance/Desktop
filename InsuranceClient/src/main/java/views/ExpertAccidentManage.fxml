@@ -4,17 +4,27 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="477.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ExpertAccidentManageController">
+<AnchorPane prefHeight="477.0" prefWidth="1009.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ExpertAccidentManageController">
    <children>
-      <TableView fx:id="listAccident" layoutX="26.0" layoutY="116.0" onMouseClicked="#getAccident" prefHeight="300.0" prefWidth="551.0">
+      <TableView fx:id="listAccident" layoutX="26.0" layoutY="116.0" onMouseClicked="#getAccident" prefHeight="300.0" prefWidth="985.0">
         <columns>
           <TableColumn fx:id="idAccident" prefWidth="90.0" text="Accident" />
           <TableColumn fx:id="insuredNAme" prefWidth="140.0" text="Insured Name" />
-            <TableColumn fx:id="description" prefWidth="161.0" text="Description" />
-            <TableColumn fx:id="dateAccident" prefWidth="161.0" text="Date Of Accident" />
+            <TableColumn fx:id="description" prefWidth="598.0" text="Description" />
+            <TableColumn fx:id="dateAccident" prefWidth="156.0" text="Date Of Accident" />
         </columns>
       </TableView>
-      <Label alignment="CENTER" layoutX="25.0" layoutY="60.0" prefHeight="17.0" prefWidth="551.0" text="Untreated Accident" />
+      <Pane layoutY="-1.0" opacity="0.8" prefHeight="67.0" prefWidth="1024.0" style="-fx-background-color: #e74c3c;">
+         <children>
+            <Label layoutX="441.0" layoutY="18.0" prefHeight="31.0" prefWidth="348.0" text="Untreated Housing Accident" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
