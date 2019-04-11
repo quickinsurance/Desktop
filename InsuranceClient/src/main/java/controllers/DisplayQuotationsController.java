@@ -123,38 +123,7 @@ public class DisplayQuotationsController implements Initializable{
     @FXML
     private Label peugoetLabel;
     
-    @FXML
-    private Label group1Label;
 
-    @FXML
-    private Label group2Label;
-
-    @FXML
-    private Label group3Label;
-
-    @FXML
-    private Label group4label;
-
-    @FXML
-    private Label group5Label;
-
-    @FXML
-    private Label group6Label;
-
-    @FXML
-    private Label group7label;
-
-    @FXML
-    private Label group8label;
-
-    @FXML
-    private Label group9label;
-
-    @FXML
-    private Label group10label;
-
-    @FXML
-    private Label group11label;
 
 
 	private ObservableList<VehicleQuotation> data;
@@ -281,26 +250,8 @@ public class DisplayQuotationsController implements Initializable{
 		    contractsNumberLabel.setText(String.valueOf(oblist.size()));
 		    allrisksNumber.setText(String.valueOf(y));
 		    tiersNumberlabel.setText(String.valueOf(z));
-		    tiersEtenduLabel.setText(String.valueOf(w));
-		    
-		    
-		    
-		    int g1 =0;
-		    int g2=0;
-		    int g3=0;
-		    int g4=0;
-		    int g5=0;
-		    int g6=0;
-		    int g7=0;
-		    int g8=0;
-		    int g9=0;
-		    int g10=0;
-		    int g11=0;
-		    
-		    
-		    
-		    
-	} 
+		    tiersEtenduLabel.setText(String.valueOf(w));   
+		}
 	}
 
     @FXML
