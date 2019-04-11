@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +27,31 @@ public class Guarantee implements Serializable{
 	private float amount_franchise;
 	@Column(name="Amount_Limit",nullable = false) 
 	private float amount_limit;
+	@Column(name="Description",nullable = false) 
+	private String description;
+	@Column(name="Type",nullable = true) 
+	private String type;
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public float getRefund() {
+		return refund;
+	}
+
+	public void setRefund(float refund) {
+		this.refund = refund;
+	}
+
+	@Column(name="Refund",nullable = false) 
+	private float refund;
+	
+	@OneToOne
+	private Sinister Sinister;
 	
 	@ManyToOne
 	Contract Contract;
@@ -60,12 +86,32 @@ public class Guarantee implements Serializable{
 		this.amount_limit = amount_limit;
 	}
 
+	public void setGuarantee_id(int guarantee_id) {
+		this.guarantee_id = guarantee_id;
+	}
+
 	public Contract getContract() {
 		return Contract;
 	}
 
 	public void setContract(Contract contract) {
 		Contract = contract;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Sinister getSinister() {
+		return Sinister;
+	}
+
+	public void setSinister(Sinister sinister) {
+		Sinister = sinister;
 	}
 	
 }

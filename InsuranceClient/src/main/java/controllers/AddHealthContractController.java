@@ -20,8 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -37,7 +36,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar.ButtonData;
-import javafx.stage.Stage;
 import services.interf.IClientInterfaceRemote;
 import services.interf.IHealthInterfaceRemote;
 import services.interf.IQuotationInterfaceRemote;
@@ -797,7 +795,7 @@ public class AddHealthContractController implements Initializable {
 								health.setHealthcare(healthCare);
 								health.setDate_creation(Date.valueOf(LocalDate.now()));
 								health.setDate_end(Date.valueOf(LocalDate.now().plusYears(1)));
-								agent.setId(2);
+								agent.setId(1);
 								health.setAgent(agent);
 
 								proxyHealth.addHealth(health);
@@ -868,7 +866,7 @@ public class AddHealthContractController implements Initializable {
 								health.setHealthcare(healthCare);
 								health.setDate_creation(Date.valueOf(LocalDate.now()));
 								health.setDate_end(Date.valueOf(LocalDate.now().plusYears(1)));
-								agent.setId(2);
+								agent.setId(1);
 								health.setAgent(agent);
 
 								proxyHealth.addHealth(health);

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1340.0" prefWidth="1270.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ExpertMainController">
+   <content>
+      <AnchorPane prefHeight="1273.0" prefWidth="1270.0" style="-fx-background-color: white;">
+         <children>
+            <VBox fx:id="sidebar" alignment="TOP_CENTER" layoutY="125.0" prefHeight="1203.0" prefWidth="250.0" styleClass="sidebar" stylesheets="@../viewStyle/stylehseet.css">
+               <children>
+                  <ImageView fx:id="agent" fitHeight="80.0" fitWidth="100.0" pickOnBounds="true" smooth="false">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <JFXButton contentDisplay="RIGHT" ripplerFill="#e4dddd" styleClass="sidebar-user-btn">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" text="Clients" textFill="#b8b1b1">
+                     <font>
+                        <Font name="Calibri Bold" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <VBox fx:id="vbox6" prefHeight="89.0" prefWidth="250.0" styleClass="sidebar-btn">
+                     <children>
+                        <JFXButton fx:id="sinisters" text="Sinisters" textFill="#b8b1b1">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                        <VBox fx:id="vbox61" prefHeight="117.0" prefWidth="250.0">
+                           <children>
+                              <JFXButton fx:id="VehicleSinisterBtn" contentDisplay="RIGHT" onAction="#showVehcileSinisterAction" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Vehicle">
+                                 <font>
+                                    <Font name="Calibri" size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="80.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton fx:id="housingSinistersBtn" contentDisplay="RIGHT" onAction="#showHousingSinistersAction" ripplerFill="#e4dddd" styleClass="sidebar-user-btn" text="Housing">
+                                 <font>
+                                    <Font name="Calibri" size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="80.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="179.0" prefWidth="248.0" styleClass="sidebar-btn">
+                     <children>
+                        <JFXButton text="Disconnect" textFill="#b8b1b1">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox fx:id="content_area" layoutX="250.0" prefHeight="1100.0" prefWidth="820.0" style="-fx-background-color: white;">
+               <children>
+                  <HBox fx:id="menubar" alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="774.0" style="-fx-background-color: white; -fx-border-color: #cccccc; -fx-border-width: 0px 0px 1px 0px;" stylesheets="@../viewStyle/stylehseet.css">
+                     <children>
+                        <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#open_sidebar" prefHeight="50.0" prefWidth="50.0" ripplerFill="WHITE" styleClass="menu-bar-btns" />
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" styleClass="menu-bar-search-field-box" HBox.hgrow="ALWAYS">
+                           <children>
+                              <TextField maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Search for a job, task or resume" style="-fx-background-color: transparent;" styleClass="menu-bar-search-field" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Calibri" size="16.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" ripplerFill="WHITE" styleClass="menu-bar-btns" />
+                              <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="442.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" ripplerFill="WHITE" styleClass="menu-bar-btns" />
+                              <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="482.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" ripplerFill="WHITE" styleClass="menu-bar-btns" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="2.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1012.0" style="-fx-background-color: #fff;" stylesheets="@../viewStyle/stylehseet.css">
+                     <children>
+                        <VBox alignment="CENTER_LEFT">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label styleClass="lbl2" text="ROLE" textFill="#757373">
+                                 <font>
+                                    <Font name="Calibri Bold" size="28.0" />
+                                 </font>
+                              </Label>
+                              <HBox>
+                                 <children>
+                                    <Label styleClass="lbl2" text="AGENCE" textFill="#757373">
+                                       <font>
+                                          <Font name="Calibri Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="29.0" layoutX="28.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../pictures/ScoringEmployee.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                              <JFXButton contentDisplay="CENTER" layoutX="10.0" layoutY="18.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="35.0" styleClass="content-area-circle-btns">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                              <JFXButton contentDisplay="CENTER" layoutX="110.0" layoutY="18.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="35.0" styleClass="content-area-circle-btns">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                              <JFXButton contentDisplay="CENTER" layoutX="110.0" layoutY="18.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="35.0" styleClass="content-area-circle-btns">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="1182.0" prefWidth="1012.0" style="-fx-background-color: white;">
+                     <children>
+                        <AnchorPane prefHeight="1185.0" prefWidth="123.0" style="-fx-background-color: white;">
+                           <children>
+                              <AnchorPane layoutY="27.0" prefHeight="1174.0" prefWidth="0.0" style="-fx-background-color: white;" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="anchorPane" prefHeight="1186.0" prefWidth="1009.0" style="-fx-background-color: white;">
+                           <children>
+                              <ScrollPane fx:id="scrollPane" layoutY="16.0" prefHeight="1194.0" prefWidth="1009.0" style="-fx-background-color: white;">
+                                 <content>
+                                    <AnchorPane prefHeight="1171.0" prefWidth="1005.0" style="-fx-background-color: white;" />
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

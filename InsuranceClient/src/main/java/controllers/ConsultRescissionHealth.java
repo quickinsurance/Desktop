@@ -121,6 +121,8 @@ public class ConsultRescissionHealth implements Initializable {
 		}*/
         FXMLLoader loader = containerParent.switchViewTo("/views/healthRescission.fxml");
         ((HealthRecissionController) loader.getController()).setContainer(containerParent);
+        
+        
 
     }
     

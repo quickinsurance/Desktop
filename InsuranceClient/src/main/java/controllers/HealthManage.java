@@ -196,7 +196,7 @@ public class HealthManage implements Initializable {
 
 			IHealthInterfaceRemote proxy = (IHealthInterfaceRemote) context.lookup(jndiName);
 			Agent agent = new Agent();
-			agent.setId(6);
+			agent.setId(1);
 			List<Health> healths = proxy.getHealthByAgent(agent);
 
 			ObservableList<Health> listm = FXCollections.observableArrayList();

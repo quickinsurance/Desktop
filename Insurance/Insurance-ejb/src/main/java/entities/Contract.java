@@ -45,7 +45,7 @@ public class Contract implements Serializable {
 	private type_contract type_contract;
 
 	public enum type_contract {
-		Vehicle, housing, health, equipment
+		Vehicle, housing, health, equipment,Retirement
 	}
 
 	@ManyToOne

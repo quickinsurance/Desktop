@@ -13,10 +13,10 @@ public class Launch extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/AdminMainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/views/SecondMain.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.DECORATED);
         this.stage = stage;
         stage.show();
     }

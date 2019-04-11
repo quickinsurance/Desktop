@@ -127,7 +127,9 @@ public class HealthRecissionController  implements Initializable {
 						e.printStackTrace();
 					}*/
 			        FXMLLoader loader = containerParent.switchViewTo("/views/consultHealthRescission.fxml");
-			        ((ConsultRescissionHealth) loader.getController()).setContainer(containerParent);							
+			        ((ConsultRescissionHealth) loader.getController()).setContainer(containerParent);
+			        ((ConsultRescissionHealth) loader.getController()).setId(selectedHealth.getContract_id());							
+
 				}
 			}
 
@@ -148,7 +150,7 @@ public class HealthRecissionController  implements Initializable {
 
 				IHealthInterfaceRemote proxy = (IHealthInterfaceRemote) context.lookup(jndiName);
 				Agent agent = new Agent();
-				agent.setId(2);
+				agent.setId(1);
 				List<Health> healths = proxy.getRecissionByAgent(agent);
 
 				ObservableList<Health> listm = FXCollections.observableArrayList();

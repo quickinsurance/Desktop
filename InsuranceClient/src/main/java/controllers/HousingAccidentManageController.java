@@ -115,7 +115,7 @@ public class HousingAccidentManageController implements Initializable {
 	    			selectedAccident.setTreated(true);
 	    			proxy.updateAccidentAgent(selectedAccident);
 
-	    			try {
+	    		/*	try {
 						Stage primaryStage = new Stage();
 						Parent root = FXMLLoader.load(getClass().getResource("/views/HousingAccidentManage.fxml"));
 						Scene scene = new Scene(root);
@@ -127,7 +127,11 @@ public class HousingAccidentManageController implements Initializable {
 						primaryStage.show();
 					} catch (Exception e) {
 						e.printStackTrace();
-					}
+					}*/
+	    			
+	    			  FXMLLoader loader = containerParent.switchViewTo("/views/HousingAccidentManage.fxml");
+				        ((HousingAccidentManageController) loader.getController()).setContainer(containerParent);
+
 	    			
 	    		} catch (NamingException e) {
 	    			// TODO Auto-generated catch block
@@ -174,7 +178,7 @@ public class HousingAccidentManageController implements Initializable {
 		Context contextExpert;
 
 		Agent agent = new Agent();
-		agent.setId(2);
+		agent.setId(1);
 		
 		try {
 			

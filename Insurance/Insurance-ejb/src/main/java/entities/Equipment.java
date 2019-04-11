@@ -1,8 +1,11 @@
 package entities;
 
 import java.io.Serializable;
-import javax.persistence.Column;
+import java.util.Set;
+import entities.ContractProperty;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -12,32 +15,37 @@ public class Equipment extends Contract implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Column(name = "Name_equipment", nullable = false)
-	private String name_equipment;
-	@Column(name = "Condition_equipment", nullable = false)
-	private String condition_equipment;
-	@Column(name = "Description_equipment", nullable = false)
-	private String description_equipment;
+	private String Validation;
 	
-	public Equipment(){}
 	
-	public String getName_equipment() {
-		return name_equipment;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="Equipment")
+	private Set<ContractProperty> ContractProperty;
+
+	public Equipment() {
+		super();
 	}
-	public void setName_equipment(String name_equipment) {
-		this.name_equipment = name_equipment;
+
+
+	public String getValidation() {
+		return Validation;
 	}
-	public String getCondition_equipment() {
-		return condition_equipment;
+
+
+
+
+	public void setValidation(String validation) {
+		Validation = validation;
 	}
-	public void setCondition_equipment(String condition_equipment) {
-		this.condition_equipment = condition_equipment;
+
+
+
+
+	public Set<ContractProperty> getContractProperty() {
+		return ContractProperty;
 	}
-	public String getDescription_equipment() {
-		return description_equipment;
-	}
-	public void setDescription_equipment(String description_equipment) {
-		this.description_equipment = description_equipment;
+
+	public void setContractProperty(Set<ContractProperty> contractProperty) {
+		ContractProperty = contractProperty;
 	}
 	
 	
