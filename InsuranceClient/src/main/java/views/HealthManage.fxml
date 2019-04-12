@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1009.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HealthManage">
+   <children>
+      <Button fx:id="addHealth" layoutX="736.0" layoutY="271.0" mnemonicParsing="false" onAction="#addhealthContract" opacity="0.82" prefHeight="32.0" prefWidth="154.0" style="-fx-background-color: #e74c3c; -fx-border-color: white; -fx-background-radius: 30; -fx-border-radius: 30;" text="Add Health Contract" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="listRequest" layoutX="736.0" layoutY="325.0" mnemonicParsing="false" onAction="#getlistHealthRequestAdd" prefHeight="32.0" prefWidth="154.0" style="-fx-background-color: #49c18c; -fx-border-color: white; -fx-background-radius: 30; -fx-border-radius: 30;" text="List Request Add" textFill="WHITE" />
+      <Button fx:id="listRecission" layoutX="736.0" layoutY="494.0" mnemonicParsing="false" onAction="#getListRecission" prefHeight="32.0" prefWidth="154.0" style="-fx-background-color: #49c18c; -fx-border-color: white; -fx-border-radius: 30; -fx-background-radius: 30;" text="List Recissions" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="listUpdate" layoutX="736.0" layoutY="381.0" mnemonicParsing="false" onAction="#listUpdateRequest" prefHeight="32.0" prefWidth="154.0" style="-fx-background-color: #4a4f78; -fx-border-color: white; -fx-border-radius: 30; -fx-background-radius: 30;" text="List Request update " textFill="WHITE" />
+      <Button fx:id="listrequestrecission" layoutX="736.0" layoutY="435.0" mnemonicParsing="false" onAction="#getListRequestRecission" opacity="0.84" prefHeight="32.0" prefWidth="154.0" style="-fx-border-color: white; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #e74c3c;" text="List Request recission" textFill="WHITE" />
+      <TableView fx:id="tableHealth" layoutX="19.0" layoutY="250.0" onMouseClicked="#getHealthContract" prefHeight="396.0" prefWidth="701.0" style="-fx-border-color: black;">
+         <columns>
+            <TableColumn fx:id="idContract1" prefWidth="72.0" text="Contract " />
+            <TableColumn fx:id="clientHealth1" prefWidth="101.0" text="Client" />
+            <TableColumn fx:id="optionHealth1" prefWidth="322.0" text="Options" />
+            <TableColumn fx:id="primeHealth" minWidth="0.0" prefWidth="119.0" text="Prime" />
+            <TableColumn fx:id="CommissionHealth" minWidth="0.0" prefWidth="86.0" text="Commission" />
+         </columns>
+      </TableView>
+      <ImageView fx:id="imagerecherche" fitHeight="32.0" fitWidth="33.0" layoutX="19.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/searchIcon.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="recherche" layoutX="58.0" layoutY="194.0" onKeyPressed="#rechercheHealth" prefHeight="26.0" prefWidth="662.0" />
+      <Pane layoutX="-1.0" opacity="0.76" prefHeight="86.0" prefWidth="1009.0" style="-fx-background-color: #e74c3c;">
+         <children>
+            <Label layoutX="421.0" layoutY="37.0" prefHeight="17.0" prefWidth="239.0" text="Manage Contracts" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

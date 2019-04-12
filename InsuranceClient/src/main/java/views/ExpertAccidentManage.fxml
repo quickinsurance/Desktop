@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="477.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ExpertAccidentManageController">
+   <children>
+      <TableView fx:id="listAccident" layoutX="26.0" layoutY="116.0" onMouseClicked="#getAccident" prefHeight="300.0" prefWidth="551.0">
+        <columns>
+          <TableColumn fx:id="idAccident" prefWidth="90.0" text="Accident" />
+          <TableColumn fx:id="insuredNAme" prefWidth="140.0" text="Insured Name" />
+            <TableColumn fx:id="description" prefWidth="161.0" text="Description" />
+            <TableColumn fx:id="dateAccident" prefWidth="161.0" text="Date Of Accident" />
+        </columns>
+      </TableView>
+      <Label alignment="CENTER" layoutX="25.0" layoutY="60.0" prefHeight="17.0" prefWidth="551.0" text="Untreated Accident" />
+   </children>
+</AnchorPane>
