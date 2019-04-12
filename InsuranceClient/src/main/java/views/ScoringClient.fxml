@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorParent" prefHeight="630.0" prefWidth="1009.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ScoringClientController">
+   <children>
+      <Pane opacity="0.79" prefHeight="85.0" prefWidth="1009.0" style="-fx-background-color: #e74c3c;">
+         <children>
+            <Label layoutX="403.0" layoutY="31.0" prefHeight="17.0" prefWidth="267.0" text="Clients Scoring System" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="370.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/Scoring.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="65.0" fitWidth="64.0" layoutX="902.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/ScoringEmployee.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="36.0" layoutX="959.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/thinking.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <JFXDatePicker fx:id="DatePermisPiicker" layoutX="242.0" layoutY="196.0" prefHeight="25.0" prefWidth="189.0" />
+      <JFXDatePicker fx:id="dateContratPicker" layoutX="242.0" layoutY="254.0" prefHeight="25.0" prefWidth="189.0" />
+      <Label layoutX="47.0" layoutY="200.0" prefHeight="17.0" prefWidth="168.0" text="Date of obtaining the driving">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="43.0" layoutY="258.0" prefHeight="17.0" prefWidth="168.0" text="Date of the first contract with">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="51.0" layoutY="275.0" prefHeight="17.0" prefWidth="124.0" text="      our company:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="47.0" layoutY="322.0" prefHeight="0.0" prefWidth="153.0" text="Number of points losted:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <JFXComboBox fx:id="sinistesNumberCombo" layoutX="242.0" layoutY="371.0" prefHeight="25.0" prefWidth="180.0" />
+      <Label layoutX="47.0" layoutY="375.0" prefHeight="17.0" prefWidth="153.0" text="Number of sinisters:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="47.0" layoutY="153.0" prefHeight="17.0" prefWidth="153.0" text="Birth Date">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <JFXTextField fx:id="txtTarif" alignment="CENTER" focusColor="#612b4f" layoutX="241.0" layoutY="438.0" prefHeight="25.0" prefWidth="180.0" promptText="Tarif" />
+      <Label layoutX="51.0" layoutY="451.0" prefHeight="17.0" prefWidth="131.0" text="Actual Tarif:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <ProgressIndicator fx:id="progressIndicator" layoutX="815.0" layoutY="264.0" prefHeight="65.0" prefWidth="64.0" />
+      <JFXButton fx:id="scoringBtn" layoutX="835.0" layoutY="578.0" onAction="#calculScoreAction" opacity="0.9" prefHeight="38.0" prefWidth="168.0" style="-fx-background-color: #e74c3c; -fx-border-color: #e74c3c; -fx-border-radius: 30; -fx-background-radius: 30;" text="        Obtain the Scoring" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXCheckBox fx:id="tiersCheckBox" checkedColor="#318a5a" layoutX="241.0" layoutY="490.0" onAction="#tiersAction" prefHeight="25.0" prefWidth="249.0" selected="true" text="Tiers: Minimum of mandatory protection" />
+      <JFXCheckBox fx:id="tiersEtenduCheckBox" checkedColor="#da6f1d" layoutX="241.0" layoutY="519.0" onAction="#tiersEtenduAction" prefHeight="18.0" prefWidth="201.0" text="Tiers étendu: Tiers + Vol +Fire" />
+      <JFXCheckBox fx:id="tousRisquesCheckBox" checkedColor="#c31442" layoutX="241.0" layoutY="547.0" onAction="#tousRisqueAction" prefHeight="18.0" prefWidth="79.0" text="All risks" />
+      <Label layoutX="53.0" layoutY="497.0" prefHeight="17.0" prefWidth="114.0" text="Options:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <VBox fx:id="vboxLabels" layoutX="559.0" layoutY="132.0" prefHeight="278.0" prefWidth="138.0">
+         <children>
+            <Label prefHeight="49.0" prefWidth="138.0" text="Coefficient Bonus/Malus:">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label prefHeight="44.0" prefWidth="138.0" text="Bonus/Malus:">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label prefHeight="62.0" prefWidth="118.0" text=" Reduction Rate:">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label prefHeight="57.0" prefWidth="115.0" text="  Increase Rate:">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label prefHeight="67.0" prefWidth="131.0" text=" Customer State:">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="vboxResults" layoutX="719.0" layoutY="133.0" prefHeight="251.0" prefWidth="256.0" visible="false">
+         <children>
+            <JFXTextField fx:id="coefficienttext" focusColor="#3d4c78" prefHeight="48.0" prefWidth="126.0" />
+            <JFXTextField fx:id="BonusOuMalusText" focusColor="#3d4c78" prefHeight="65.0" prefWidth="138.0" />
+            <JFXTextField fx:id="MajorationText" focusColor="#3d4c78" prefHeight="73.0" prefWidth="138.0" />
+            <JFXTextField fx:id="ReductionText" focusColor="#3d4c78" prefHeight="75.0" prefWidth="138.0" />
+            <JFXTextField fx:id="EtatText" focusColor="#3d4c78" prefHeight="83.0" prefWidth="256.0" />
+         </children>
+      </VBox>
+      <JFXSlider fx:id="sliderPointsPerdus" blockIncrement="1.0" layoutX="238.0" layoutY="328.0" max="11.0" onMouseReleased="#updatePointsSlider" prefHeight="33.0" prefWidth="180.0" showTickLabels="true" value="2.0" />
+      <JFXDatePicker fx:id="birthDatePicker" layoutX="241.0" layoutY="141.0" prefHeight="25.0" prefWidth="189.0" />
+      <Label fx:id="labelPoints" layoutX="431.0" layoutY="322.0" prefHeight="17.0" prefWidth="91.0" text="2 Points">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelCoefficient" layoutX="458.0" layoutY="96.0" prefHeight="17.0" prefWidth="64.0" visible="false" />
+      <Label fx:id="nbreSinistresLabel" layoutX="244.0" layoutY="468.0" prefHeight="17.0" prefWidth="153.0" textFill="#da1919" visible="false" />
+      <Label fx:id="tarifLabel" layoutX="244.0" layoutY="402.0" prefHeight="17.0" prefWidth="153.0" textFill="#da1919" visible="false" />
+      <JFXButton fx:id="ResetBtn" layoutX="715.0" layoutY="578.0" onAction="#ResetAction" opacity="0.89" prefHeight="38.0" prefWidth="118.0" style="-fx-background-color: #e74c3c; -fx-border-color: white; -fx-border-radius: 30; -fx-background-radius: 30;" text="Reset" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="tarifProchainLabel" layoutX="561.0" layoutY="440.0" prefHeight="17.0" prefWidth="131.0" text="Tarif of the next Year:">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="tarifProchainTxtField" layoutX="720.0" layoutY="427.0" prefHeight="25.0" prefWidth="256.0" visible="false" />
+      <ImageView fx:id="coeffImageView" fitHeight="25.0" fitWidth="25.0" layoutX="529.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/coefficient.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bonusOumalusImageView" fitHeight="25.0" fitWidth="25.0" layoutX="529.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/BonusMalus.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="majorationImageView" fitHeight="33.0" fitWidth="25.0" layoutX="535.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/increase.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="clientImageView" fitHeight="25.0" fitWidth="25.0" layoutX="531.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/client.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tarifImageView" fitHeight="25.0" fitWidth="25.0" layoutX="530.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/tarif.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="reductionImageView" fitHeight="25.0" fitWidth="25.0" layoutX="531.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/decrease.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="29.0" layoutX="848.0" layoutY="585.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/ScoringBtnIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="728.0" layoutY="585.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/UpdateIcone.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="562.0" layoutY="495.0" prefHeight="17.0" prefWidth="131.0" text="Group to join:">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="31.0" fitWidth="29.0" layoutX="530.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/ScoringGroup.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="grouptxt" focusColor="#3d4c78" layoutX="720.0" layoutY="483.0" prefHeight="25.0" prefWidth="256.0" visible="false" />
+      <Label layoutX="100.0" layoutY="218.0" prefHeight="17.0" prefWidth="49.0" text="Licence:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+   </children>
+</AnchorPane>
