@@ -1,5 +1,4 @@
 package controllers;
-
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import services.interf.IClaimsServiceRemote;
@@ -68,8 +67,7 @@ public class AddEquipmentQuoteController implements Initializable {
 	private GridPane gridPerson;
 	@FXML
 	private HBox menubar;
-    @FXML
-    private Label labeldate2;
+  
 	@FXML
 	private Pane gg;
 	@FXML
@@ -97,11 +95,7 @@ public class AddEquipmentQuoteController implements Initializable {
 	@FXML
 	private Label type_label;
 
-	@FXML
-	private Label itemLabel;
 
-	@FXML
-	private Label makeLabel;
 
 	@FXML
 	private Label modelLabel;
@@ -146,7 +140,11 @@ public class AddEquipmentQuoteController implements Initializable {
 
     @FXML
     private Label optionLabel;
-
+    private EquipmentQuotContainerController containerParent;
+    public void setContainer(EquipmentQuotContainerController equipmentQuotContainerController) {
+		this.containerParent = equipmentQuotContainerController;
+		
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -163,34 +161,38 @@ public class AddEquipmentQuoteController implements Initializable {
 		item.getItems().add(c.getItem().DesktopPC.toString());
 		item.getItems().add(c.getItem().homeAppliance.toString());
 		addContractbtn.setDisable(true);
-		itemLabel.setText("");
 		optionLabel.setText("Standard");
-	     ValidationSupport validationSupport = new ValidationSupport();
-	        validationSupport.registerValidator(cinField, Validator.createEmptyValidator("champ obligatoire"));
-	        ValidationSupport validationSupport1 = new ValidationSupport();
-	        validationSupport1.registerValidator(phone, Validator.createEmptyValidator("champ obligatoire"));
-	        ValidationSupport validationSupport2 = new ValidationSupport();
-	        validationSupport2.registerValidator(first_name, Validator.createEmptyValidator("champ obligatoire"));
-	        ValidationSupport validationSupport3 = new ValidationSupport();
-	        validationSupport3.registerValidator(last_name, Validator.createEmptyValidator("champ obligatoire"));
-	        ValidationSupport validationSupport4 = new ValidationSupport();
-	        validationSupport4.registerValidator(email, Validator.createEmptyValidator("champ obligatoire"));
-	        ValidationSupport validationSupport5 = new ValidationSupport();
-	        validationSupport5.registerValidator(condition, Validator.createEmptyValidator("champ obligatoire"));
-	        ValidationSupport validationSupport6 = new ValidationSupport();
-	        validationSupport6.registerValidator(valueField, Validator.createEmptyValidator("champ obligatoire"));
-	        cinField.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(8));
-	        phone.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(8));
-	        text3.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(23));
-	        text4.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(1));
-	        valueField.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(8));
-	        first_name.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(50));
-	        last_name.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(50));
-	        text1.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(50));
-	        text2.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(50));
-	        condition.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(50));
+		this.setValidd();
 
-
+	}
+    
+    public void setValidd() {
+	
+		/*ValidationSupport validationSupport = new ValidationSupport();
+        validationSupport.registerValidator(cinField, Validator.createEmptyValidator("champ obligatoire"));
+        ValidationSupport validationSupport1 = new ValidationSupport();
+        validationSupport1.registerValidator(phone, Validator.createEmptyValidator("champ obligatoire"));
+        ValidationSupport validationSupport2 = new ValidationSupport();
+        validationSupport2.registerValidator(first_name, Validator.createEmptyValidator("champ obligatoire"));
+        ValidationSupport validationSupport3 = new ValidationSupport();
+        validationSupport3.registerValidator(last_name, Validator.createEmptyValidator("champ obligatoire"));
+        ValidationSupport validationSupport4 = new ValidationSupport();
+        validationSupport4.registerValidator(email, Validator.createEmptyValidator("champ obligatoire"));
+        ValidationSupport validationSupport5 = new ValidationSupport();
+        validationSupport5.registerValidator(condition, Validator.createEmptyValidator("champ obligatoire"));
+        ValidationSupport validationSupport6 = new ValidationSupport();
+        validationSupport6.registerValidator(valueField, Validator.createEmptyValidator("champ obligatoire"));
+        */
+    	cinField.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(8));
+        phone.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(8));
+        text3.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(23));
+        text4.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(1));
+        valueField.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(8));
+        first_name.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(50));
+        last_name.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(50));
+        text1.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(50));
+        text2.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(50));
+        condition.addEventFilter(KeyEvent.KEY_TYPED , letter_Validation(50));
 	}
 	 @FXML
 	    void setPremium(MouseEvent event) {
@@ -212,7 +214,6 @@ public class AddEquipmentQuoteController implements Initializable {
 	@FXML
 	void chooseitem(ActionEvent event) {
 		if (!item.getSelectionModel().isEmpty()) {
-			makeLabel.setText("");
 			if (item.getSelectionModel().getSelectedItem().equals("MobilePhone")) {
 				make.getItems().clear();
 				make.getItems().add(c.getMarque().Amazon.toString());
@@ -332,10 +333,7 @@ public class AddEquipmentQuoteController implements Initializable {
 			}
 		}
     }
-	 @FXML
-	    void deleteLabel(ActionEvent event) {
-		 labeldate2.setText("");
-	    }
+	
 	@FXML
     void searchUser(KeyEvent event) throws NamingException {
 		String jndiName = "Insurance-ear/Insurance-ejb/UserServiceImpl!services.interf.UserServiceRemote";
@@ -701,7 +699,6 @@ public class AddEquipmentQuoteController implements Initializable {
 		        }
 		    };
 		}    
-		  /* Letters Validation Limit the  characters to maxLengh AND to ONLY Letters *************************************/
 		public EventHandler<KeyEvent> letter_Validation(final Integer max_Lengh) {
 		    return new EventHandler<KeyEvent>() {
 		        @Override
@@ -724,26 +721,23 @@ public class AddEquipmentQuoteController implements Initializable {
 			Context context = new InitialContext();
 			ISinisterEquipmentServiceRemote proxy = (ISinisterEquipmentServiceRemote) context.lookup(jndiName);
 			int x=proxy.findNumberSinister(p);
+			if (x==0){ x = (int)(Math.random() * 50 + 1);}
 			double y=proxy.MeanSinisterEquipment(p);
 			float xx=x;
 			float nrisque=500;
 			if (p.getItem().equals("Camera") || p.getItem().equals("Games")
 					|| p.getItem().equals("MobilePhone") || p.getItem().equals("EReader")) 
 			{
-				nrisque=1000;
+				nrisque=250;
 			}
 			double frequence=x/nrisque;
 			double tauxPrime=frequence*y;
 			double Prime=tauxPrime*p.getValue()/100;
-			String s=String.valueOf(Prime);
-			Float primefinal=Float.valueOf(s);
-			q.setCommision(primefinal*0.09+5.9);
-			q.setPremium(primefinal);
-			String ss=String.valueOf(primefinal*1.09+5.9);
-			Float pr=Float.valueOf(ss);
-			p.setPrime(pr);
+			q.setCommision((float)(Prime*0.09+5.9));
+			q.setPremium((float)(Prime*1.09+5.9));
+			p.setPrime((float)(Prime*1.09+5.9));
 			
-			Notifications notif= Notifications.create().text("Your premium is :"+pr)
+			Notifications notif= Notifications.create().text("Your quote is :"+(int)Prime+" DT")
 	                .hideAfter(Duration.seconds(10)).position(Pos.CENTER);
 	        notif.darkStyle().graphic(null);
 	       notif.show();
@@ -756,29 +750,23 @@ public class AddEquipmentQuoteController implements Initializable {
 			Context context = new InitialContext();
 			ISinisterEquipmentServiceRemote proxy = (ISinisterEquipmentServiceRemote) context.lookup(jndiName);
 			int x=proxy.findNumberSinisterC(p);
+			if (x==0){ x = (int)(Math.random() * 50 + 1);}
 			double y=proxy.MeanSinisterEquipmentC(p);
 			float xx=x;
 			float nrisque=500;
 			if (p.getItem().equals("Camera") || p.getItem().equals("Games")
 					|| p.getItem().equals("MobilePhone") || p.getItem().equals("EReader")) 
 			{
-				nrisque=1000;
+				nrisque=250;
 			}
 			double frequence=x/nrisque;
 			double tauxPrime=frequence*y;
 			double Prime=tauxPrime*p.getValue()/100;
-			String s=String.valueOf(Prime);
-			Float primefinal=Float.valueOf(s);
-			//System.out.println(x+"*"+y+"*"+primefinal);
-			System.out.println(primefinal);
-			String ss1=String.valueOf(primefinal*0.09+5.9);
-			c.setCommission(Float.valueOf(ss1));
-			c.setPrime(primefinal);
-			String ss=String.valueOf(primefinal*1.09+5.9);
-			Float pr=Float.valueOf(ss);
-			p.setPrime(pr);
+			c.setCommission((float)(Prime*0.09+5.9));
+			c.setPrime((float)(Prime*1.09+5.9));
+			p.setPrime((float)(Prime*1.09+5.9));
 			
-			Notifications notif= Notifications.create().text("Your premium is :"+pr)
+			Notifications notif= Notifications.create().text("Your premium is :"+(int)Prime+" DT")
 	                .hideAfter(Duration.seconds(10)).position(Pos.CENTER);
 	        notif.darkStyle().graphic(null);
 	       notif.show();
@@ -792,10 +780,11 @@ public class AddEquipmentQuoteController implements Initializable {
 		float primePure=0;
 		for (int i=0;i<pp.size();i++)
 		{primePure=primePure+pp.get(i).getPrime();}
-		double com=(primePure*0.09)+5.9;
-		p.setCommision(com);
-		p.setPremium(primePure+com);
-		Notifications notif= Notifications.create().text("Your premium pack is :"+primePure+com)
+		double com=(primePure*0.07)+5.9;
+		double primefinal=(primePure*1.09)+5.9;
+		p.setCommision((float)com);
+		p.setPremium((float)primefinal);
+		Notifications notif= Notifications.create().text("Your premium quote is :"+(int)primefinal+" DT")
                 .hideAfter(Duration.seconds(10)).position(Pos.CENTER);
         notif.darkStyle().graphic(null);
        notif.show();
@@ -806,16 +795,15 @@ public class AddEquipmentQuoteController implements Initializable {
 			Context context1 = new InitialContext();
 			IEquipmentServiceRemote proxy1 = (IEquipmentServiceRemote) context1.lookup(jndiName1);
 			List<ContractProperty> pp=proxy1.findCProperty((p.getContract_id()));
+			System.out.print(p.getContract_id());
 			float primePure=0;
 			for (int i=0;i<pp.size();i++)
 			{primePure=primePure+pp.get(i).getPrime();}
-			double com=primePure*0.09+5.9;
-			String s=String.valueOf(com);
-			String s2=String.valueOf(com+primePure);
-			System.out.println(primePure);
-			p.setCommission(Float.valueOf(s));
-			p.setPrime(Float.valueOf(s2));
-			Notifications notif= Notifications.create().text("Your premium pack is :"+primePure+com)
+			double com=(primePure*0.07)+5.9;
+			double primefinal=(primePure*1.09)+5.9;
+			p.setCommission((float)com);
+			p.setPrime((float)primefinal);
+			Notifications notif= Notifications.create().text("Your premium pack is :"+(int)primefinal+" DT")
 	                .hideAfter(Duration.seconds(10)).position(Pos.CENTER);
 	        notif.darkStyle().graphic(null);
 	       notif.show();

@@ -6,7 +6,9 @@ import javafx.geometry.Insets;
 
 import java.awt.Desktop;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import services.interf.IClaimsServiceRemote;
 import services.interf.IMessageServiceRemote;
-import tn.esprit.CompareClaims;
+import util.CompareClaims;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.layout.GridPane;
@@ -64,12 +66,11 @@ public class ClaimController implements Initializable {
 
     @FXML
     private ScrollPane scrollPane1;
-
+    @FXML
+    private Label attached;
     @FXML
     private VBox Respond;
 	private Claim claim;
-	TreeSet<CompareClaims> MatchOrdered = new TreeSet<>();
-
 /*
 	void add(ActionEvent event) throws Exception {
 		String jndiName = "Insurance-ear/Insurance-ejb/ServiceClaims!services.interf.IClaimsServiceRemote";
@@ -90,7 +91,21 @@ public class ClaimController implements Initializable {
 
 	}*/
 
-	
+	   @FXML
+	    void getFileattached(MouseEvent event) throws IOException {
+		   byte[] b = claim.getDocument();
+			// download it
+			OutputStream out = new FileOutputStream("E:\\doc.pdf");
+			out.write(b);
+			out.close();
+			// open file
+			File myFile = new File("E:\\doc.pdf");
+			Desktop.getDesktop().open(myFile);
+			// delete it
+			// if (myFile.exists()) {
+			// myFile.delete();}
+
+	    }
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -103,6 +118,7 @@ public class ClaimController implements Initializable {
 		Claim c = proxy.findClaimById(claim.getClaim_id());
 		List<Claim> claims = proxy.FindMatch(claim.getType_subject().toString(), claim.getClaim_id());
 		int match;
+		TreeSet<CompareClaims> MatchOrdered = new TreeSet<>();
 		for (int i = 0; i < claims.size(); i++) {
 			int x = 0;
 			String[] array1 = claims.get(i).getDescription().split("\\s", -1);
@@ -115,10 +131,11 @@ public class ClaimController implements Initializable {
 					}
 				}
 			}
-			CompareClaims cc = new CompareClaims();
-
 			if (x!=0 && x==(array.length-1))
 			{  			
+				System.out.println("haha");
+
+			CompareClaims cc = new CompareClaims();
 			cc.setC(claims.get(i));
 			cc.LevensthienDistance(st, claims.get(i).getDescription());
 			cc.LongestCommonSubsequence(st, claims.get(i).getDescription());
@@ -126,7 +143,6 @@ public class ClaimController implements Initializable {
 			MatchOrdered.add(cc);
 			}
 		}
-		System.out.println("**"+MatchOrdered.size());
 		int cols2 = 1, colCnt2 = 0, rowCnt2 = 0;
 		Match.getChildren().clear();
 		GridPane grid2 = new GridPane();
@@ -138,6 +154,7 @@ public class ClaimController implements Initializable {
         scrollPane2.setHbarPolicy(ScrollBarPolicy.NEVER);
         
 		for (CompareClaims e : MatchOrdered) {
+			System.out.println("***");
 				HBox gd = new HBox();
 				grid2.setMargin(gd, (new Insets(5, 5, 10, 5)));
 				gd.setStyle( 
@@ -182,6 +199,14 @@ public class ClaimController implements Initializable {
 
 	
 
+	public Label getAttached() {
+		return attached;
+	}
+
+	public void setAttached(Label attached) {
+		this.attached = attached;
+	}
+
 	public Label getDateLabel() {
 		return dateLabel;
 	}
@@ -225,5 +250,9 @@ public class ClaimController implements Initializable {
 	public void setTextarea(AnchorPane textarea) {
 		this.textarea = textarea;
 	}
+
+	private ClaimsContainerController containerParent;
+    public void setContainer(ClaimsContainerController ClaimsContainerController) {
+		this.containerParent = ClaimsContainerController;}
 
 }
