@@ -243,14 +243,39 @@ clothimg.setVisible(true);
     Guarantee gu =	tab.getSelectionModel().getSelectedItem();
     gu.setSinister(s);
     
+    if (jewwe1.getText().equals("")) {
+    	jewwe1.setText("0");
+    } if (electrolife2.getText().equals("")) {
+    	electrolife2.setText("1");
+    }
+    
+     if (electro2.getText().equals("")) {
+    	electro2.setText("0");
+    }
+     if (expertestim.getText().equals("")) {
+    	 expertestim.setText("0");
+     }if (clothing.getText().equals("")) {
+    	 clothing.setText("0");
+     }
+     
+     
+     
     float fren = gu.getAmount_franchise();
     float limit = gu.getAmount_limit();
-    float expertvalue=0;
-     expertvalue =Integer.parseInt(expertestim.getText());
+ 
+    float expertvalue =Integer.parseInt(expertestim.getText());
     float expertvalue1 = 50000;
    String gua= s.getReport().getAccident().getHousing().getGuarantee();
    float housevalue= s.getReport().getAccident().getHousing().getHousevalue();
     float   objectvalue = s.getReport().getAccident().getHousing().getObjectsvalue();
+    
+  
+     
+     
+    
+    
+    
+    
     
     if (expertvalue!=0){
     	
@@ -266,43 +291,59 @@ clothimg.setVisible(true);
     	
     }else if (gua.equals("HO-5")){
     	
-    	float refu =expertvalue;
-    	
-    	if (refu>limit){
+    	float refu =expertvalue-fren;
+    	if (refu<0)
+    	{
+    		refu=expertvalue*0.1f;
+    	}
+    	if (expertvalue>limit){
     		  gu.setRefund(limit-fren);
     	}else {
     		gu.setRefund(refu);
     	}
     	
     }else if (gua.equals("HO-3")){
-    	float refu =expertvalue;
-
-    	if (refu>limit){
+    	
+    
+    	float refu =expertvalue-fren;
+    	if (refu<0)
+    	{
+    		refu=expertvalue*0.1f;
+    	}
+    		
+    	if (expertvalue>limit){
     		  gu.setRefund(limit-fren);
     	}else {
     		gu.setRefund(refu);
     	}
     	
     }else{
-    	float refu =expertvalue;
-
-    	if (refu>limit){
+    float refu =expertvalue-fren;;
+    	if (refu<0)
+    	{
+    		refu=expertvalue*0.1f;
+    	}
+    	if (expertvalue>limit){
     		  gu.setRefund(limit-fren);
     	}else {
-    		gu.setRefund(refu-fren);
+    		gu.setRefund(refu);
     	}
     	
     }}else{
-    	 float cloth =Integer.parseInt(clothing.getText())*0.8f;
-    	 float jowl =Integer.parseInt(jewwe1.getText());	
+    	 float cloth =Integer.parseInt(clothing.getText());
+	    	
+	    	 float jowl =Integer.parseInt(jewwe1.getText());	
     	 	 
     	 float electrolif =Integer.parseInt(electrolife2.getText());	
     	 float electro =Integer.parseInt(electro2.getText())/electrolif;
         if (gua.equals("HO-8")){
-        	float refu =cloth+jowl+electro;
-        	
+        	float refu =cloth+jowl+electro-fren;
+        	if (refu<0)
+        	{
+        		refu=refu;
+        	}
         	if (refu>limit){
-      		  gu.setRefund(limit-fren*0.9f);
+      		  gu.setRefund((limit-fren));
       	}else {
       		 gu.setRefund(refu);
       	}
@@ -310,33 +351,47 @@ clothimg.setVisible(true);
         	
         }else if (gua.equals("HO-5")){
         	
-        	float refu =cloth+jowl+electro;
+        	float refu =(cloth+jowl+electro)-fren;
+        	if (refu<0f)
+        	{
+        		refu=(cloth+jowl+electro)*0.1f;
+        	}
         	
-        	if (refu>limit){
-        		  gu.setRefund(limit-fren*0.9f);
+        	 if(refu>limit){
+        		  gu.setRefund((limit-fren)*0.9f);
         	}else {
-        		gu.setRefund(refu);
+        		gu.setRefund(refu*0.9f);
         	}
         	
         }else if (gua.equals("HO-3")){
-        	float refu =cloth+jowl+electro;
+        	float refu =(cloth+jowl+electro)-fren;
+        	if (refu<0)
+        	{
+        		refu=(cloth+jowl+electro)*0.1f;
+        	}
 
         	if (refu>limit){
         		  gu.setRefund(limit-fren);
         	}else {
-        		gu.setRefund(refu);
+        		gu.setRefund(refu*0.9f);
         	}
         	
         }else{
-        	float refu =cloth+jowl+electro;
+        	float refu =(cloth+jowl+electro)-fren;
+        	if (refu<0)
+        	{
+        		refu=(cloth+jowl+electro)*0.1f;
+        		
+        	}
 
         	if (refu>limit){
         		  gu.setRefund(limit-fren);
         	}else {
-        		gu.setRefund(refu-fren*0.9f);
+        		gu.setRefund((refu)*0.9f);
         	}
     	
         }
+        
     }
     
 
@@ -370,39 +425,39 @@ clothimg.setVisible(true);
     @FXML
     void showdiscrption(ActionEvent event) {
     	
-String s1="A basic policy that protects against all 11 perils the HO-1 covers as well as others. Additional perils covered by an HO-2 policy include: damage from falling objects; and water damage from accidental overflow of plumbing, heating air-conditioning and household appliances. Like the HO-1, the HO-2 is a named peril policy and only the perils specifically listed are covered - no others. The HO-2 also covers personal property in the home.";
-String s2="The HO-3 is the most common policy form because of its broad range of coverage. It is an extended or special homeowners insurance policy form that protects against all 16 of the most common perils and almost any other peril, except those specifically excluded (such as earthquake, flood, landslide or mudslide, nuclear accident and sinkholes). However, HO-3 policies only cover personal belongings in the home against the same perils covered by an HO-2 policy form.";
+String s1="A basic policy that protects against all 11 perils the HO-2 covers as well as others. Additional perils covered by an HO-2 policy include: damage from falling objects; and water damage from accidental overflow of plumbing, heating air-conditioning and household appliances. Like the HO-1, the HO-2 is a named peril policy and only the perils specifically listed are covered - no others. The HO-2 also covers personal property in the home.";
+String s2="The HO-5 is the most common policy form because of its broad range of coverage. It is an extended or special homeowners insurance policy form that protects against all 16 of the most common perils and almost any other peril, except those specifically excluded (such as earthquake, flood, landslide or mudslide, nuclear accident and sinkholes). However, HO-3 policies only cover personal belongings in the home against the same perils covered by an HO-2 policy form.";
 
-String s3="The HO-5 policy form is identical to an HO-3, only with a twist. Like an HO-3, the HO-5 covers all 16 perils plus any peril that is not specifically listed as an exclusion. Unlike the HO-3, the HO-5 is more comprehensive and covers personal property from almost every peril, unless the item is explicitly excluded. The depth of the coverage makes this policy cost more than others.";
-String s4="An HO-8 policy form is designed for older homes that have a replacement cost that exceeds the actual cash value of the home. For that reason, the HO-8 policy form is frequently used to insure registered landmarks and architecturally significant structures.";
+String s3="The HO-8 policy form is identical to an HO-3, only with a twist. Like an HO-3, the HO-5 covers all 16 perils plus any peril that is not specifically listed as an exclusion. Unlike the HO-3, the HO-5 is more comprehensive and covers personal property from almost every peril, unless the item is explicitly excluded. The depth of the coverage makes this policy cost more than others.";
+String s4="An HO-2 policy form is designed for older homes that have a replacement cost that exceeds the actual cash value of the home. For that reason, the HO-8 policy form is frequently used to insure registered landmarks and architecturally significant structures.";
     	
-    	if (s.getReport().getAccident().getHousing().getGuarantee().equals("HO-1")){
+    	if (s.getReport().getAccident().getHousing().getGuarantee().equals("HO-2")){
     		
     		 Alert alert = new Alert(Alert.AlertType.INFORMATION);
     	        alert.setTitle("Guarantee details");
     	        alert.setHeaderText("Type HO-2");
-    	        alert.setContentText(s1);
+    	        alert.setContentText(s4);
     	        alert.showAndWait();
     		
     	}else if(s.getReport().getAccident().getHousing().getGuarantee().equals("HO-3")) {
     		 Alert alert = new Alert(Alert.AlertType.INFORMATION);
     	        alert.setTitle("Guarantee details");
     	        alert.setHeaderText("Type HO-3");
-    	        alert.setContentText(s2);
+    	        alert.setContentText(s1);
     	        alert.showAndWait();
     	
     	}else if (s.getReport().getAccident().getHousing().getGuarantee().equals("HO-5")){
     	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Guarantee details");
             alert.setHeaderText("Type HO-5");
-            alert.setContentText(s3);
+            alert.setContentText(s2);
             alert.showAndWait();
     		
     	}else if (s.getReport().getAccident().getHousing().getGuarantee().equals("HO-8"))
     	{  Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Guarantee details");
         alert.setHeaderText("Type HO-8");
-        alert.setContentText(s4);
+        alert.setContentText(s3);
         alert.showAndWait();
     		
     	}

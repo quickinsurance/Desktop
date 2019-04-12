@@ -127,7 +127,9 @@ public class ContractdetailController implements Initializable{
 	    @FXML
 	    private Label clientadress;
 
-
+	    @FXML
+	    private Button resiliatebuttom;
+	    
 	    @FXML
 	    private Label refundAmount;
 
@@ -150,7 +152,7 @@ public class ContractdetailController implements Initializable{
 	    File file ;
 	    Test t = new Test();
 	    
-	
+	    ContractHousingContainerController parentContainer;
 
 
 	private int id1;
@@ -204,12 +206,7 @@ public class ContractdetailController implements Initializable{
 			vlaue.setText(String.valueOf(house.getHousevalue()));
 			protection.setText(String.valueOf(house.getHouseProtection()));
 			objectV.setText(String.valueOf(house.getObjectsvalue()));
-			String[] array = house.getObjectsinsured().split("\\s", -1);
-			for (int i=0; i<array.length+1; i++)
-			{
-			objectS.setText(array[i]+"  "+array[i+1]+" ");//*********************************
-    }
-	
+
 			unhabited.setText(String.valueOf(house.getHouseempty()));
 			yearnmbr.setText(String.valueOf(house.getHouseduration()));
 			yearnmbr.setText(String.valueOf(house.getHouseduration()));
@@ -221,7 +218,7 @@ floor.setVisible(true);
 			}
 
 			if (house.getEtatdemande().equals("on hold")){
-
+				resiliatebuttom.setVisible(true);
 		    	AccepteButton.setVisible(true);
 				refuseButton.setVisible(true);
 			}
@@ -236,7 +233,7 @@ floor.setVisible(true);
 			if (house.getEtatdemande().equals("resiliated")){
 				
 		
-				
+				resiliatebuttom.setVisible(false);
 				
 			refundAmount.setText(String.valueOf(s));
 				refund1.setVisible(true);
@@ -257,7 +254,11 @@ floor.setVisible(true);
             image1.setImage(a1);
             image1.setFitHeight(200);
             image1.setFitWidth(250);*/
-	     
+			String[] array = house.getObjectsinsured().split("\\s", -1);
+			for (int i=0; i<array.length+1; i++)
+			{
+			objectS.setText(array[i]+"  "+array[i+1]+" ");
+    }
 			
 
 		} catch (Exception e) {
@@ -297,8 +298,8 @@ floor.setVisible(true);
        
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Operation Successful !");
-        alert.setHeaderText("A new Contract saved correctly.");
-        alert.setContentText("A new Contract has been saved inside the folder QuickInsuranceContracts");
+        alert.setHeaderText("A  Contract Refuse.");
+        alert.setContentText("A new Contract has been Refused");
         alert.showAndWait();
     		
 
@@ -442,6 +443,44 @@ SwitchScreen ss = new SwitchScreen();
 	        alert.setHeaderText("A new Contract saved correctly.");
 	        alert.setContentText("A new Contract has been saved inside the folder QuickInsuranceContracts");
 	        alert.showAndWait();
+	    }
+
+
+
+
+		public void setContainer(ContractHousingContainerController parentContainer) {
+			this.parentContainer = parentContainer;
+		}
+		
+	    @FXML
+	    void resiliate(ActionEvent event) throws Exception {
+	    	
+			java.sql.Date today =java.sql.Date.valueOf(java.time.LocalDate.now());
+			String datt = today.toString();
+			LocalDate dateBefore = LocalDate.parse(datt);
+			LocalDate datenext = LocalDate.parse(house.getDate_end().toString());
+			long noOfDaysBetween = ChronoUnit.DAYS.between(dateBefore,datenext);
+			float s= (house.getPrime()*(365-noOfDaysBetween))/365;
+			refundAmount.setText(String.valueOf(s));
+	    	Test t = new Test();
+			Housing house =t.ServicefindContracthouse(id1);
+	    	
+			 house.setEtatdemande("resiliated");
+			 t.ServiceUpdateContracthouse(house);
+			System.out.println(house.getEtatdemande());
+		    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	        alert.setTitle("Operation Successful !");
+	        alert.setHeaderText("A  Contract Resiliated.");
+	        alert.setContentText("A Contract has been Resiliated");
+	        alert.showAndWait();
+	    	
+	      
+	    	FXMLLoader loader1 = parentContainer.switchViewTo("/views/ContractHousingDetailView.fxml");
+	    	((ContractdetailController)loader1.getController()).setContainer(parentContainer);
+
+	    	((ContractdetailController)loader1.getController()).setid(id1);
+	    	((ContractdetailController)loader1.getController()).startstage();
+
 	    }
 	
 

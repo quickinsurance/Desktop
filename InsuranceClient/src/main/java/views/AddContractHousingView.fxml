@@ -40,10 +40,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="back" layoutX="66.0" layoutY="665.0" mnemonicParsing="false" onAction="#returnIns" opacity="0.81" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: #191970; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: white;" text="Back" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font></Button>
       <JFXTextField fx:id="objectvalue" layoutX="750.0" layoutY="204.0" />
       <JFXTextField fx:id="unhabiteddays" layoutX="751.0" layoutY="258.0" />
       <Label fx:id="addressLabel" layoutX="85.0" layoutY="120.0" prefHeight="17.0" prefWidth="98.0" text="Label" textFill="#fb0808" visible="false" />
@@ -176,7 +172,7 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="confirmer" layoutX="780.0" layoutY="665.0" mnemonicParsing="false" onAction="#addContract" opacity="0.81" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: #191970; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: white;" text="ADD" textFill="WHITE">
+      <Button fx:id="confirmer" layoutX="832.0" layoutY="658.0" mnemonicParsing="false" onAction="#addContract" opacity="0.81" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: #191970; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: white;" text="ADD" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

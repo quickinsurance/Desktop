@@ -96,7 +96,7 @@ public class ContracthousingController implements Initializable{
 public Housing house ;
     @FXML
     private Button go;
-    private ContractHousingContainerController containerParent;
+	public ContractHousingContainerController containerParent;
     
 
 
@@ -270,8 +270,9 @@ SwitchScreen ss = new SwitchScreen();
     	//ss.switchScreen("HousingGuranteeview.fxml", go);
 //ss.switchScreen("/views/AddUserforHousingView.fxml", add);
 
+
 FXMLLoader loader = containerParent.switchViewTo("/views/AddUserforHousingView.fxml");
-((AddUserforHousingController) loader.getController()).setContainer(containerParent);
+((AddUserforHousingController)loader.getController()).setContainer(containerParent);
 
     }
     
@@ -296,7 +297,7 @@ FXMLLoader loader = containerParent.switchViewTo("/views/AddUserforHousingView.f
   int id1=h1.getContract_id();
   System.out.println(id1+"aa");
 
-  FXMLLoader loader=new FXMLLoader(getClass().getResource("/views/ContractHousingDetailView.fxml"));
+  /*FXMLLoader loader=new FXMLLoader(getClass().getResource("/views/ContractHousingDetailView.fxml"));
  
   Parent root = (Parent) loader.load();
   ContractdetailController cd = loader.getController();
@@ -307,11 +308,16 @@ FXMLLoader loader = containerParent.switchViewTo("/views/AddUserforHousingView.f
   Stage stage=new Stage();
   stage.setScene(new Scene(root));
   stage.show();
-cd.startstage();
+cd.startstage();*/
 
+FXMLLoader loader1 = containerParent.switchViewTo("/views/ContractHousingDetailView.fxml");
+((ContractdetailController)loader1.getController()).setContainer(containerParent);
 
-
+((ContractdetailController)loader1.getController()).setid(id1);
+((ContractdetailController)loader1.getController()).startstage();
     }
+
+    
     
     
     
@@ -323,10 +329,10 @@ cd.startstage();
 
 	}
 
-	ContractHousingContainerController parentContainer;
+	
 
 	public void setContainer(ContractHousingContainerController contractHousingContainerController) {
-		this.parentContainer=contractHousingContainerController;
+		this.containerParent=contractHousingContainerController;
 		
 	}
 

@@ -52,7 +52,9 @@ public class AddContractHousingController implements Initializable {
     @FXML
     private CheckBox other1;
 
-
+    @FXML
+    private Label primeshow;
+    
 	
     @FXML
     private CheckBox jollery;
@@ -91,6 +93,8 @@ public class AddContractHousingController implements Initializable {
 
     @FXML
     private Button back;
+    @FXML
+    private Button showprimebutton;
 
     @FXML
     private Label protect1;
@@ -195,6 +199,7 @@ public class AddContractHousingController implements Initializable {
 
     @FXML
     private JFXTextField code;
+    ContractHousingContainerController parentContainer;
     
     Housing h = new Housing();
     type_contract tc ;
@@ -205,6 +210,26 @@ public class AddContractHousingController implements Initializable {
 	public void setclient(Client cl) {
 
 		this.cl=cl;
+		appartment.setVisible(false);
+		floorbox.setVisible(false);
+	
+	 housetypelist.addAll("country house","Villa","Appartment");
+	 housetypebox.setItems(housetypelist);
+		
+		buildList.addAll("New","-10","10_20","+30");
+		buildbox.setItems(buildList);
+		floorList.addAll("ground floor","Frist","other");
+		floorbox.setItems(floorList);
+		guaranteeList.addAll("HO-8","HO-5","HO-3","HO-2");
+		guaranteebox1.setItems(guaranteeList);
+	objectsList.addAll("owner","no");
+		ownerbox1.setItems(objectsList);
+		houseprotectList.addAll("alarme","armored door","video surveillance","smoke detector","none");
+		houseprotectBox.setItems(houseprotectList);
+		sinisterList.addAll("0","1","2","3");
+		sinisterbox.setItems(sinisterList);
+		System.out.println(cl.getCin());
+		
 	}
 
 
@@ -284,13 +309,7 @@ public class AddContractHousingController implements Initializable {
                 } else {
                 	protect1.setText("");
                 }
-                if (housevalue.getText().equals("")) {
-                	value2.setText("Field is empty !");
-                	value2.setVisible(true);
-                    valid = false;
-                } else {
-                	value2.setText("");
-                }
+             
                 if (jollery.isSelected())
                 {
                 	object=object+" "+"jollery";
@@ -343,7 +362,10 @@ public class AddContractHousingController implements Initializable {
                 
                 
               
-                	
+                if (housevalue.getText().equals("")) {
+                	housevalue.setText("0");
+           
+                } 
                
                 
                 if (housetypebox.getValue().equals("")) {
@@ -395,13 +417,16 @@ h.setPrime(prime);
                 t.ServiceAddHousingContract(h);
                 System.out.println(object+"33");
 
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/views/Contracthousingview.fxml"));
+      /*  FXMLLoader loader=new FXMLLoader(getClass().getResource("/views/Contracthousingview.fxml"));
         
         Parent root = (Parent) loader.load();
     
         Stage stage=new Stage();
         stage.setScene(new Scene(root));
-        stage.show();
+        stage.show();*/
+                
+                FXMLLoader loader1 = parentContainer.switchViewTo("/views/Contracthousingview.fxml");
+                ((ContracthousingController)loader1.getController()).setContainer(parentContainer);
 
             }
     
@@ -411,18 +436,27 @@ h.setPrime(prime);
     
     public float calculerprime(Housing h){
     	float prime;
-    	float expense_per_exposure_unit1 =25;
-    	float expense_per_exposure_unit2 =310;
+    	float expense_per_exposure_unit1 =25; //
+    	float expense_per_exposure_unit2 =310;//
  
     float exposure_unit = 100000;
+  
+    float exposure_unit2 = 100000;//every insurance company set exposure unit which depends on the risk 
     
-    float exposure_unit2 = 100000;
    float housevaluee=0;
+   
    float objectsvalue=0;
+   
    float protect =1.05f;
+   
   float  unhabited =1.03f;
+  
   float sinistercoff=0;
+  
   float guranteevalue=0;
+  
+  float houseage =1.1f;
+  
     float b = 0;
     if (h.getObjectsvalue()==0){
         objectsvalue=	h.getObjectsvalue()/exposure_unit2*expense_per_exposure_unit2;
@@ -481,15 +515,15 @@ h.setPrime(prime);
   if(h.getGuarantee()=="HO-8"){ //only 11 and low prime cost in gurantee not all the amount refunded
 	  guranteevalue = 0.9f;
   }
-	  
   
-  prime=(((b+sinistercoff)*protect)*unhabited)*guranteevalue;
+if(h.getHouseduration().equals("new"))
+{
+	houseage=1;
+}
   
-  /*hmap.put(0.2, "1");
-   hmap.put(1, "tous risque");
-   hmap.put(7, "Singh");
-   hmap.put(49, "Ajeet");
-   hmap.put(3, "Anuj");*/
+  prime=((((b+sinistercoff)*protect)*unhabited)*houseage)*guranteevalue;
+  
+
    
    System.out.print("prime");
    
@@ -530,12 +564,10 @@ h.setPrime(prime);
 
     }
    
+    
+    
 
 
-    @FXML
-    void returnIns(ActionEvent event) {
-
-    }
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -544,33 +576,17 @@ h.setPrime(prime);
 	
 	 public void startstage(){
 		 
-			appartment.setVisible(false);
-			floorbox.setVisible(false);
-		
-		 housetypelist.addAll("country house","Villa","Appartment");
-		 housetypebox.setItems(housetypelist);
-			
-			buildList.addAll("New","-10","10_20","+30");
-			buildbox.setItems(buildList);
-			floorList.addAll("ground floor","Frist","other");
-			floorbox.setItems(floorList);
-			guaranteeList.addAll("HO-8","HO-5","HO-3","HO-2");
-			guaranteebox1.setItems(guaranteeList);
-		objectsList.addAll("owner","no");
-			ownerbox1.setItems(objectsList);
-			houseprotectList.addAll("alarme","armored door","video surveillance","smoke detector","none");
-			houseprotectBox.setItems(houseprotectList);
-			sinisterList.addAll("0","1","2","3");
-			sinisterbox.setItems(sinisterList);
-			System.out.println(cl.getCin());
-			
+
 	
 
 			
 		 
 			
 	 }
-	 
+	
 
+		public void setContainer(ContractHousingContainerController parentContainer) {
+			this.parentContainer = parentContainer;
+		}
 }
 

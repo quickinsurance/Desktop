@@ -94,6 +94,7 @@ import tn.esprit.Test;
 
 	    @FXML
 	    private TextField rechercheclient;
+	    public ContractHousingContainerController  Parentcontainer;
 	    
 	    void filterContract(String oldValue, String newValue) throws Exception {
 	    	Test t = new Test();
@@ -208,7 +209,7 @@ import tn.esprit.Test;
 
              t.ServiceAddclient(c);
              
-             FXMLLoader loader=new FXMLLoader(getClass().getResource("/views/AddContractHousingView.fxml"));
+            /* FXMLLoader loader=new FXMLLoader(getClass().getResource("/views/AddContractHousingView.fxml"));
              
              Parent root = (Parent) loader.load();
              AddContractHousingController cd = loader.getController();
@@ -218,10 +219,13 @@ import tn.esprit.Test;
              stage.setScene(new Scene(root));
              stage.show();
              cd.startstage();
- 			System.out.println(c.toString());
+ 			System.out.println(c.toString());*/
 
         
-             
+ 		   FXMLLoader loader = Parentcontainer.switchViewTo("/views/AddContractHousingView.fxml");
+    	      ((AddContractHousingController) loader.getController()).setContainer(Parentcontainer);
+    	      ((AddContractHousingController) loader.getController()).setclient(c);
+
              
              
              
@@ -262,7 +266,7 @@ import tn.esprit.Test;
 	    @FXML
 	    void gohousing(MouseEvent event) throws IOException {
 	        Client c1 = (Client) tab.getSelectionModel().getSelectedItem();
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("/views/AddContractHousingView.fxml"));
+           /* FXMLLoader loader=new FXMLLoader(getClass().getResource("/views/AddContractHousingView.fxml"));
             
             Parent root = (Parent) loader.load();
             AddContractHousingController cd = loader.getController();
@@ -271,7 +275,10 @@ import tn.esprit.Test;
             Stage stage=new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-            cd.startstage();
+            cd.startstage();*/
+	        FXMLLoader loader = Parentcontainer.switchViewTo("/views/AddContractHousingView.fxml");
+  	      ((AddContractHousingController) loader.getController()).setContainer(Parentcontainer);
+  	      ((AddContractHousingController) loader.getController()).setclient(c1);
 	        
 	    }
 	    
@@ -282,8 +289,11 @@ import tn.esprit.Test;
 	    	tab.setVisible(true);
 	    	rechercheclient.setVisible(true);
 
+	    	
+	    	
 	    }
-	    public ContractHousingContainerController  Parentcontainer;
+	    
+	
 		public void setContainer(ContractHousingContainerController containerParent) {
 			this.Parentcontainer=containerParent;
 			

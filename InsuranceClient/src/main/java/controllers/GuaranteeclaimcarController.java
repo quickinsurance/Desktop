@@ -241,7 +241,7 @@ else {
 	  FXMLLoader loader=new FXMLLoader(getClass().getResource("/views/Guaranteeclaimcarview.fxml"));
 	  System.out.println(s.getSinister_id());
 	  Parent root = (Parent) loader.load();
-	  GuaranteeclaimController cd = loader.getController();
+	  GuaranteeclaimcarController cd = loader.getController();
 	  cd.setSinister(s);
 
 	  Stage stage=new Stage();
