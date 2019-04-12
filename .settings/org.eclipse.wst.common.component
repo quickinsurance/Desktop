@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="Desktop">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <property name="context-root" value="Desktop"/>
+        <property name="java-output-path" value="/Desktop/Insurance/Insurance-ejb/target/classes"/>
+    </wb-module>
+</project-modules>
