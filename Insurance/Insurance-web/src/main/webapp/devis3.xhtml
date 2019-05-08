@@ -1,0 +1,111 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="Project.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+	<div>
+
+		<ui:define name="content">
+
+				<section class="ftco-section">
+					<div class="row justify-content-center mb-5 pb-3">
+						<div class="col-md-7 heading-section ftco-animate">
+							<span class="subheading subheading-with-line"><small
+								class="pr-2 bg-white">Choose an option </small></span>
+								
+								
+								
+							<div class="container">
+<h:panelGrid columns="4" cellpadding="6">
+ <div class="row justify-content-start mt-5 py-5"  >
+        <div class="col-md-4 heading-section ftco-animate" >
+          <h2 class="mb-4">
+            Our Services
+          </h2>
+          <p>
+            Even the all-powerful Pointing has no control about the blind texts
+            it is an almost unorthographic.
+          </p>
+   
+          <h:outputText value=" Prime value"></h:outputText>
+          <h:outputText value="#{ContractBean.showdevis()}"></h:outputText>
+  
+        </div>
+        </div>
+       </h:panelGrid>
+
+
+            
+
+
+ <div class="row">
+        <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+          <div class="media block-6 services d-block">
+            <div class="icon d-flex justify-content-center align-items-center">
+              <span class="flaticon-idea"></span>
+            </div>
+            <div class="media-body p-2 mt-3">
+              <h3 class="heading">
+                Perfectly Design
+              </h3>
+              <p>
+                Even the all-powerful Pointing has no control about the blind
+                texts it is an almost unorthographic.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+          <div class="media block-6 services d-block">
+            <div class="icon d-flex justify-content-center align-items-center">
+              <span class="flaticon-compass-symbol"></span>
+            </div>
+            <div class="media-body p-2 mt-3">
+              <h3 class="heading">
+                Carefully Planned
+              </h3>
+              <p>
+                Even the all-powerful Pointing has no control about the blind
+                texts it is an almost unorthographic.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+          <div class="media block-6 services d-block">
+            <div class="icon d-flex justify-content-center align-items-center">
+              <span class="flaticon-layers"></span>
+            </div>
+            <div class="media-body p-2 mt-3">
+              <h3 class="heading">
+                Smartly Execute
+              </h3>
+              <p>
+                Even the all-powerful Pointing has no control about the blind
+                texts it is an almost unorthographic.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      			    
+            <p:splitButton id="spbtn" value="Save" type="button" icon="pi pi-save">
+            </p:splitButton>	
+            
+            
+            
+            
+      
+      
+							</div>
+						</div>
+					</div>
+				</section>
+
+			</ui:define>
+	</div>
+
+
+</ui:composition>

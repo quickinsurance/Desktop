@@ -1,0 +1,155 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="Project.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+	<div>
+
+		<ui:define name="content">
+
+
+			<div class="overlay"></div>
+			<div class="container">
+				<div
+					class="row no-gutters slider-text align-items-center justify-content-center">
+					<div class="col-md-9 ftco-animate text-center">
+						<h1 class="mb-2 bread">Quotation</h1>
+						<p class="breadcrumbs">
+							<span class="mr-2"><a href="index.html">Home <i
+									class="ion-ios-arrow-forward"></i></a></span> <span>Quotation <i
+								class="ion-ios-arrow-forward"></i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+			<section class="ftco-section">
+				<div class="container">
+					<div class="row no-gutters">
+						<div class="col-md-5 p-md-5 img img-2"
+							style="background-image: url(images/bg_3.jpg);"></div>
+						<div class="col-md-7 wrap-about pb-md-5 ftco-animate">
+							<div class="heading-section mb-5 pl-md-5">
+								<div class="pl-md-5 ml-md-5">
+                                    <h:form >
+									<h:panelGrid columns="4" cellpadding="6">
+									
+											<h:outputText value="Adress :"></h:outputText>
+
+											<h:inputText value="#{ContractBean.address}"></h:inputText>
+									
+									
+											<h:outputText value="   Area:"></h:outputText>
+
+											<h:inputText value="#{ContractBean.area}"></h:inputText>
+										
+								
+											<h:outputText value="Inhabited days:"></h:outputText>
+
+											<h:inputText value="#{ContractBean.uninhabited}"></h:inputText>
+									
+									
+											<h:outputText value="Postal code:"></h:outputText>
+
+											<h:inputText value="#{ContractBean.codePostal}"></h:inputText>
+
+
+											<h:outputText value="House value:"></h:outputText>
+
+											<h:inputText value="#{ContractBean.housevalue}"></h:inputText>
+
+	
+											<h:outputText value="Objects secured value:"></h:outputText>
+
+											<h:inputText value="#{ContractBean.objectsvalue}"></h:inputText>
+                                           <h6 style="margin-top:0">Garage:</h6>
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+        <p:outputLabel for="console3" value="" />
+        <p:selectOneRadio id="console3" value="#{ContractBean.garage}" unselectable="true" layout="responsive" columns="1">
+            <f:selectItem itemLabel="no" itemValue="no" />
+            <f:selectItem itemLabel="yes" itemValue="yes" />
+        </p:selectOneRadio>
+    </h:panelGrid>
+    										 <h6 style="margin-top:0">House type :</h6>
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+        <p:outputLabel for="console1" value="" />
+        <p:selectOneRadio id="console1" value="#{ContractBean.type_housing}" unselectable="true" layout="responsive" columns="2">
+            <f:selectItem itemLabel="appartment" itemValue="appartment" />
+            <f:selectItem itemLabel="villa" itemValue="villa" />
+        </p:selectOneRadio>
+    </h:panelGrid>
+      <h6 style="margin-top:0">House owner :</h6>
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+        <p:outputLabel for="console" value="" />
+        <p:selectOneRadio id="console" value="#{ContractBean.houseownertype}" unselectable="true" layout="responsive" columns="1">
+            <f:selectItem itemLabel="no" itemValue="no" />
+            <f:selectItem itemLabel="owner" itemValue="owner" />
+        </p:selectOneRadio>
+    </h:panelGrid>
+        <h6 style="margin-top:0">house Protection </h6>
+    <h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
+        <p:outputLabel for="consol" value="" />
+        <p:selectOneRadio id="consol" value="#{ContractBean.houseProtection}" unselectable="true" layout="responsive" columns="1">
+            <f:selectItem itemLabel="video surveillance" itemValue="video surveillance" />
+            <f:selectItem itemLabel="alarme" itemValue="alarme" />
+          <f:selectItem itemLabel="none" itemValue="none" />
+        </p:selectOneRadio>
+    </h:panelGrid>
+        										 <h6 style="margin-top:0">House build :</h6>
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+        <p:outputLabel for="console2" value="" />
+        <p:selectOneRadio id="console2" value="#{ContractBean.houseduration}" unselectable="true" layout="responsive" columns="3">
+            <f:selectItem itemLabel="new" itemValue="new" />
+            <f:selectItem itemLabel="10-50" itemValue="10-50" />
+            <f:selectItem itemLabel="+50" itemValue="+50" />
+        </p:selectOneRadio>
+    </h:panelGrid>
+  											 <h6 style="margin-top:0">Sinister Number:</h6>
+      <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+        <p:outputLabel for="console4" value="" />
+        <p:selectOneRadio id="console4" value="#{ContractBean.sinisternmbr}" unselectable="true" layout="responsive" columns="3">
+            <f:selectItem itemLabel="0" itemValue="0" />
+            <f:selectItem itemLabel="1" itemValue="1" />
+            <f:selectItem itemLabel="2" itemValue="2" />
+        </p:selectOneRadio>
+    </h:panelGrid>
+	<h:outputText value="Prime value"></h:outputText>
+<h:inputText value="#{ContractBean.prime}"></h:inputText>
+
+		<table>
+											<tr>
+												<td colspan="2"><h:commandButton
+														value="Ajouter Contract"
+														action="#{ContractBean.addcontract()}" /> </td>
+	</tr>
+									
+										</table>
+
+								 </h:panelGrid>
+									</h:form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+
+
+			</section>
+
+
+
+
+		</ui:define>
+	</div>
+
+</ui:composition>
