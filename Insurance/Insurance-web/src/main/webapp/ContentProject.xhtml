@@ -1,0 +1,285 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="Project.xhtml">
+
+	<div>
+
+		<ui:define name="content">
+
+
+
+
+
+
+
+					<section class="ftco-section">
+					<div class="row justify-content-center mb-5 pb-3">
+						<div class="col-md-7 heading-section ftco-animate">
+							<span class="subheading subheading-with-line"><small
+								class="pr-2 bg-white">Quotation Form</small></span>
+							<div class="container">
+							<div class="heading-section mb-5 pl-md-5">
+								<div class="pl-md-5 ml-md-5">
+									<f:view transient="true">
+
+										<h:form>
+
+											<div class="form-group">
+
+												<h:outputText value="Salary :"></h:outputText>
+											</div>
+											<div class="form-group">
+												<h:inputText placeholder="Salary"
+													value="#{healthQuotationBean.salary}"></h:inputText>
+											</div>
+											<div class="form-group">
+												<h:outputText value="Gender :"></h:outputText>
+											</div>
+											<div class="form-group">
+												<h:selectOneRadio value="#{healthQuotationBean.gender}">
+
+
+													<f:selectItem itemValue="Women" itemLabel="Women" />
+
+													<f:selectItem itemValue="Men" itemLabel="Men" />
+
+												</h:selectOneRadio>
+
+											</div>
+
+
+											<div class="form-group">
+												<h:outputText value="The people to be insured :"></h:outputText>
+
+											</div>
+											<div class="form-group">
+												<h:selectOneMenu
+													value="#{healthQuotationBean.insured_people}">
+													<f:selectItem itemValue="You" itemLabel="You" />
+													<f:selectItem itemValue="You and your spouse"
+														itemLabel="You and your spouse" />
+													<f:selectItem itemValue="You and your children"
+														itemLabel="You and your children" />
+													<f:selectItem
+														itemValue="You, your spouse and your children"
+														itemLabel="You, your spouse and your children" />
+												</h:selectOneMenu>
+
+											</div>
+											<div class="form-group">
+												<h:outputText value="Number of children :"></h:outputText>
+
+											</div>
+											<div class="form-group">
+												<h:selectOneMenu value="#{healthQuotationBean.nbr_child}">
+													<f:selectItem itemValue="0" itemLabel="0" />
+													<f:selectItem itemValue="1" itemLabel="1" />
+													<f:selectItem itemValue="2" itemLabel="2" />
+													<f:selectItem itemValue="3" itemLabel="3" />
+													<f:selectItem itemValue="4" itemLabel="4" />
+													<f:selectItem itemValue="5" itemLabel="5" />
+												</h:selectOneMenu>
+
+											</div>
+
+											<div class="form-group">
+												<h:outputText value="Partner Profession :"></h:outputText>
+
+											</div>
+											<div class="form-group">
+												<h:selectOneMenu value="#{healthQuotationBean.partner_job}">
+													<table>
+														<tr>
+															<f:selectItem itemValue="Salaried" itemLabel="Salaried" />
+
+															<f:selectItem itemValue="Executive employee"
+																itemLabel="Executive employee " />
+
+															<f:selectItem itemValue="Salaried employee"
+																itemLabel="Salaried employee" />
+														</tr>
+														<tr>
+															<f:selectItem itemValue="Functionary"
+																itemLabel="Functionary" />
+
+															<f:selectItem itemValue="Trader" itemLabel="Trader" />
+														</tr>
+														<tr>
+															<f:selectItem itemValue="Liberal profession"
+																itemLabel="Liberal profession  " />
+
+															<f:selectItem itemValue="Teacher" itemLabel="Teacher  " />
+														</tr>
+														<tr>
+															<f:selectItem itemValue="Artisan" itemLabel="Artisan  " />
+
+															<f:selectItem itemValue="Entrepreneur"
+																itemLabel="Entrepreneur  " />
+																</tr>
+														<tr>
+															<f:selectItem itemValue="Farmer" itemLabel="Farmer  " />
+															<f:selectItem itemValue="Worker" itemLabel="Worker  " />
+														</tr>
+													</table>
+												</h:selectOneMenu>
+
+											</div>
+											<div class="form-group">
+												<h:outputText value="Healthcare  :"></h:outputText>
+
+											</div>
+											<div class="form-group">
+												<h:selectOneRadio value="#{healthQuotationBean.healthcare}">
+													<f:selectItem itemValue="#{true}" itemLabel="Public" />
+													<f:selectItem itemValue="#{false}" itemLabel="Private" />
+												</h:selectOneRadio>
+											</div>
+
+
+											<div class="form-group">
+												<h:outputText value="Formulas :"></h:outputText>
+
+											</div>
+											<div class="form-group">
+
+												<h:selectOneRadio value="#{healthQuotationBean.formulas}">
+													<f:selectItem itemValue="#{true}"
+														itemLabel="economic formula" checked="true" />
+													<f:selectItem itemValue="#{false}"
+														itemLabel="budget formula" />
+													<f:selectItem itemValue="#{false}"
+														itemLabel="comfort formula" />
+												</h:selectOneRadio>
+											</div>
+											<div class="form-group">
+												<h:outputText value="Options :"></h:outputText>
+
+											</div>
+											<div class="form-group">
+												<h:selectManyCheckbox value="#{user.favNumber1}">
+													<f:selectItem itemValue="Consultations or visits"
+														itemLabel="Consultations or visits" />
+													<f:selectItem itemValue="Pharmaceuticals"
+														itemLabel="Pharmaceuticals" />
+													<f:selectItem itemValue="Medical analysis"
+														itemLabel="Medical analysis" />
+													<f:selectItem itemValue="Optical" itemLabel="Optical" />
+													<f:selectItem itemValue="Dental care"
+														itemLabel="Dental care" />
+													<f:selectItem itemValue="Radiology" itemLabel="Radiology" />
+													<f:selectItem itemValue="Surgery" itemLabel="Surgery" />
+
+												</h:selectManyCheckbox>
+											</div>
+											<div class="form-group">
+												<h:outputText value="Gender :"></h:outputText>
+											</div>
+											<div class="form-group">
+												<h:selectOneRadio value="#{healthQuotationBean.gender}">
+													<f:selectItem itemValue="#{false}" itemLabel="Women" />
+
+													<f:selectItem itemValue="#{true}" itemLabel="Men" />
+												</h:selectOneRadio>
+
+											</div>
+											<div class="form-group">
+												<h:outputText value="How is your general health?"></h:outputText>
+											</div>
+											<div class="form-group">
+												<h:selectOneRadio
+													value="#{healthQuotationBean.general_health}">
+													<f:selectItem itemValue="Very good" itemLabel="Very Good" />
+
+													<f:selectItem itemValue="good" itemLabel="good" />
+													<f:selectItem itemValue="average" itemLabel="average" />
+													<f:selectItem itemValue="bad" itemLabel="bad" />
+													<f:selectItem itemValue="very bad" itemLabel="very bad" />
+												</h:selectOneRadio>
+
+											</div>
+											<div class="form-group">
+												<h:outputText
+													value="Do you suffer from an illness or chronic health problem?"></h:outputText>
+											</div>
+											<div class="form-group">
+												<h:selectOneRadio
+													value="#{healthQuotationBean.chronic_health}">
+													<f:selectItem itemValue="yes" itemLabel="Yes" />
+
+													<f:selectItem itemValue="no" itemLabel="no" />
+													<f:selectItem itemValue="don't know" itemLabel="don't know" />
+
+												</h:selectOneRadio>
+
+											</div>
+											<div class="form-group">
+												<h:outputText value="Do you smoke ??"></h:outputText>
+											</div>
+											<div class="form-group">
+												<h:selectOneRadio value="#{healthQuotationBean.smoke}">
+													<f:selectItem itemValue="yes" itemLabel="Yes" />
+
+													<f:selectItem itemValue="no" itemLabel="no" />
+
+
+												</h:selectOneRadio>
+											</div>
+											<div class="form-group">
+												<h:outputText value="Do you practice dangerous sports ?"></h:outputText>
+											</div>
+											<div class="form-group">
+												<h:selectOneRadio
+													value="#{healthQuotationBean.dangerous_sport}">
+													<f:selectItem itemValue="yes" itemLabel="Yes" />
+
+													<f:selectItem itemValue="no" itemLabel="no" />
+
+
+												</h:selectOneRadio>
+
+											</div>
+											<div class="form-group">
+												<h:outputText value="Do you drink alcohol?"></h:outputText>
+											</div>
+											<div class="form-group">
+												<h:selectOneRadio value="#{healthQuotationBean.alcohol}">
+													<f:selectItem itemValue="yes" itemLabel="Yes" />
+
+													<f:selectItem itemValue="no" itemLabel="no" />
+
+
+												</h:selectOneRadio>
+
+											</div>
+											<div class="form-group">
+												<h:commandButton value="Calcul Premium"
+													action="#{healthQuotationBean.addQuotation()}" />
+
+											</div>
+
+										</h:form>
+									</f:view>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+
+
+			</section>
+
+
+
+
+		</ui:define>
+	</div>
+
+</ui:composition>
