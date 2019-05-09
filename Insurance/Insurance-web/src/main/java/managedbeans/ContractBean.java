@@ -17,6 +17,7 @@ import javax.security.auth.login.LoginContext;
 
 import  entities.User;
 import entities.Contract.type_contract;
+import entities.Guarantee;
 import entities.Client;
 import  entities.Housing;
 import services.impl.*;
@@ -219,6 +220,18 @@ this.prime=(h.getPrime());
 		List<Housing> h =HousingContractService.findHouseContractsbyclient(LoginBean.getInstance().getUser().getCin());
 		Prime1 =h.get(0).getPrime();
 		return Prime1;
+	}
+	public List<Housing> showcontract()
+	{
+		List<Housing> h =HousingContractService.findHouseContractsbyclient(LoginBean.getInstance().getUser().getCin());
+
+		return h;
+	}
+	public List<Guarantee> showGurantee()
+	{
+		List<Guarantee> h =HousingContractService.findHouseguranteebycontractid(LoginBean.getInstance().getUser().getCin());
+
+		return h;
 	}
 
 	public Client getClient() {

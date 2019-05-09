@@ -14,18 +14,14 @@
 							<span class="subheading subheading-with-line"><small
 								class="pr-2 bg-white">Choose an option </small></span>
 								
-								
-								
-							<div class="container">
-<h:panelGrid columns="4" cellpadding="6">
+					<h:panelGrid columns="4" cellpadding="6">
  <div class="row justify-content-start mt-5 py-5"  >
         <div class="col-md-4 heading-section ftco-animate" >
           <h2 class="mb-4">
-            Our Services
+           HO-2 your current option 
           </h2>
           <p>
-            Even the all-powerful Pointing has no control about the blind texts
-            it is an almost unorthographic.
+A basic policy that protects against all 11 perils the HO-2 covers as well as others
           </p>
    
           <h:outputText value=" Prime value"></h:outputText>
@@ -33,7 +29,10 @@
   
         </div>
         </div>
-       </h:panelGrid>
+       </h:panelGrid>			
+								
+							<div class="container">
+
 
 
             
@@ -47,12 +46,17 @@
             </div>
             <div class="media-body p-2 mt-3">
               <h3 class="heading">
-                Perfectly Design
+               HO-3 
               </h3>
               <p>
-                Even the all-powerful Pointing has no control about the blind
-                texts it is an almost unorthographic.
+The HO-3 is the most common policy form because of its broad range of coverage.
               </p>
+              <h:panelGrid columns="2" cellpadding="6">
+ 
+          <h:outputText value=" Prime value"></h:outputText>
+          <h:outputText value="#{ContractBean.showdevis()*1.2}"></h:outputText>
+         
+          </h:panelGrid>
             </div>
           </div>
         </div>
@@ -63,12 +67,15 @@
             </div>
             <div class="media-body p-2 mt-3">
               <h3 class="heading">
-                Carefully Planned
+                HO-5
               </h3>
               <p>
-                Even the all-powerful Pointing has no control about the blind
-                texts it is an almost unorthographic.
+The HO-5policy form is identical to an HO-3, only with a twist. Like an HO-3, the HO-5 covers all 16 perils plus any peril that is not specifically listed as an exclusion
               </p>
+               <h:panelGrid columns="2" cellpadding="6">
+                        <h:outputText value=" Prime value"></h:outputText>
+          <h:outputText value="#{ContractBean.showdevis()*1.4}"></h:outputText>
+          </h:panelGrid>
             </div>
           </div>
         </div>
@@ -79,11 +86,15 @@
             </div>
             <div class="media-body p-2 mt-3">
               <h3 class="heading">
-                Smartly Execute
+               HO-8
               </h3>
               <p>
-                Even the all-powerful Pointing has no control about the blind
-                texts it is an almost unorthographic.
+              An HO-2 policy form is designed for older homes that have a replacement cost that exceeds the actual cash value of the home. For that reason, the HO-8 policy form is frequently used to insure registered landmarks .
+              </p>
+              <p> <h:panelGrid columns="2" cellpadding="6">
+                        <h:outputText value=" Prime value"></h:outputText>
+          <h:outputText value="#{ContractBean.showdevis()*0.9}"></h:outputText>
+          </h:panelGrid>
               </p>
             </div>
           </div>
@@ -95,13 +106,17 @@
             </p:splitButton>	
             
             
-            
+   <h:form>
+   <p:chart type="line" model="#{chartView.areaModel}" style="height:300px" />
+ 
+</h:form>
             
       
       
 							</div>
 						</div>
 					</div>
+	
 				</section>
 
 			</ui:define>
