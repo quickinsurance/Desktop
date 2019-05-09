@@ -32,13 +32,13 @@ public class Contract implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Conract_ID")
 	private int contract_id;
-	@Column(name = "Date_creation", nullable = false)
+	@Column(name = "Date_creation")
 	private Date date_creation;
-	@Column(name = "Date_end", nullable = false)
+	@Column(name = "Date_end")
 	private Date date_end;
-	@Column(name = "Commission", nullable = false)
+	@Column(name = "Commission")
 	private float commission;
-	@Column(name = "Prime", nullable = false)
+	@Column(name = "Prime")
 	private float prime;
 	// @Column(name="Type_Contract",nullable = false)
 	@Enumerated(EnumType.STRING)

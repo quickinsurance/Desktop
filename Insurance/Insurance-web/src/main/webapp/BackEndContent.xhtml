@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="BackEnd.xhtml">
+
+	<div>
+
+		<ui:define name="content">
+			<section class="ftco-section">
+				<div class="row justify-content-center mb-5 pb-3">
+					<div class="col-md-7 heading-section ftco-animate">
+						<span class="subheading subheading-with-line"><small
+							class="pr-2 bg-white">Expert Team</small></span>
+						<div class="container">
+
+							<p style="margin-bottom: 50%">JUSTE TRYYYYYYYYYY</p>
+
+							<h:panelGroup columns="2">
+								<h:form>
+									<h:dataTable value="#{vehicleRequestBean.vehicles}"
+										var="vehicle" border="1">
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Matriculation" />
+											</f:facet>
+											<h:outputText value="#{vehicle.matriculation}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Mark" />
+											</f:facet>
+											<h:outputText value="#{vehicle.mark}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Option" />
+											</f:facet>
+											<h:outputText value="#{vehicle.vehicleOption}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Group" />
+											</f:facet>
+											<h:outputText value="#{vehicle.vehicleGroup}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Action" />
+											</f:facet>
+											<h:commandButton
+												action="#{vehicleRequestBean.removeEmploye(vehicle.contract_id)}"
+												value="Delete" />
+										</h:column>
+
+									</h:dataTable>
+								</h:form>
+							</h:panelGroup>
+						</div>
+					</div>
+				</div>
+			</section>
+		</ui:define>
+	</div>
+</ui:composition>
+

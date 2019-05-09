@@ -1,0 +1,194 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="BackEnd.xhtml">
+
+	<div>
+		<ui:define name="content">
+
+			<script src="js/Chart.min.js"></script>
+
+			<script src="js/utils.js"></script>
+
+			<div class="content">
+
+				<div class="wrapper">
+					<section class="ftco-section">
+						<div class="row justify-content-center mb-5 pb-3">
+						    <div class="mr-3">
+                                <a href="#"><img src="global_assets/images/placeholders/groups.PNG" width="120" height="120" class="" alt="" /></a>
+                            </div>
+						
+							<div class="col-md-7 heading-section ftco-animate">
+								<span class="subheading subheading-with-line"><small
+									class="pr-2 bg-white">Data Mining Clustering Graph</small></span>
+								<div class="container">
+
+
+									<canvas id="chart-0" />
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+				<div class="toolbar">
+					<button onclick="randomize(this)">Simulate Clustering</button>
+					<button onclick="addDataset(this)">Add Group Population</button>
+					<button onclick="removeDataset(this)">Remove Group Population</button>
+				</div>
+			</div>
+
+			<script>
+		var DATA_COUNT = 16;
+		var MIN_XY = -15;
+		var MAX_XY = 10;
+		var utils = Samples.utils;
+		utils.srand(110);
+		function colorize(opaque, context) {
+			var value = context.dataset.data[context.dataIndex];
+			var x = value.x / 100;
+			var y = value.y / 100;
+			var r = x &lt; 0 &amp;&amp; y &lt; 0 ? 250 : x &lt; 0 ? 150 : y &lt; 0 ? 50 : 0;
+			var g = x &lt; 0 &amp;&amp; y &lt; 0 ? 0 : x &lt; 0 ? 50 : y &lt; 0 ? 150 : 250;
+			var b = x &lt; 0 &amp;&amp; y &lt; 0 ? 0 : x &gt; 0 &amp;&amp; y &gt; 0 ? 250 : 150;
+			var a = opaque ? 1 : 0.5 * value.v / 1000;
+			return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+		}
+		function generateData() {
+			var data = [];
+			var i;
+			for (i = 0; i &lt; DATA_COUNT; ++i) {
+				data.push({
+					x: utils.rand(MIN_XY, MAX_XY),
+					y: utils.rand(MIN_XY, MAX_XY),
+					v: utils.rand(0, 1000)
+				});
+			}
+			return data;
+		}
+		var data = {
+			datasets: [{
+				data: generateData()
+			}, {
+				data: generateData()
+			}]
+		};
+		var options = {
+			aspectRatio: 1,
+			legend: false,
+			tooltips: false,
+			elements: {
+				point: {
+					backgroundColor: colorize.bind(null, false),
+					borderColor: colorize.bind(null, true),
+					borderWidth: function(context) {
+						return Math.min(Math.max(1, context.datasetIndex + 1), 8);
+					},
+					hoverBackgroundColor: 'transparent',
+					hoverBorderColor: function(context) {
+						return utils.color(context.datasetIndex);
+					},
+					hoverBorderWidth: function(context) {
+						var value = context.dataset.data[context.dataIndex];
+						return Math.round(8 * value.v / 1000);
+					},
+					radius: function(context) {
+						var value = context.dataset.data[context.dataIndex];
+						var size = context.chart.width;
+						var base = Math.abs(value.v) / 1000;
+						return (size / 24) * base;
+					}
+				}
+			}
+		};
+		var chart = new Chart('chart-0', {
+			type: 'bubble',
+			data: data,
+			options: options
+		});
+		function randomize() {
+			chart.data.datasets.forEach(function(dataset) {
+				dataset.data = generateData();
+			});
+			chart.update();
+		}
+		function addDataset() {
+			chart.data.datasets.push({
+				data: generateData()
+			});
+			chart.update();
+		}
+		function removeDataset() {
+			chart.data.datasets.shift();
+			chart.update();
+		}
+	</script>
+		</ui:define>
+	</div>
+
+
+<body>
+	<div id='myChart'></div>
+	<script>
+    var myConfig = {
+    	    
+      "type": "bar",
+      "plot": {
+        "exact": 1,
+        "shadow": 1,
+        "alpha": 1,
+        "shadow-distance": 1,
+        "stacked": 0,
+        "line-width": 2,
+        "slice-start": 15,
+        "value-box": {
+          "visible": 0
+        },
+        "animation": {
+          "effect": "3",
+          "speed": "500",
+          "method": "5",
+          "sequence": "1"
+        },
+      },
+      "shapes": [{
+        "type": "rect",
+        "id": "animation1",
+        "width": "100",
+        "height": "30",
+        "background-color": "#666 #333",
+        "border-radius": "10px",
+        "x": "50px",
+        "y": "15px",
+        "label": {
+          "text": "Start Animation",
+          "font-color": "#fff"
+        }
+      }],
+      "series": [{
+        "values": [142, 169, 102, 62, 59, 104, 108]
+      }, {
+        "values": [162, 105, 209, 207, 100, 157, 148]
+      }, {
+        "values": [192, 247, 197, 214, 234, 182, 131]
+      }, {
+        "values": [202, 273, 237, 269, 204, 166, 258]
+      }]
+    };
+
+    zingchart.render({
+      id: 'myChart',
+      data: myConfig,
+      height: "75%",
+      width: "100%"
+    });
+
+    zingchart.shape_click = function(p) {
+      if (p.shapeid == 'animation1') {
+        zingchart.exec('myChart', 'reload');
+      }
+    }
+  </script>
+</body>
+</ui:composition>

@@ -2,6 +2,7 @@ package services.impl;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,6 +11,7 @@ import entities.Vehicle;
 import services.interf.VehicleContractServiceRemote;
 
 @Stateless
+@LocalBean
 public class VehicleContractServiceImpl implements VehicleContractServiceRemote {
 	@PersistenceContext(unitName = "Insurance-ejb") 
 	EntityManager em;

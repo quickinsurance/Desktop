@@ -29,6 +29,19 @@ public class Vehicle extends Contract implements Serializable{
 	
 	public Vehicle(){}
 	
+	
+	
+	public Vehicle(String matriculation, String mark, String vehicleOption, String vehicleGroup, Date date_of_circulation) {
+		super();
+		this.matriculation = matriculation;
+		this.mark = mark;
+		this.vehicleOption = vehicleOption;
+		this.vehicleGroup = vehicleGroup;
+		this.date_of_circulation= date_of_circulation;
+	}
+
+
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Vehicle")
 	private Set<Accident> Accidents;
 	public String getMatriculation() {
