@@ -17,19 +17,19 @@ public class HealthQuotation extends Quotation implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 
-	@Column(name = "options", nullable = false)
+	@Column(name = "options")
 	private String options;
-	@Column(name="insured_peoples" ,nullable = false)
+	@Column(name="insured_peoples" )
 	private String insured_people;
-	@Column(name="general_health", nullable = false)
+	@Column(name="general_health")
 	private String general_health;
-	@Column(name="chronic_health", nullable = false)
+	@Column(name="chronic_health")
 	private String chronic_health;
-	@Column(name="smoke", nullable = false)
+	@Column(name="smoke")
 	private String smoke;
-	@Column(name="dangerous_sport", nullable = false)
+	@Column(name="dangerous_sport")
 	private String dangerous_sport;
-	@Column(name="alcohol", nullable = false)
+	@Column(name="alcohol")
 	private String alcohol;
 	
 	@Column(name="nbr_Child")
@@ -42,7 +42,7 @@ public class HealthQuotation extends Quotation implements Serializable{
 	private String formulas;
 	@Column(name="healthcare")
 	private String healthcare;
-	@Column(name = "Prime", nullable = false)
+	@Column(name = "Prime")
 	private float prime;
 	
 	
