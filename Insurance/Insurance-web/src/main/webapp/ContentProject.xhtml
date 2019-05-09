@@ -14,12 +14,13 @@
 
 
 
-					<section class="ftco-section">
+				<section class="ftco-section">
 					<div class="row justify-content-center mb-5 pb-3">
 						<div class="col-md-7 heading-section ftco-animate">
 							<span class="subheading subheading-with-line"><small
-								class="pr-2 bg-white">Quotation Form</small></span>
+								class="pr-2 bg-white">Quotation Form </small></span>
 							<div class="container">
+					
 							<div class="heading-section mb-5 pl-md-5">
 								<div class="pl-md-5 ml-md-5">
 									<f:view transient="true">
@@ -38,13 +39,11 @@
 												<h:outputText value="Gender :"></h:outputText>
 											</div>
 											<div class="form-group">
-												<h:selectOneRadio value="#{healthQuotationBean.gender}">
+												<h:selectOneRadio value="#{healthQuotationBean.gender}"
+													layout="pageDirection" columns="1">
+													<f:selectItem itemValue="#{false}" itemLabel="Women" />
 
-
-													<f:selectItem itemValue="Women" itemLabel="Women" />
-
-													<f:selectItem itemValue="Men" itemLabel="Men" />
-
+													<f:selectItem itemValue="#{true}" itemLabel="Men" />
 												</h:selectOneRadio>
 
 											</div>
@@ -89,7 +88,8 @@
 
 											</div>
 											<div class="form-group">
-												<h:selectOneMenu value="#{healthQuotationBean.partner_job}">
+												<h:selectOneMenu value="#{healthQuotationBean.partner_job}"
+													layout="pageDirection" columns="1">
 													<table>
 														<tr>
 															<f:selectItem itemValue="Salaried" itemLabel="Salaried" />
@@ -117,7 +117,7 @@
 
 															<f:selectItem itemValue="Entrepreneur"
 																itemLabel="Entrepreneur  " />
-																</tr>
+														</tr>
 														<tr>
 															<f:selectItem itemValue="Farmer" itemLabel="Farmer  " />
 															<f:selectItem itemValue="Worker" itemLabel="Worker  " />
@@ -131,9 +131,10 @@
 
 											</div>
 											<div class="form-group">
-												<h:selectOneRadio value="#{healthQuotationBean.healthcare}">
-													<f:selectItem itemValue="#{true}" itemLabel="Public" />
-													<f:selectItem itemValue="#{false}" itemLabel="Private" />
+												<h:selectOneRadio value="#{healthQuotationBean.healthcare}"
+													layout="pageDirection" columns="1">
+													<f:selectItem itemValue="Public" itemLabel="Public" />
+													<f:selectItem itemValue="Private" itemLabel="Private" />
 												</h:selectOneRadio>
 											</div>
 
@@ -144,12 +145,13 @@
 											</div>
 											<div class="form-group">
 
-												<h:selectOneRadio value="#{healthQuotationBean.formulas}">
-													<f:selectItem itemValue="#{true}"
+												<h:selectOneRadio value="#{healthQuotationBean.formulas}"
+													layout="pageDirection" columns="1">
+													<f:selectItem itemValue="economic formula"
 														itemLabel="economic formula" checked="true" />
-													<f:selectItem itemValue="#{false}"
+													<f:selectItem itemValue="budget formula"
 														itemLabel="budget formula" />
-													<f:selectItem itemValue="#{false}"
+													<f:selectItem itemValue="comfort formula"
 														itemLabel="comfort formula" />
 												</h:selectOneRadio>
 											</div>
@@ -158,38 +160,52 @@
 
 											</div>
 											<div class="form-group">
-												<h:selectManyCheckbox value="#{user.favNumber1}">
-													<f:selectItem itemValue="Consultations or visits"
-														itemLabel="Consultations or visits" />
-													<f:selectItem itemValue="Pharmaceuticals"
-														itemLabel="Pharmaceuticals" />
-													<f:selectItem itemValue="Medical analysis"
-														itemLabel="Medical analysis" />
-													<f:selectItem itemValue="Optical" itemLabel="Optical" />
-													<f:selectItem itemValue="Dental care"
-														itemLabel="Dental care" />
-													<f:selectItem itemValue="Radiology" itemLabel="Radiology" />
-													<f:selectItem itemValue="Surgery" itemLabel="Surgery" />
+												<h:panelGrid columns="3" style="margin-bottom:10px"
+													cellpadding="5">
+													<p:selectManyCheckbox id="grid2"
+														value="#{healthQuotationBean.options}"
+														layout="pageDirection" columns="1">
 
-												</h:selectManyCheckbox>
-											</div>
-											<div class="form-group">
-												<h:outputText value="Gender :"></h:outputText>
-											</div>
-											<div class="form-group">
-												<h:selectOneRadio value="#{healthQuotationBean.gender}">
-													<f:selectItem itemValue="#{false}" itemLabel="Women" />
 
-													<f:selectItem itemValue="#{true}" itemLabel="Men" />
-												</h:selectOneRadio>
+														<f:selectItem itemValue="Consultations or visits"
+															itemLabel="Consultations or visits" />
+														<f:selectItem itemValue="Pharmaceuticals"
+															itemLabel="Pharmaceuticals" />
+														<f:selectItem itemValue="Medical analysis"
+															itemLabel="Medical analysis" />
+														<f:selectItem itemValue="Optical" itemLabel="Optical" />
+														<f:selectItem itemValue="Dental care"
+															itemLabel="Dental care" />
+														<f:selectItem itemValue="Radiology" itemLabel="Radiology" />
+														<f:selectItem itemValue="Surgery" itemLabel="Surgery" />
 
+
+													</p:selectManyCheckbox>
+												</h:panelGrid>
 											</div>
+											<style type="text/css">
+.ui-datalist ul {
+	padding: 0px 10px 0 20px;
+	margin: 5px 0;
+}
+
+.ui-datalist {
+	margin-bottom: 10px
+}
+
+.ui-noborder tr.ui-widget-content {
+	background: none;
+}
+</style>
+
+
 											<div class="form-group">
 												<h:outputText value="How is your general health?"></h:outputText>
 											</div>
 											<div class="form-group">
 												<h:selectOneRadio
-													value="#{healthQuotationBean.general_health}">
+													value="#{healthQuotationBean.general_health}"
+													layout="pageDirection" columns="1">
 													<f:selectItem itemValue="Very good" itemLabel="Very Good" />
 
 													<f:selectItem itemValue="good" itemLabel="good" />
@@ -205,7 +221,8 @@
 											</div>
 											<div class="form-group">
 												<h:selectOneRadio
-													value="#{healthQuotationBean.chronic_health}">
+													value="#{healthQuotationBean.chronic_health}"
+													layout="pageDirection" columns="1">
 													<f:selectItem itemValue="yes" itemLabel="Yes" />
 
 													<f:selectItem itemValue="no" itemLabel="no" />
@@ -218,7 +235,8 @@
 												<h:outputText value="Do you smoke ??"></h:outputText>
 											</div>
 											<div class="form-group">
-												<h:selectOneRadio value="#{healthQuotationBean.smoke}">
+												<h:selectOneRadio value="#{healthQuotationBean.smoke}"
+													layout="pageDirection" columns="1">
 													<f:selectItem itemValue="yes" itemLabel="Yes" />
 
 													<f:selectItem itemValue="no" itemLabel="no" />
@@ -231,7 +249,8 @@
 											</div>
 											<div class="form-group">
 												<h:selectOneRadio
-													value="#{healthQuotationBean.dangerous_sport}">
+													value="#{healthQuotationBean.dangerous_sport}"
+													layout="pageDirection" columns="1">
 													<f:selectItem itemValue="yes" itemLabel="Yes" />
 
 													<f:selectItem itemValue="no" itemLabel="no" />
@@ -244,7 +263,8 @@
 												<h:outputText value="Do you drink alcohol?"></h:outputText>
 											</div>
 											<div class="form-group">
-												<h:selectOneRadio value="#{healthQuotationBean.alcohol}">
+												<h:selectOneRadio value="#{healthQuotationBean.alcohol}"
+													layout="pageDirection" columns="1">
 													<f:selectItem itemValue="yes" itemLabel="Yes" />
 
 													<f:selectItem itemValue="no" itemLabel="no" />
@@ -270,10 +290,42 @@
 
 
 
+<div>
 
+<h:panelGroup columns="2">
+			<h:form>
+				<h:dataTable value="#{healthQuotationBean.quotations}" var="employe"
+					border="1">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Option" />
+						</f:facet>
+						<h:outputText value="#{employe.options}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Formulas" />
+						</f:facet>
+						<h:outputText value="#{employe.formulas}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Health care" />
+						</f:facet>
+						<h:outputText value="#{employe.healthcare}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Premium" />
+						</f:facet>
+						<h:outputText value="#{employe.prime}" />
+					</h:column>
+					
 
-
-
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+</div>
 			</section>
 
 

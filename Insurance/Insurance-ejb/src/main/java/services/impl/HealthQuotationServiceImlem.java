@@ -7,7 +7,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import entities.Health;
 import entities.HealthQuotation;
+import entities.User;
 import services.interf.IQuotationInterfaceRemote;
 
 @Stateless
@@ -27,6 +29,17 @@ public class HealthQuotationServiceImlem implements IQuotationInterfaceRemote{
 	public List<HealthQuotation> getQuotations() {
 		List<HealthQuotation> healths = em.createQuery("from HealthQuotation", HealthQuotation.class).getResultList();
 		return healths;
+	}
+	@Override
+	public List<HealthQuotation> getQuotationsByUser(User user) {
+		System.out.println("fffffffff");
+
+		javax.persistence.Query query = em.createQuery("select e from HealthQuotation e where e.User=:user", HealthQuotation.class);
+        query.setParameter("user", user);
+		System.out.println("fffffffff");
+		@SuppressWarnings("unchecked")
+		List<HealthQuotation> healthsQuotation = query.getResultList();
+		return healthsQuotation;
 	}
 
 }

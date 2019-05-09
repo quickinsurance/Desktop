@@ -2,6 +2,7 @@ package services.impl;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,6 +15,7 @@ import entities.User;
 import services.interf.UserServiceRemote;
 
 @Stateless
+@LocalBean
 public class UserServiceImpl implements UserServiceRemote {
 
 	@PersistenceContext(unitName = "Insurance-ejb") 
