@@ -1,0 +1,195 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:r="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="Project.xhtml">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+	<style>
+.button {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #f4511e;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 28px;
+	padding: 20px;
+	width: 200px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.button span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+.button:hover span {
+	padding-right: 25px;
+}
+
+.button:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+</style>
+	<div>
+
+
+
+		<ui:define name="content">
+			<section class="ftco-section">
+				<div class="container">
+					<div class="row no-gutters">
+						<div class="col-md-5 p-md-5 img img-2"
+							style="background-image: url(images/Quota.jpg);"></div>
+						<div class="col-md-7 wrap-about pb-md-5 ftco-animate">
+							<div class="heading-section mb-5 pl-md-5">
+								<div class="pl-md-5 ml-md-5">
+
+									<h:form class="w3-container">
+										<table>
+
+
+
+											<tr>
+												<td><h:outputText value="Matriculation    "></h:outputText></td>
+												<td><h:inputText required="true"
+														requiredMessage="Field Empty!" id="mss" class="w3-input"
+														value="#{vehicleBean.matriculation}"></h:inputText></td>
+											</tr>
+											<tr>
+												<td><h:message for="mss" style="color:red;" /></td>
+											</tr>
+											
+												<tr>
+												<td><p>   </p></td></tr>
+												<tr></tr>
+
+
+											<tr>
+												<td><h:outputText value="Mark          "></h:outputText></td>
+												<td><h:selectOneMenu value="#{vehicleBean.mark}">
+														<f:selectItem itemValue="TOYOTA" itemLabel="TOYOTA" />
+														<f:selectItem itemValue="BMW" itemLabel="BMW" />
+														<f:selectItem itemValue="AUDI" itemLabel="AUDI" />
+														<f:selectItem itemValue="RENAULT" itemLabel="RENAULT" />
+														<f:selectItem itemValue="MINI COOPER"
+															itemLabel="MINI COOPER" />
+														<f:selectItem itemValue="WOLSKWAGEN"
+															itemLabel="WOLSKWAGEN" />
+														<f:selectItem itemValue="FIAT" itemLabel="FIAT" />
+														<f:selectItem itemValue="KIA" itemLabel="KIA" />
+														<f:selectItem itemValue="NISSAN" itemLabel="NISSAN" />
+														<f:selectItem itemValue="DACIA" itemLabel="DACIA" />
+														<f:selectItem itemValue="CITROEN" itemLabel="CITROEN" />
+													</h:selectOneMenu></td>
+											</tr>
+											
+												<tr>
+												<td><p>   </p></td></tr>
+												<tr></tr>
+
+											<tr>
+												<td><h:outputText value="Select an Option"></h:outputText></td>
+												<td><h:selectOneRadio
+												required="true"
+														requiredMessage="Field Empty!" id="option" class="w3-input"
+														value="#{vehicleBean.vehicleOption}">
+														<f:selectItem itemValue="Tiers" itemLabel="Tiers" />
+														<f:selectItem itemValue="Tiers Etendu"
+															itemLabel="Tiers Etendu" />
+														<f:selectItem itemValue="All Risks" itemLabel="All Risks" />
+													</h:selectOneRadio></td>
+											</tr>
+											<tr><td>
+											<h:message for="option" style="color:red;" />
+											</td></tr>
+											
+												<tr>
+												<td><p>   </p></td></tr>
+												<tr></tr>
+											
+											
+											
+											<tr>
+												<td><h:outputText value="Vehicle Group"></h:outputText></td>
+												<td><h:inputText required="true"
+														requiredMessage="Field Empty!" id="group" class="w3-input"
+														value="#{vehicleBean.vehicleGroup}"></h:inputText></td>
+											</tr>
+											<tr>
+												<td><h:message for="group" style="color:red;" /></td>
+											</tr>
+											<tr>
+												<td><p:outputLabel for="button"
+														value="Date of Circulation" /></td>
+												<td><p:datePicker id="button"
+														value="#{calendarView.date7}" showIcon="true" /></td>
+											</tr>
+											
+																							<tr>
+												<td><p>   </p></td></tr>
+												<tr></tr>
+											<tr>
+												<td><br /> <h:outputText value="RIB Number    "></h:outputText></td>
+												<td><h:inputText required="true"
+														requiredMessage="Field Empty!" id="rib" class="w3-input"></h:inputText></td>
+											</tr>
+											<tr>
+												<td><h:message for="rib" style="color:red;" /></td>
+											</tr>
+											
+												<tr>
+												<td><p>   </p></td></tr>
+												<tr></tr>
+
+
+											<tr>
+												<td><h:outputText value="Adresse    "></h:outputText></td>
+												<td><h:inputText required="true"
+														requiredMessage="Field Empty!" id="adress"
+														class="w3-input"></h:inputText></td>
+											</tr>
+											<tr>
+												<td><h:message for="adress" style="color:red;" /></td>
+											</tr>
+											
+											<tr>
+												<td><p>   </p></td></tr>
+												<tr></tr>
+											
+											
+
+											<tr>
+												<td><p></p> <h:commandButton
+														style="margin-left:101%; background-color:aqua"
+														class="form-control submit px-3" value="Add Contract Request"
+														action="#{vehicleBean.addVehicleContract()}" /></td>
+											</tr>
+										</table>
+									</h:form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</ui:define>
+	</div>
+</ui:composition>

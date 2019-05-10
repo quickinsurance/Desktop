@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="BackEnd.xhtml">
+
+	<div>
+<br />
+
+		<ui:define name="content">
+			<section class="ftco-section">
+				<div class="row justify-content-center mb-5 pb-3">
+					<div class="col-md-7 heading-section ftco-animate">
+						
+						<div class="container">
+							<h:panelGroup columns="2">
+								<h:form>
+									<p:dataTable id="mydata" class="datatable-basic table" value="#{vehicleRequestBean.vehicles}"
+										var="vehicle" border="1">
+										<p:column>
+											<f:facet name="header">
+											Matriculation
+											</f:facet>
+											<h:outputText value="#{vehicle.matriculation}" />
+										</p:column>
+										<p:column>
+											<f:facet name="header">
+											   Mark
+											</f:facet>
+											<h:outputText value="#{vehicle.mark}" />
+										</p:column>
+										<p:column>
+											<f:facet name="header">
+												Option
+											</f:facet>
+											<h:outputText value="#{vehicle.vehicleOption}" />
+										</p:column>
+										<p:column>
+											<f:facet name="header">
+											    Group
+											</f:facet>
+											<h:outputText value="#{vehicle.vehicleGroup}" />
+										</p:column>
+										<p:column>
+											<f:facet name="header">
+											   Action
+											</f:facet>
+											<h:commandButton class="btn bg-warning ml-3"
+												action="#{vehicleRequestBean.removeEmploye(vehicle.contract_id)}"
+												value="Delete" />
+										</p:column>
+
+									</p:dataTable>
+																<p:panel header="Export All Data">
+									
+									<h:commandLink>
+                <p:graphicImage class="bg-red"  value="/icons/pdf.png" />
+                <p:dataExporter type="pdf" preProcessor="#{vehicleRequestBean.preProcessPDF}"
+                    target="mydata" fileName="LogPDF" />
+            </h:commandLink>        </p:panel>
+            
+								</h:form>
+							</h:panelGroup>
+           
+             
+						</div>
+					</div>
+				</div>
+			</section>
+		</ui:define>
+	</div>
+</ui:composition>
+

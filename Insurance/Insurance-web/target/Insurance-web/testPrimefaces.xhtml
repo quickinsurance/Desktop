@@ -1,0 +1,41 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="BackEnd.xhtml">
+
+	<style type="text/css">           
+            .top {
+                filter:alpha(opacity=80);
+                opacity:0.8;
+                padding:50px 0 0 50px;
+        z-index: 1000;
+            }
+        </style>
+
+	<h:head></h:head>
+	<h:body>
+		<h1>Test Primefaces</h1>
+		<p:inputText value="testInput" />
+
+		<p:commandButton value="ButtonPrime"></p:commandButton>
+		<p:commandButton value="Submit" icon="pi pi-check" />
+
+
+
+     
+ 
+ 
+<p:notificationBar position="top" effect="slide" styleClass="top" widgetVar="bar">
+    <h:outputText value="PrimeFaces Rocks!" style="font-size:36px;" />
+</p:notificationBar>
+ 
+<p:commandButton value="Show" onclick="PF('bar').show()" type="button" icon="pi pi-arrow-down" />
+<p:commandButton value="Hide" onclick="PF('bar').hide()" type="button" icon="pi pi-arrow-up"/>
+
+
+		
+
+	</h:body>
+</h:html>

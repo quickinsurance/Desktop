@@ -1,0 +1,116 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="Project.xhtml">
+
+	<style type="text/css">
+.top {
+	filter: alpha(opacity = 80);
+	opacity: 0.8;
+	padding: 50px 0 0 50px;
+	z-index: 1000;
+}
+</style>
+	<div>
+		<ui:define name="content">
+			<section class="ftco-section">
+				<div class="container">
+					<div class="row no-gutters">
+						<div class="col-md-5 p-md-5 img img-2"
+							style="background-image: url(images/1159016.jpg);"></div>
+						<div class="col-md-7 wrap-about pb-md-5 ftco-animate">
+							<div class="heading-section mb-5 pl-md-5">
+								<div class="pl-md-5 ml-md-5">
+								  <h:form class="w3-container">
+									<table>
+										<tr>
+										<td>	<strong><h:outputText value="Mark          "></h:outputText></strong></td>
+										<td>     <h:selectOneMenu value="#{vehicleScoringBean.mark}">
+													<f:selectItem itemValue="TOYOTA" itemLabel="TOYOTA" />
+													<f:selectItem itemValue="BMW" itemLabel="BMW" />
+													<f:selectItem itemValue="AUDI" itemLabel="AUDI" />
+													<f:selectItem itemValue="RENAULT" itemLabel="RENAULT" />
+													<f:selectItem itemValue="MINI COOPER"
+														itemLabel="MINI COOPER" />
+													<f:selectItem itemValue="WOLSKWAGEN" itemLabel="WOLSKWAGEN" />
+													<f:selectItem itemValue="FIAT" itemLabel="FIAT" />
+													<f:selectItem itemValue="KIA" itemLabel="KIA" />
+													<f:selectItem itemValue="NISSAN" itemLabel="NISSAN" />
+													<f:selectItem itemValue="DACIA" itemLabel="DACIA" />
+													<f:selectItem itemValue="CITROEN" itemLabel="CITROEN" />
+												</h:selectOneMenu></td>
+												</tr>
+												
+												
+												<tr>
+												<td><p>   </p></td></tr>
+												<tr></tr>
+												
+												
+												
+
+												<tr>
+												<td><strong><h:outputText value="Your Vehicle Age    "></h:outputText></strong></td>
+												<td><h:inputText value="#{vehicleScoringBean.vehicleAge}"></h:inputText></td>
+												</tr>
+												
+												
+												<tr>
+												<td><p>   </p></td></tr>
+												<tr></tr>
+												
+												
+
+												<tr>
+												<td><strong><h:outputText value="Your First Vehicle Value    "></h:outputText></strong></td>
+												<td><h:inputText value="#{vehicleScoringBean.vehicleValue}"></h:inputText></td>
+												</tr>
+												
+												<tr>
+												<td><p>   </p></td></tr>
+												<tr></tr>
+														
+												<tr>
+												<td><strong><h:outputText value="Number of sinisters        "></h:outputText></strong></td>
+												<td><h:selectOneMenu value="#{vehicleScoringBean.sinisterNumber}">
+													<f:selectItem itemValue="0" itemLabel="0" />
+													<f:selectItem itemValue="1" itemLabel="1" />
+													<f:selectItem itemValue="2" itemLabel="2" />
+													<f:selectItem itemValue="3" itemLabel="3" />
+													<f:selectItem itemValue="4" itemLabel="4" />
+												</h:selectOneMenu></td>
+					
+												</tr>	
+												<tr>
+												<td><p>   </p></td></tr>
+												<tr></tr>
+											
+												<tr><td>									
+												<h:commandButton value="Obtain your current vehicle value"
+													class="form-control submit px-3"
+													action="#{vehicleScoringBean.scoringVehicle()}"
+													 /></td></tr>
+													<tr></tr>
+													<tr>
+												<td><p>   </p></td></tr>
+											
+											<tr></tr>		
+											<tr>
+											<td>
+												<strong><h:outputText value="Your Current Vehicle value (DT)   "></h:outputText></strong></td>
+												<td><h:inputText value="#{vehicleScoringBean.vehicleFinalValue}"></h:inputText>
+											</td>
+											</tr>
+										</table>
+									</h:form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</ui:define>
+	</div>
+</ui:composition>
