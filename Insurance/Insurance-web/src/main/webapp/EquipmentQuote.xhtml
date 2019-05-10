@@ -1,0 +1,828 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+ 	xmlns:p="http://primefaces.org/ui"	
+ 	template="Project.xhtml">
+	<div>
+
+		<ui:define name="content">
+
+			<link rel="stylesheet" href="css1/b.css" />
+			<div class="page-title grey" style="height: 10%;">
+				<div class="container">
+					<div class="title-area pull-left">
+						<div class="bread">
+							<ol class="breadcrumb">
+								<li id="get" class="active" style="margin-left: 600px;">GET
+									A QUOTE</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<section class="section white">
+			<h:panelGroup columns="2">
+			<h:form id="test">	
+				<div class="container" id="form1">
+
+					<div class="row">
+
+						<div class="col-md-10 col-md-offset-1 col-xs-10">
+
+							<div class="appoform-wrapper" style="margin-left: 150px;">
+									<header class="form-header" style="background-color: #1b40b3;">
+
+										<h3>Personal information</h3>
+									</header>
+
+									<div class="post-body-form text-center">
+
+										<p id="pp">
+											In order to provide better service to you, Quick Insurance is
+											always there for you<br /> Please fill in the following form
+											completely.
+										</p>
+									</div>
+									<div class="row-fluid appoform">
+
+
+										<div class="col-md-6">
+											<br />
+												<h:outputText value="Your first name"></h:outputText>
+											<h:inputText class="form-control" required="true" value="#{equipmentbean.firstName}"></h:inputText>
+										</div>
+
+										<div class="col-md-6">
+											<br /> 
+												<h:outputText value="Your last name"></h:outputText>
+											<h:inputText class="form-control" required="true" value="#{equipmentbean.lastName}"></h:inputText>
+										</div>
+
+											<div class="col-md-6">
+											<h:outputText value="Email"></h:outputText>
+											<h:inputText id="email" class="form-control" required="true" requiredMessage="Please fill in your email" value="#{equipmentbean.email}">
+											<f:validateRegex pattern=".+\@.+\..+" />
+											</h:inputText>
+											<h:message for="email" style="color:red;"/>
+										</div>
+										<div class="col-md-6">
+											<br /> 
+												<h:outputText value="Your phone number">
+												</h:outputText>
+											<h:inputText class="form-control" required="true" value="#{equipmentbean.phone}">
+												<f:validateLength minimum="8" maximum="8" />											
+											</h:inputText>
+										</div>
+										<div class="col-md-6">
+											<br />
+												<h:outputText value="Your CIN">
+												</h:outputText>
+											<h:inputText class="form-control" required="true" value="#{equipmentbean.cin}">
+											<f:validateLength minimum="8" maximum="8" />
+											</h:inputText>
+										</div>
+										<div class="col-md-12">
+											<button onclick="client();" type="button" name="save" style="background-color: #1b40b3;"
+												class="btn btn-primary btn-block btn-lg">Confirm My Personal details</button>
+										</div>
+										<div id="dd"></div>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+					<div class="container" id="form2"  hidden="hidden">
+
+					<div class="row">
+
+						<div class="col-md-10 col-md-offset-1 col-xs-10">
+
+							<div class="appoform-wrapper" style="margin-left: 150px;">
+									<header class="form-header" style="background-color: #1b40b3;">
+
+										<h3>Equipment Quotation</h3>
+									</header>
+
+									<div class="post-body-form text-center">
+
+										<p id="pp">
+											In order to provide better service to you, Quick Insurance is
+											always there for you<br /> Please fill in the following form
+											completely.
+										</p>
+									</div>
+									<div class="row-fluid appoform">
+										<div class="col-md-6">
+											<h:outputText value="Item :*"></h:outputText>
+											<h:selectOneMenu name="select1" id="select1" value="#{equipmentbean.item}" onchange="ok();" 
+												style="margin: 10px; padding: 10px; border: 2px solid rgb(27,64, 179); width: 200px; border-radius: 5px;">
+												<f:selectItem id="kk" itemLabel="Choose your item" itemValue="" disabled="true" />
+												<f:selectItems value="#{data.items}" />												
+											</h:selectOneMenu>
+										</div>
+
+
+										<div class="col-md-6" >
+											<h:outputText value="Make : *"></h:outputText>
+
+											<h:selectOneMenu  id="select2" name="select2" onchange="ok2();" 
+												style="margin: 10px; padding: 10px; border: 2px solid rgb(27,64, 179); width: 200px; border-radius: 5px;">
+												<f:selectItem itemLabel="Choose" itemValue="" />	
+												<f:selectItems id="mq" value="#{data.marques}" />
+																				
+											</h:selectOneMenu>
+											<h:inputText id="divv" value="#{equipmentbean.marque}" style="text-fill-color:transparent;border-color:transparent;"></h:inputText>
+										</div>
+										<div class="col-md-6">
+											<br /><h:outputText value="your item's model"></h:outputText>
+											<h:inputText class="form-control" required="true" value="#{equipmentbean.model}"></h:inputText>
+												
+										</div>
+
+										<div class="col-md-6">
+											<br /> <h:outputText value="your item's value"></h:outputText>
+											<h:inputText class="form-control" required="true" value="#{equipmentbean.value}"></h:inputText>
+										</div>
+
+										<div class="col-md-6">
+										<h:outputText value="your item's condition"></h:outputText>
+											<h:inputText class="form-control" required="true" value="#{equipmentbean.condition_equipment}"></h:inputText>
+											
+										</div>
+										<div class="col-md-6">
+											<h:outputText value="Option : "></h:outputText>
+											<h:selectOneMenu value="#{equipmentbean.option_quote}"
+												style="margin: 10px; padding: 10px; border: 2px solid rgb(27,64, 179); width: 200px; border-radius: 5px;">
+												<f:selectItem itemLabel="Choose your option" itemValue="" disabled="true" />
+												<f:selectItems value="#{data.options}" />
+											</h:selectOneMenu>
+											<h:commandButton id="btn" class="btn btn-primary btn-block btn-lg" action="#{equipmentbean.addQuote()}" value="Get a quote"/>																						
+											
+										</div>
+										
+									</div>
+									
+							</div>
+						</div>
+					</div>
+				</div>	
+				
+				
+			</h:form></h:panelGroup>	
+			</section>
+
+<script type="text/javascript">
+//<![CDATA[
+	
+function client()
+{$('#form2').removeAttr('hidden');
+$('#form1').hide();
+}
+function ok2(){
+	var tdt = document.getElementById('test:divv'); 
+	tdt.value = $("select[name$='select2'] option:selected").val();
+	tdt.style="text-fill-color:transparent;border-color:transparent;";
+	}
+ function ok()
+{ 	
+	 $('#kk').remove();
+	 var cc=$("select[name$='select1'] option:selected").val();
+		if (cc=='MobilePhone') {
+		
+			$("select[name$='select2']").empty();
+			$("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "Amazon")
+             .text("Amazon")
+             .prop('selected',false)).change();
+			$("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "Apple")
+             .text("Apple")
+             .prop('selected',false)).change();
+			$("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "BlackBerry")
+             .text("BlackBerry")
+             .prop('selected',false)).change();
+			$("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "Google")
+             .text("Google")
+             .prop('selected',false)).change();
+			$("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "Honor")
+             .text("Honor")
+             .prop('selected',false)).change();
+			$("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "HTC")
+             .text("HTC")
+             .prop('selected',false)).change();
+			$("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "Huawei")
+             .text("Huawei")
+             .prop('selected',false)).change();
+			$("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "LG")
+             .text("LG")
+             .prop('selected',false)).change();
+			$("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "Microsoft")
+             .text("Microsoft")
+             .prop('selected',false)).change();
+			$("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "Motorola")
+             .text("Motorola")
+             .prop('selected',false)).change();
+			$("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "Nokia")
+             .text("Nokia")
+             .prop('selected',false)).change();
+			$("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "OnePlus")
+             .text("OnePlus")
+             .prop('selected',false)).change();
+			$("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "Razor")
+             .text("Razor")
+             .prop('selected',false)).change();
+			$("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "Samsung")
+             .text("Samsung")
+             .prop('selected',false)).change();
+	 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+             '\tcolor: rgb(27,64, 179);\n' +
+             '\twidth: 310px;\n' +
+             '\tpadding: 10px 15px;\n' +
+             '\theight: 20px;\n' +
+             '\tcursor: pointer;"></option>')
+             .attr('value', "Sony")
+             .text("Sony")
+             .prop('selected',false)).change();
+     }
+		if (cc=="Laptop") {$("select[name$='select2']").empty();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Acer")
+	             .text("Acer")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Advent")
+	             .text("Advent")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Apple")
+	             .text("Apple")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Asus")
+	             .text("Asus")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Dell")
+	             .text("Dell")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "FujitsuSiemens")
+	             .text("FujitsuSiemens")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Gigabyte")
+	             .text("Gigabyte")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Hp")
+	             .text("Hp")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Lenovo")
+	             .text("Lenovo")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Medion")
+	             .text("Medion")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Microsoft")
+	             .text("Microsoft")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "PackardBell")
+	             .text("PackardBell")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Samsung")
+	             .text("Samsung")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "SonyVaio")
+	             .text("SonyVaio")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Toshiba")
+	             .text("Toshiba")
+	             .prop('selected',false)).change();
+		}
+		if (cc=="EReader") {$("select[name$='select2']").empty();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Amazon")
+	             .text("Amazon")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Mio")
+	             .text("Mio")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Sony")
+	             .text("Sony")
+	             .prop('selected',false)).change();}
+		if (cc=="Games") {$("select[name$='select2']").empty();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Archos")
+	             .text("Archos")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Microsoft")
+	             .text("Microsoft")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Nintendo")
+	             .text("Nintendo")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Sony")
+	             .text("Sony")
+	             .prop('selected',false)).change();
+         }
+		if (cc=="MP3") {$("select[name$='select2']").empty();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Apple")
+	             .text("Apple")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Cowon")
+	             .text("Cowon")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Creative")
+	             .text("Creative")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Microsoft")
+	             .text("Microsoft")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Philips")
+	             .text("Philips")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Sony")
+	             .text("Sony")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Yamaha")
+	             .text("Yamaha")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Zune")
+	             .text("Zune")
+	             .prop('selected',false)).change();
+        }
+		if (cc=="Camera") {$("select[name$='select2']").empty();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Canon")
+	             .text("Canon")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Fuji")
+	             .text("Fuji")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "FujiFilm")
+	             .text("FujiFilm")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "GoPro")
+	             .text("GoPro")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Kodak")
+	             .text("Kodak")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Leica")
+	             .text("Leica")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Lomography")
+	             .text("Lomography")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Nikon")
+	             .text("Nikon")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Olympus")
+	             .text("Olympus")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Panasonic")
+	             .text("Panasonic")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Pentax")
+	             .text("Pentax")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Samsung")
+	             .text("Samsung")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Sony")
+	             .text("Sony")
+	             .prop('selected',false)).change();
+       }
+		if (cc=="DesktopPC") {$("select[name$='select2']").empty();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Acer")
+	             .text("Acer")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Apple")
+	             .text("Apple")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Asus")
+	             .text("Asus")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Dell")
+	             .text("Dell")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Gigabyte")
+	             .text("Gigabyte")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Hp")
+	             .text("Hp")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Lenovo")
+	             .text("Lenovo")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Microsoft")
+	             .text("Microsoft")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Samsung")
+	             .text("Samsung")
+	             .prop('selected',false)).change();
+		 $("select[name$='select2']").append($('<option style="background-color: white;\n' +
+	             '\tcolor: rgb(27,64, 179);\n' +
+	             '\twidth: 310px;\n' +
+	             '\tpadding: 10px 15px;\n' +
+	             '\theight: 20px;\n' +
+	             '\tcursor: pointer;"></option>')
+	             .attr('value', "Toshiba")
+	             .text("Toshiba")
+	             .prop('selected',false)).change();
+		
+      }
+		if (cc=="homeAppliance"){$("select[name$='select2']").empty();}
+        }	
+//]]>
+ 
+</script>
+		</ui:define>
+	</div>
+
+</ui:composition>

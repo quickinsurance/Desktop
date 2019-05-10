@@ -1,0 +1,154 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui"
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+template="Project.xhtml">
+   
+  <div>
+  
+  <ui:define name="content">
+  <h:panelGroup columns="2">
+			<h:form>
+				<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+    	<div class="container">
+    		<div class="row d-md-flex align-items-center justify-content-end">
+    			<div class="col-lg-10">
+    				<div class="row d-md-flex align-items-center">
+		          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18">
+		              <div class="text">
+		                <strong class="number" data-number="#{equipmentcontract.prime}">0</strong><span>TND</span>
+		                <span>Your Premium</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18">
+		              <div class="text">
+		                <strong class="number" data-number="#{equipmentcontract.v}"></strong><span>TND</span>
+		                <span>Your Equipments value</span>
+		              </div>
+		            </div>
+		          </div>
+	          </div>
+          </div>
+        </div>
+    	</div>
+    </section>
+     <section class="ftco-services">
+			<div class="container">
+        <div class="row justify-content-start mt-5 py-5">
+          <div class="col-md-4 heading-section ftco-animate">
+            <div class="col-md-8 pl-md-5 heading-section ftco-animate">
+          	<div class="pl-md-4 border-line">
+	          	<p class="category mt-5">
+	            	<span class="active mr-2"><a>Your Contract signed at</a></span>
+	            	<span class="mr-2" ><h:outputText value="#{equipmentcontract.creation_date}"></h:outputText></span>
+	            	<span class="mr-2"><a>for a period of</a></span>
+	            	<span class="mr-2"><h:outputText value="#{equipmentcontract.duration}"></h:outputText></span>
+	            	<span class="mr-2"><a>years</a></span>
+	            
+	            </p>
+          	</div>
+          </div>
+             <div class="container-wrap" >
+    		<div class="row no-gutters" >
+    			<div class="col-md-12 col-lg-3 ftco-animate">
+    				<div class="project" style="width:250px;height:250px;">
+	    				<img src="images/work-1.jpg" class="img-fluid" alt="Colorlib Template"/>
+	    				<div class="text">
+	    					<span>Quick Insurance </span>
+	    					<h3><a>A business of caring.</a></h3>
+	    				</div>
+	    				<a href="images/work-1.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+	    					<span class="icon-expand"></span>
+	    				</a>
+    				</div>
+    			</div></div></div>
+    			  <div class="container-wrap" >
+    		<div class="row no-gutters" >
+    			<div class="col-md-12 col-lg-3 ftco-animate">
+    				<div class="project" style="width:250px;height:250px;">
+	    				<img src="#{equipmentcontract.agentpic}" class="img-fluid" alt="Colorlib Template"/>
+	    				<div class="text">
+	    				<span>Your Agent </span>
+	    				<h3>
+	    				<h:outputText value="#{equipmentcontract.agentName}"></h:outputText>	</h3>	         
+
+	    				</div>
+	    				<a href="#{equipmentcontract.agentpic}" class="icon image-popup d-flex justify-content-center align-items-center">
+	    					<span class="icon-expand"></span>
+	    				</a>
+    				</div>
+    			</div></div></div>
+          </div>
+          <div class="col-md-8 ftco-animate">          	<div class="row d-flex">
+          
+                    <c:forEach var="item" items="#{equipmentcontract.prop}">
+          		<div class="col-md-6 d-flex align-items-stretch">
+          	<a href="#{equipmentcontract.agentpic}" class="icon image-popup d-flex justify-content-center align-items-center"></a>
+          		
+          			<div class="media block-6 services services-2 d-block bg-light p-4 mb-4">
+		              <div class="icon d-flex justify-content-center align-items-center">
+		            		<span class="flaticon-layers"></span>
+		              </div>
+		              <div class="media-body p-2 mt-3">
+		                <h3 class="heading">Your item</h3>
+ 						<h:outputText value="#{item.item}"></h:outputText><br></br>
+ 						<h:outputText value="Make : "></h:outputText>
+ 						<h:outputText value="#{item.marque}"></h:outputText><br></br>	
+ 						<h:outputText value="Value : "></h:outputText>
+ 						<h:outputText value="#{item.value}"></h:outputText><br></br>
+ 						<h:outputText value="Condition : "></h:outputText>
+ 						<h:outputText value="#{item.condition_equipment}"></h:outputText><br></br>	
+ 						<h:outputText value="Option : "></h:outputText>
+ 						<h:outputText value="#{item.option_contract}"></h:outputText><br></br>
+ 						<h:outputText value="Premium : "></h:outputText>
+ 						<h:outputText value="#{item.prime}"></h:outputText>	
+ 						         
+   					   </div>
+		            </div>
+          		</div>
+          	
+          	          </c:forEach>
+          </div>          	</div>
+          
+        </div>
+			
+			
+			</div>
+			<div class="container-wrap" style="height:500px;">
+    		<div class="row no-gutters" style="height:500px;">
+    		   <c:forEach var="item" items="#{equipmentcontract.clients}">
+    			<div class="col-md-6 col-lg-3 ftco-animate" style="height:500px;">
+    				<div class="project" style="height:500px;">
+	    				<img src="images/#{item.photo}" class="img-fluid" alt="Colorlib Template"/>
+	    				<div class="text">
+	    					<span><h:outputText value="#{item.firstName}"></h:outputText></span>
+	    					<span><h:outputText value="#{item.lastName}"></h:outputText></span>
+	    				</div>
+	    				<a href="images/#{item.photo}" class="icon image-popup d-flex justify-content-center align-items-center">
+	    					<span class="icon-expand"></span>
+	    				</a>
+    				</div>
+    			</div>
+    			 </c:forEach>
+    			</div></div>
+		</section>
+		
+		
+			</h:form>
+		</h:panelGroup>
+
+      
+  </ui:define>
+  </div>
+
+<script type="text/javascript">
+//<![CDATA[
+//]]>
+ 
+</script>	
+</ui:composition> 
