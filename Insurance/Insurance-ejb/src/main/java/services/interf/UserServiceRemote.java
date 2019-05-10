@@ -8,6 +8,7 @@ import entities.Agent;
 import entities.Client;
 import entities.Expert;
 import entities.Financier;
+import entities.Rating;
 import entities.User;
 
 
@@ -44,6 +45,8 @@ public interface UserServiceRemote {
 	public Client findClientById(int id);
 	public List<Client> findAllClients();
 	public Client getClientByCIN(int cin);
+	
+	public void addRating(Rating rating);
 
 
 }

@@ -69,8 +69,12 @@
 
 											<tr>
 												<td><h:outputText value="Matriculation    "></h:outputText></td>
-												<td><h:inputText class="w3-input"
+												<td><h:inputText required="true"
+														requiredMessage="Field Empty!" id="mss" class="w3-input"
 														value="#{vehicleBean.matriculation}"></h:inputText></td>
+											</tr>
+											<tr>
+												<td><h:message for="mss" style="color:red;" /></td>
 											</tr>
 
 
@@ -96,6 +100,8 @@
 											<tr>
 												<td><h:outputText value="Select an Option"></h:outputText></td>
 												<td><h:selectOneRadio
+												required="true"
+														requiredMessage="Field Empty!" id="option" class="w3-input"
 														value="#{vehicleBean.vehicleOption}">
 														<f:selectItem itemValue="Tiers" itemLabel="Tiers" />
 														<f:selectItem itemValue="Tiers Etendu"
@@ -103,12 +109,19 @@
 														<f:selectItem itemValue="All Risks" itemLabel="All Risks" />
 													</h:selectOneRadio></td>
 											</tr>
+											<tr><td>
+											<h:message for="option" style="color:red;" />
+											</td></tr>
+											
 											<tr>
 												<td><h:outputText value="Vehicle Group"></h:outputText></td>
-												<td><h:inputText class="w3-input"
+												<td><h:inputText required="true"
+														requiredMessage="Field Empty!" id="group" class="w3-input"
 														value="#{vehicleBean.vehicleGroup}"></h:inputText></td>
 											</tr>
-
+											<tr>
+												<td><h:message for="group" style="color:red;" /></td>
+											</tr>
 											<tr>
 												<td><p:outputLabel for="button"
 														value="Date of Circulation" /></td>
@@ -117,19 +130,28 @@
 											</tr>
 											<tr>
 												<td><br /> <h:outputText value="RIB Number    "></h:outputText></td>
-												<td><h:inputText class="w3-input"></h:inputText></td>
+												<td><h:inputText required="true"
+														requiredMessage="Field Empty!" id="rib" class="w3-input"></h:inputText></td>
+											</tr>
+											<tr>
+												<td><h:message for="rib" style="color:red;" /></td>
 											</tr>
 
 
 											<tr>
 												<td><h:outputText value="Adresse    "></h:outputText></td>
-												<td><h:inputText class="w3-input"></h:inputText></td>
+												<td><h:inputText required="true"
+														requiredMessage="Field Empty!" id="adress"
+														class="w3-input"></h:inputText></td>
+											</tr>
+											<tr>
+												<td><h:message for="adress" style="color:red;" /></td>
 											</tr>
 
 											<tr>
 												<td><p></p> <h:commandButton
 														style="margin-left:101%; background-color:aqua"
-														class="button" value="Add Contract Request"
+														class="form-control submit px-3" value="Add Contract Request"
 														action="#{vehicleBean.addVehicleContract()}" /></td>
 											</tr>
 										</table>

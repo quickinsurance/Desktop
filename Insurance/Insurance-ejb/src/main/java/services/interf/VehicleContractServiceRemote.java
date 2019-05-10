@@ -13,5 +13,5 @@ public interface VehicleContractServiceRemote {
 	public void updateVehicleContract(Vehicle vehicle); 
 	public Vehicle findVehicleContractById(int id); 
 	public List<Vehicle> findAllVehicleContracts();
-
+	public List<String> getGroup();
 }

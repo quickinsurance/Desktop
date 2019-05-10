@@ -3,9 +3,13 @@ package managedBeans;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -46,6 +50,8 @@ import org.primefaces.model.charts.radar.RadarChartDataSet;
 import org.primefaces.model.charts.radar.RadarChartModel;
 import org.primefaces.model.charts.radar.RadarChartOptions;
 
+import services.impl.VehicleContractServiceImpl;
+
 
 @ManagedBean(name="chartView")
 @SessionScoped
@@ -82,9 +88,45 @@ public class chartJsView implements Serializable {
 	    private BarChartModel mixedModel;
 	     
 	    private DonutChartModel donutModel;
+	    
+	    private List<String> Listee;
+	    
+	    
+	    
+	    
+	    public List<String> getListee() {
+			return Listee;
+		}
+
+		public void setListee(List<String> listee) {
+			Listee = listee;
+		}
+
+		@EJB
+	    VehicleContractServiceImpl Service;
 	 
-	    @PostConstruct
+	    
+	    public VehicleContractServiceImpl getService() {
+			return Service;
+		}
+
+		public void setService(VehicleContractServiceImpl service) {
+			Service = service;
+		}
+
+		@PostConstruct
 	    public void init() {
+			System.out.println("EEEEEEEEE : "+Service.getGroup());
+			/*Listee = new ArrayList<String>(Service.getGroup());
+			
+
+			
+			Set<String> uniqueSet = new HashSet<String>(Listee);
+			for (Object temp : uniqueSet) {
+				System.out.println("vvvvvvvv : "+temp + ": " + Collections.frequency(Listee, temp));
+
+
+			}*/
 	        createPieModel();
 	        createPolarAreaModel();
 	        createLineModel();
@@ -863,9 +905,27 @@ public class chartJsView implements Serializable {
 	         
 	        DonutChartDataSet dataSet = new DonutChartDataSet();
 	        List<Number> values = new ArrayList<>();
-	        values.add(300);
-	        values.add(50);
-	        values.add(100);
+	        
+	        
+	        List<String> myList = new ArrayList<String>(Service.getGroup());
+			
+
+	        data.addChartDataSet(dataSet);
+	        List<String> labels = new ArrayList<>();
+			
+			Set<String> uniqueSet = new HashSet<String>(myList);
+			for (String temp : uniqueSet) {
+				System.out.println("vvvvvvvv : "+temp + ": " + Collections.frequency(myList, temp));
+
+			
+				values.add(Collections.frequency(myList, temp));
+		        labels.add(temp);
+
+			}
+	        
+	        
+	        
+	       
 	        dataSet.setData(values);
 	         
 	        List<String> bgColors = new ArrayList<>();
@@ -874,11 +934,8 @@ public class chartJsView implements Serializable {
 	        bgColors.add("rgb(255, 205, 86)");
 	        dataSet.setBackgroundColor(bgColors);
 	         
-	        data.addChartDataSet(dataSet);
-	        List<String> labels = new ArrayList<>();
-	        labels.add("Red");
-	        labels.add("Blue");
-	        labels.add("Yellow");
+	       
+	      
 	        data.setLabels(labels);
 	         
 	        donutModel.setData(data);

@@ -1,0 +1,76 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="AboutTemplate.xhtml">
+
+	<div>
+		<ui:define name="content">
+
+			<h:head></h:head>
+			<h:body>
+
+				<h:form>
+					<p:growl id="messages" showDetail="true" />
+
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputText value="Availability of agents:" />
+						<p:rating value="#{ratingView.rating1}">
+							<p:ajax event="rate" listener="#{ratingView.onrate}"
+								update="messages" />
+							<p:ajax event="cancel" listener="#{ratingView.oncancel}"
+								update="messages" />
+						</p:rating>
+
+						<h:outputText value="Quality of Services:" />
+						<p:rating value="#{ratingView.rating2}">
+							<p:ajax event="rate" listener="#{ratingView.onrate}"
+								update="messages" />
+							<p:ajax event="cancel" listener="#{ratingView.oncancel}"
+								update="messages" />
+						</p:rating>
+
+						<h:outputText value="Insurance Premiums:" />
+						<p:rating value="#{ratingView.rating3}">
+							<p:ajax event="rate" listener="#{ratingView.onrate}"
+								update="messages" />
+							<p:ajax event="cancel" listener="#{ratingView.oncancel}"
+								update="messages" />
+						</p:rating>
+
+						<h:outputText value="Agent Tips:" />
+						<p:rating value="#{ratingView.rating4}">
+							<p:ajax event="rate" listener="#{ratingView.onrate}"
+								update="messages" />
+							<p:ajax event="cancel" listener="#{ratingView.oncancel}"
+								update="messages" />
+						</p:rating>
+
+					</h:panelGrid>
+
+					<p:commandButton value="Submit" update="display"
+						oncomplete="PF('dlg').show()" style="margin:5px" />
+
+					<p:commandButton outcome="productDetail" value="Add Opinions"
+						icon="pi pi-star" update="display"
+						action="#{ratingView.addRating()}"  style="margin-right:20px;" styleClass="ui-priority-primary" />
+
+					<p:dialog header="Values" widgetVar="dlg" showEffect="fade"
+						hideEffect="fade">
+						<h:panelGrid id="display" columns="2" cellpadding="5">
+							<h:outputText value="Rating 1:" />
+							<h:outputText value="#{ratingView.rating1}" />
+
+							<h:outputText value="Rating 2:" />
+							<h:outputText value="#{ratingView.rating2}" />
+
+							<h:outputText value="Rating 3:" />
+							<h:outputText value="#{ratingView.rating3}" />
+						</h:panelGrid>
+					</p:dialog>
+				</h:form>
+			</h:body>
+		</ui:define>
+	</div>
+</ui:composition>

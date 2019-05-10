@@ -6,6 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import entities.Vehicle;
 import services.interf.VehicleContractServiceRemote;
@@ -43,8 +44,31 @@ public class VehicleContractServiceImpl implements VehicleContractServiceRemote 
 		System.out.println("Out of findVehicleContractById : "); 
 		return vehicle;
 	}
-	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> getGroup(){
+		
+		Query openTicketsQuery = em.createQuery(
+				"SELECT t FROM Vehicle t " +
+				"WHERE t.VehicleGroup = group ");
+	 
+			
+	 
+			List<String> SS = openTicketsQuery.getResultList();
 
+		
+			System.out.println("SSSSSSSSSS : "+SS);
+			System.out.println("XXXXXXXX : "+SS.toString());
+		/*
+		javax.persistence.Query query = em.createQuery("select VehicleGroup from Vehicle", String.class);
+		@SuppressWarnings("unchecked")
+		List<String> SS = query.getResultList();
+		
+*/
+		return SS;
+		
+	}
+	
 	@Override
 	public List<Vehicle> findAllVehicleContracts() {
 		System.out.println("In findAllvehicleContracts : "); 

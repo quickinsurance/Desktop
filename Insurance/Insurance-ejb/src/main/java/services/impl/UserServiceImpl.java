@@ -2,6 +2,7 @@ package services.impl;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,10 +11,13 @@ import entities.Agent;
 import entities.Client;
 import entities.Expert;
 import entities.Financier;
+import entities.Rating;
 import entities.User;
+import entities.Vehicle;
 import services.interf.UserServiceRemote;
 
 @Stateless
+@LocalBean
 public class UserServiceImpl implements UserServiceRemote {
 
 	@PersistenceContext(unitName = "Insurance-ejb") 
@@ -229,6 +233,10 @@ public class UserServiceImpl implements UserServiceRemote {
 		}else{
 			return list.get(0);}
 	}
+	
+
+	
+	
 	@Override
 	public void removeUser(User user) {
 		System.out.println("In removeUser : "); 
@@ -246,5 +254,9 @@ public class UserServiceImpl implements UserServiceRemote {
 			return null;
 		}else{
 			return list.get(0);}
+	}
+	@Override
+	public void addRating(Rating rating) {
+			em.persist(rating);
 	}
 }
